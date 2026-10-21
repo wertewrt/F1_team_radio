@@ -1,0 +1,752 @@
+{
+  "schema_version": 1,
+  "coordinate_convention": "source boxes are half-open [left,top,right,bottom]; capheight is normalized to 1",
+  "source_of_truth": "original resource PNG RGB pixels; no font substitution or hand-designed contour",
+  "reference_capheight": 88,
+  "reference_gap": 7,
+  "gap_per_height": 0.07954545454545454,
+  "output_capheight": 704,
+  "resampling": "linear-interpolated marching squares at alpha .5; polygon rasterized at 4x target resolution and Lanczos antialias; native source alpha also retained",
+  "white_outline": "original pale outline removed by color projection where separable; renderer recreates hairline consistently",
+  "digits": {
+    "0": {
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 175609.png",
+      "driver": "GASLY",
+      "source_sha256": "4f70b8e267cd46ae0e0e426700f2a4b3073807c8d2476e2c8ff51dc6e3592ef6",
+      "extraction_window": [
+        97,
+        93,
+        163,
+        184
+      ],
+      "box": [
+        98.38859,
+        94.472035,
+        160.977512,
+        182.361247
+      ],
+      "native_width": 62.588922,
+      "native_capheight": 87.889213,
+      "width_per_height": 0.7121342916543384,
+      "contour_count": 3,
+      "contour_level": 0.5,
+      "source_alpha": "assets/numerals/source_alpha/digit_0.png",
+      "output_size": [
+        501,
+        704
+      ],
+      "alpha_50_bbox_in_window": [
+        1,
+        1,
+        64,
+        90
+      ],
+      "alpha_10_bbox_in_window": [
+        0,
+        0,
+        66,
+        91
+      ],
+      "foreground_seed_rgb": [
+        55.0,
+        179.0,
+        232.0
+      ],
+      "foreground_center_rgb": [
+        53.159,
+        180.298,
+        231.638
+      ],
+      "background_center_rgb": [
+        22.524,
+        26.902,
+        40.245
+      ],
+      "opaque_component_threshold": 0.6,
+      "alpha_noise_floor": 0.03,
+      "fringe_radius_px": 2,
+      "dematting": "accent with white-outline projection removed",
+      "contour_refinement": "source-sample TLS fitting after .70px RDP grouping, then deblur dominant H/V/45 geometry, discard blur kinks below4px outer/1.5px counter, merge collinear fragments, align repeated stems within .8nativepx, restore symmetric measured octagonal counters6/8 and triangular4; no manually specified source vertices",
+      "raw_contour_points": [
+        304,
+        98,
+        98
+      ],
+      "fitted_contour_points": [
+        8,
+        7,
+        7
+      ],
+      "native_source_boundary_iou_8x": 0.9833762453822904
+    },
+    "1": {
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 175229.png",
+      "driver": "NORRIS",
+      "source_sha256": "4152cdb006dc26842377d6d724235875f06c37cf7900a18ca04db0026426a94c",
+      "extraction_window": [
+        21,
+        90,
+        86,
+        180
+      ],
+      "box": [
+        23.080802,
+        91.632619,
+        85.724038,
+        178.630136
+      ],
+      "native_width": 62.643237,
+      "native_capheight": 86.997517,
+      "width_per_height": 0.7200577571559839,
+      "contour_count": 1,
+      "contour_level": 0.5,
+      "source_alpha": "assets/numerals/source_alpha/digit_1.png",
+      "output_size": [
+        507,
+        704
+      ],
+      "alpha_50_bbox_in_window": [
+        2,
+        1,
+        65,
+        90
+      ],
+      "alpha_10_bbox_in_window": [
+        1,
+        0,
+        65,
+        90
+      ],
+      "foreground_seed_rgb": [
+        250.0,
+        138.0,
+        26.0
+      ],
+      "foreground_center_rgb": [
+        250.616,
+        137.391,
+        21.797
+      ],
+      "background_center_rgb": [
+        26.89,
+        25.509,
+        33.957
+      ],
+      "opaque_component_threshold": 0.6,
+      "alpha_noise_floor": 0.03,
+      "fringe_radius_px": 2,
+      "dematting": "accent with white-outline projection removed",
+      "contour_refinement": "source-sample TLS fitting after .70px RDP grouping, then deblur dominant H/V/45 geometry, discard blur kinks below4px outer/1.5px counter, merge collinear fragments, align repeated stems within .8nativepx, restore symmetric measured octagonal counters6/8 and triangular4; no manually specified source vertices",
+      "raw_contour_points": [
+        352
+      ],
+      "fitted_contour_points": [
+        10
+      ],
+      "native_source_boundary_iou_8x": 0.981657546059518
+    },
+    "2": {
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 181507.png",
+      "driver": "TSUNODA",
+      "source_sha256": "27d52e9f43b5e14c387dcbe163a283f5fe26a6cd3cdd462aa75dfa691cb7e2e0",
+      "extraction_window": [
+        15,
+        82,
+        82,
+        173
+      ],
+      "box": [
+        17.153557,
+        83.64061,
+        79.32619,
+        171.143405
+      ],
+      "native_width": 62.172633,
+      "native_capheight": 87.502796,
+      "width_per_height": 0.7105216769979473,
+      "contour_count": 1,
+      "contour_level": 0.5,
+      "source_alpha": "assets/numerals/source_alpha/digit_2.png",
+      "output_size": [
+        500,
+        704
+      ],
+      "alpha_50_bbox_in_window": [
+        2,
+        2,
+        65,
+        89
+      ],
+      "alpha_10_bbox_in_window": [
+        0,
+        0,
+        66,
+        91
+      ],
+      "foreground_seed_rgb": [
+        115.0,
+        154.0,
+        250.0
+      ],
+      "foreground_center_rgb": [
+        115.355,
+        153.757,
+        248.259
+      ],
+      "background_center_rgb": [
+        27.76,
+        29.51,
+        39.897
+      ],
+      "opaque_component_threshold": 0.6,
+      "alpha_noise_floor": 0.03,
+      "fringe_radius_px": 2,
+      "dematting": "accent with white-outline projection removed",
+      "contour_refinement": "source-sample TLS fitting after .70px RDP grouping, then deblur dominant H/V/45 geometry, discard blur kinks below4px outer/1.5px counter, merge collinear fragments, align repeated stems within .8nativepx, restore symmetric measured octagonal counters6/8 and triangular4; no manually specified source vertices",
+      "raw_contour_points": [
+        464
+      ],
+      "fitted_contour_points": [
+        18
+      ],
+      "native_source_boundary_iou_8x": 0.9743156977191348
+    },
+    "3": {
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 175209.png",
+      "driver": "VERSTAPPEN",
+      "source_sha256": "75db6640373bcf365f42d919134072b707d374961b00c5b82761f9d290ef22bc",
+      "extraction_window": [
+        21,
+        85,
+        87,
+        176
+      ],
+      "box": [
+        23.165052,
+        86.530774,
+        85.16891,
+        174.015226
+      ],
+      "native_width": 62.003857,
+      "native_capheight": 87.484452,
+      "width_per_height": 0.7087414487199938,
+      "contour_count": 1,
+      "contour_level": 0.5,
+      "source_alpha": "assets/numerals/source_alpha/digit_3.png",
+      "output_size": [
+        499,
+        704
+      ],
+      "alpha_50_bbox_in_window": [
+        2,
+        1,
+        64,
+        89
+      ],
+      "alpha_10_bbox_in_window": [
+        0,
+        0,
+        66,
+        91
+      ],
+      "foreground_seed_rgb": [
+        73.0,
+        124.0,
+        198.0
+      ],
+      "foreground_center_rgb": [
+        71.2,
+        123.245,
+        197.061
+      ],
+      "background_center_rgb": [
+        28.11,
+        30.674,
+        42.553
+      ],
+      "opaque_component_threshold": 0.6,
+      "alpha_noise_floor": 0.03,
+      "fringe_radius_px": 2,
+      "dematting": "accent with white-outline projection removed",
+      "contour_refinement": "source-sample TLS fitting after .70px RDP grouping, then deblur dominant H/V/45 geometry, discard blur kinks below4px outer/1.5px counter, merge collinear fragments, align repeated stems within .8nativepx, restore symmetric measured octagonal counters6/8 and triangular4; no manually specified source vertices",
+      "raw_contour_points": [
+        482
+      ],
+      "fitted_contour_points": [
+        28
+      ],
+      "native_source_boundary_iou_8x": 0.9760397923947326
+    },
+    "4": {
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 175513.png",
+      "driver": "HAMILTON",
+      "source_sha256": "5419e7de75625c910a58021d4181a1c25ee6fa3850cdd7f084007003913fb184",
+      "extraction_window": [
+        20,
+        90,
+        87,
+        180
+      ],
+      "box": [
+        22.457526,
+        91.588376,
+        84.053168,
+        179.67634
+      ],
+      "native_width": 61.595642,
+      "native_capheight": 88.087965,
+      "width_per_height": 0.6992515046990065,
+      "contour_count": 2,
+      "contour_level": 0.5,
+      "source_alpha": "assets/numerals/source_alpha/digit_4.png",
+      "output_size": [
+        492,
+        704
+      ],
+      "alpha_50_bbox_in_window": [
+        2,
+        1,
+        64,
+        90
+      ],
+      "alpha_10_bbox_in_window": [
+        1,
+        0,
+        66,
+        90
+      ],
+      "foreground_seed_rgb": [
+        227.0,
+        23.0,
+        63.0
+      ],
+      "foreground_center_rgb": [
+        226.133,
+        17.445,
+        60.951
+      ],
+      "background_center_rgb": [
+        27.214,
+        27.256,
+        31.723
+      ],
+      "opaque_component_threshold": 0.6,
+      "alpha_noise_floor": 0.03,
+      "fringe_radius_px": 2,
+      "dematting": "accent with white-outline projection removed",
+      "contour_refinement": "source-sample TLS fitting after .70px RDP grouping, then deblur dominant H/V/45 geometry, discard blur kinks below4px outer/1.5px counter, merge collinear fragments, align repeated stems within .8nativepx, restore symmetric measured octagonal counters6/8 and triangular4; no manually specified source vertices",
+      "raw_contour_points": [
+        312,
+        72
+      ],
+      "fitted_contour_points": [
+        12,
+        3
+      ],
+      "native_source_boundary_iou_8x": 0.9699525200150982
+    },
+    "5": {
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 175106.png",
+      "driver": "SAINZ",
+      "source_sha256": "d78276aea772ff9225f55190263ccce4a39c4de2cfcbf6c7f94c9da003c8aaf7",
+      "extraction_window": [
+        29,
+        84,
+        96,
+        175
+      ],
+      "box": [
+        31.186994,
+        85.404167,
+        93.413142,
+        172.992996
+      ],
+      "native_width": 62.226148,
+      "native_capheight": 87.588829,
+      "width_per_height": 0.7104347471428785,
+      "contour_count": 1,
+      "contour_level": 0.5,
+      "source_alpha": "assets/numerals/source_alpha/digit_5.png",
+      "output_size": [
+        500,
+        704
+      ],
+      "alpha_50_bbox_in_window": [
+        2,
+        1,
+        65,
+        89
+      ],
+      "alpha_10_bbox_in_window": [
+        0,
+        0,
+        66,
+        91
+      ],
+      "foreground_seed_rgb": [
+        45.0,
+        113.0,
+        217.0
+      ],
+      "foreground_center_rgb": [
+        41.236,
+        114.397,
+        216.679
+      ],
+      "background_center_rgb": [
+        25.461,
+        27.549,
+        38.172
+      ],
+      "opaque_component_threshold": 0.6,
+      "alpha_noise_floor": 0.03,
+      "fringe_radius_px": 2,
+      "dematting": "accent with white-outline projection removed",
+      "contour_refinement": "source-sample TLS fitting after .70px RDP grouping, then deblur dominant H/V/45 geometry, discard blur kinks below4px outer/1.5px counter, merge collinear fragments, align repeated stems within .8nativepx, restore symmetric measured octagonal counters6/8 and triangular4; no manually specified source vertices",
+      "raw_contour_points": [
+        506
+      ],
+      "fitted_contour_points": [
+        20
+      ],
+      "native_source_boundary_iou_8x": 0.9770293277161829
+    },
+    "6": {
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 174758.png",
+      "driver": "HADJAR",
+      "source_sha256": "baad31b0782d5b0dd5cdff161758f263461f1eb41af3d0da77725f2f1b7fba13",
+      "extraction_window": [
+        23,
+        90,
+        90,
+        181
+      ],
+      "box": [
+        25.227793,
+        91.707898,
+        87.268396,
+        178.680657
+      ],
+      "native_width": 62.040604,
+      "native_capheight": 86.972759,
+      "width_per_height": 0.7133337413920059,
+      "contour_count": 2,
+      "contour_level": 0.5,
+      "source_alpha": "assets/numerals/source_alpha/digit_6.png",
+      "output_size": [
+        502,
+        704
+      ],
+      "alpha_50_bbox_in_window": [
+        2,
+        2,
+        64,
+        89
+      ],
+      "alpha_10_bbox_in_window": [
+        0,
+        0,
+        66,
+        91
+      ],
+      "foreground_seed_rgb": [
+        73.0,
+        123.0,
+        198.0
+      ],
+      "foreground_center_rgb": [
+        70.023,
+        121.615,
+        196.718
+      ],
+      "background_center_rgb": [
+        24.176,
+        27.126,
+        38.818
+      ],
+      "opaque_component_threshold": 0.6,
+      "alpha_noise_floor": 0.03,
+      "fringe_radius_px": 2,
+      "dematting": "accent with white-outline projection removed",
+      "contour_refinement": "source-sample TLS fitting after .70px RDP grouping, then deblur dominant H/V/45 geometry, discard blur kinks below4px outer/1.5px counter, merge collinear fragments, align repeated stems within .8nativepx, restore symmetric measured octagonal counters6/8 and triangular4; no manually specified source vertices",
+      "raw_contour_points": [
+        328,
+        88
+      ],
+      "fitted_contour_points": [
+        12,
+        8
+      ],
+      "native_source_boundary_iou_8x": 0.9765573931964505
+    },
+    "7": {
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 180835.png",
+      "driver": "BOTTAS",
+      "source_sha256": "a69d2ed621d5c57394dff0a0339f307793dc5404d2bf92363c91498f7c77b1cd",
+      "extraction_window": [
+        20,
+        86,
+        87,
+        179
+      ],
+      "box": [
+        21.960045,
+        88.360287,
+        84.470026,
+        176.083402
+      ],
+      "native_width": 62.509981,
+      "native_capheight": 87.723115,
+      "width_per_height": 0.7125827701747149,
+      "contour_count": 1,
+      "contour_level": 0.5,
+      "source_alpha": "assets/numerals/source_alpha/digit_7.png",
+      "output_size": [
+        502,
+        704
+      ],
+      "alpha_50_bbox_in_window": [
+        2,
+        2,
+        65,
+        90
+      ],
+      "alpha_10_bbox_in_window": [
+        1,
+        1,
+        65,
+        91
+      ],
+      "foreground_seed_rgb": [
+        176.0,
+        175.0,
+        180.0
+      ],
+      "foreground_center_rgb": [
+        175.385,
+        174.684,
+        179.79
+      ],
+      "background_center_rgb": [
+        30.91,
+        29.264,
+        36.732
+      ],
+      "opaque_component_threshold": 0.6,
+      "alpha_noise_floor": 0.03,
+      "fringe_radius_px": 2,
+      "dematting": "luminance",
+      "contour_refinement": "source-sample TLS fitting after .70px RDP grouping, then deblur dominant H/V/45 geometry, discard blur kinks below4px outer/1.5px counter, merge collinear fragments, align repeated stems within .8nativepx, restore symmetric measured octagonal counters6/8 and triangular4; no manually specified source vertices",
+      "raw_contour_points": [
+        390
+      ],
+      "fitted_contour_points": [
+        10
+      ],
+      "native_source_boundary_iou_8x": 0.9927900512384875
+    },
+    "8": {
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 175903.png",
+      "driver": "PIASTRI",
+      "source_sha256": "1c93ab1a364d378434ae8572440a124d722ecfb001093f2aa71c8d88f011443d",
+      "extraction_window": [
+        26,
+        90,
+        93,
+        182
+      ],
+      "box": [
+        28.331257,
+        91.694948,
+        90.142741,
+        178.613242
+      ],
+      "native_width": 61.811484,
+      "native_capheight": 86.918294,
+      "width_per_height": 0.7111446955440723,
+      "contour_count": 3,
+      "contour_level": 0.5,
+      "source_alpha": "assets/numerals/source_alpha/digit_8.png",
+      "output_size": [
+        501,
+        704
+      ],
+      "alpha_50_bbox_in_window": [
+        2,
+        1,
+        64,
+        89
+      ],
+      "alpha_10_bbox_in_window": [
+        1,
+        0,
+        66,
+        90
+      ],
+      "foreground_seed_rgb": [
+        249.0,
+        137.0,
+        24.0
+      ],
+      "foreground_center_rgb": [
+        249.32,
+        137.016,
+        20.246
+      ],
+      "background_center_rgb": [
+        27.409,
+        24.369,
+        28.591
+      ],
+      "opaque_component_threshold": 0.6,
+      "alpha_noise_floor": 0.03,
+      "fringe_radius_px": 2,
+      "dematting": "accent with white-outline projection removed",
+      "contour_refinement": "source-sample TLS fitting after .70px RDP grouping, then deblur dominant H/V/45 geometry, discard blur kinks below4px outer/1.5px counter, merge collinear fragments, align repeated stems within .8nativepx, restore symmetric measured octagonal counters6/8 and triangular4; no manually specified source vertices",
+      "raw_contour_points": [
+        318,
+        86,
+        82
+      ],
+      "fitted_contour_points": [
+        14,
+        8,
+        8
+      ],
+      "native_source_boundary_iou_8x": 0.973875412493487
+    },
+    "9": {
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 174758.png",
+      "driver": "HADJAR",
+      "source_sha256": "baad31b0782d5b0dd5cdff161758f263461f1eb41af3d0da77725f2f1b7fba13",
+      "extraction_window": [
+        23,
+        90,
+        90,
+        181
+      ],
+      "box": [
+        25.227793,
+        91.707898,
+        87.268396,
+        178.680657
+      ],
+      "native_width": 62.040604,
+      "native_capheight": 86.972759,
+      "width_per_height": 0.7133337413920059,
+      "contour_count": 2,
+      "contour_level": 0.5,
+      "source_alpha": "assets/numerals/source_alpha/digit_6.png",
+      "output_size": [
+        502,
+        704
+      ],
+      "alpha_50_bbox_in_window": [
+        2,
+        2,
+        64,
+        89
+      ],
+      "alpha_10_bbox_in_window": [
+        0,
+        0,
+        66,
+        91
+      ],
+      "foreground_seed_rgb": [
+        73.0,
+        123.0,
+        198.0
+      ],
+      "foreground_center_rgb": [
+        70.023,
+        121.615,
+        196.718
+      ],
+      "background_center_rgb": [
+        24.176,
+        27.126,
+        38.818
+      ],
+      "opaque_component_threshold": 0.6,
+      "alpha_noise_floor": 0.03,
+      "fringe_radius_px": 2,
+      "dematting": "accent with white-outline projection removed",
+      "contour_refinement": "source-sample TLS fitting after .70px RDP grouping, then deblur dominant H/V/45 geometry, discard blur kinks below4px outer/1.5px counter, merge collinear fragments, align repeated stems within .8nativepx, restore symmetric measured octagonal counters6/8 and triangular4; no manually specified source vertices",
+      "raw_contour_points": [
+        328,
+        88
+      ],
+      "fitted_contour_points": [
+        12,
+        8
+      ],
+      "native_source_boundary_iou_8x": 0.9765573931964505,
+      "derived_from": "6",
+      "transform": "rotate 180 degrees; no 9 exists in provided original source screenshots"
+    }
+  },
+  "reference_capheight_measured_median": 87.502796,
+  "reference_gap_measurements": [
+    {
+      "driver": "HAMILTON",
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 175513.png",
+      "second_extraction_window": [
+        90,
+        90,
+        156,
+        180
+      ],
+      "gap_px": 7.764337949999998
+    },
+    {
+      "driver": "SAINZ",
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 175106.png",
+      "second_extraction_window": [
+        98,
+        84,
+        165,
+        175
+      ],
+      "gap_px": 6.976327900000001
+    },
+    {
+      "driver": "BOTTAS",
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 180835.png",
+      "second_extraction_window": [
+        89,
+        86,
+        157,
+        179
+      ],
+      "gap_px": 6.470547240000002
+    },
+    {
+      "driver": "TSUNODA",
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 181507.png",
+      "second_extraction_window": [
+        84,
+        82,
+        152,
+        173
+      ],
+      "gap_px": 5.17294545
+    }
+  ],
+  "reference_gap_measured_median": 6.7234375700000015,
+  "contour_interpretation": "half-coverage (.5) is the neutral fill/background boundary; .6 only identifies the connected glyph and is not a hard edge threshold. Bilinear marching interpolation preserves subpixel positions.",
+  "validation": {
+    "shared_6_against_russell": {
+      "source": "resource/\u5c4f\u5e55\u622a\u56fe 2026-10-20 180209.png",
+      "source_sha256": "c353927d6adbafaa33b1bd9e002aa9ecd8952529184c077db70eebf9affc3800",
+      "extraction_window": [
+        20,
+        90,
+        86,
+        180
+      ],
+      "intersection_over_union_at_8x": 0.974248617889107,
+      "alignment": "same shared HADJAR6 contours fitted only to independently measured RUSSELL6 capheight and width; no contour editing"
+    }
+  }
+}

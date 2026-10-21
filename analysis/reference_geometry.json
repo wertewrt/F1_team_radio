@@ -1,0 +1,1545 @@
+{
+  "coordinate_convention": "xyxy half-open integer pixel rectangles. Source bounds describe visible panel excluding surrounding game scene. 960x540 is anisotropically rescaled panel coordinate space, not native panel aspect.",
+  "panel": {
+    "sampled_width_px": 329,
+    "sampled_height_px": 176,
+    "aspect": 1.8693181818181819,
+    "edge_uncertainty_px": 1,
+    "aspect_uncertainty_approx": 0.02,
+    "native_pre_screenshot_size": "unknown; no original production pixel dimensions available",
+    "normalization": {
+      "x": 2.917933130699088,
+      "y": 3.0681818181818183
+    }
+  },
+  "all_screenshot_crops_source_xyxy": {
+    "174745": [
+      13,
+      16,
+      342,
+      192
+    ],
+    "174758": [
+      13,
+      15,
+      342,
+      191
+    ],
+    "174845": [
+      16,
+      15,
+      345,
+      191
+    ],
+    "174857": [
+      10,
+      15,
+      339,
+      191
+    ],
+    "175106": [
+      19,
+      9,
+      348,
+      185
+    ],
+    "175125": [
+      16,
+      16,
+      345,
+      192
+    ],
+    "175138": [
+      10,
+      12,
+      339,
+      188
+    ],
+    "175209": [
+      11,
+      10,
+      340,
+      186
+    ],
+    "175229": [
+      11,
+      15,
+      340,
+      191
+    ],
+    "175245": [
+      16,
+      15,
+      345,
+      191
+    ],
+    "175453": [
+      17,
+      6,
+      346,
+      182
+    ],
+    "175513": [
+      10,
+      15,
+      339,
+      191
+    ],
+    "175609": [
+      17,
+      18,
+      346,
+      194
+    ],
+    "175712": [
+      11,
+      9,
+      340,
+      185
+    ],
+    "175903": [
+      16,
+      15,
+      345,
+      191
+    ],
+    "180012": [
+      7,
+      12,
+      336,
+      188
+    ],
+    "180209": [
+      10,
+      15,
+      339,
+      191
+    ],
+    "180333": [
+      13,
+      12,
+      342,
+      188
+    ],
+    "180805": [
+      13,
+      12,
+      342,
+      188
+    ],
+    "180835": [
+      10,
+      12,
+      339,
+      188
+    ],
+    "181452": [
+      16,
+      15,
+      345,
+      191
+    ],
+    "181507": [
+      5,
+      7,
+      334,
+      183
+    ]
+  },
+  "representatives": {
+    "SAINZ": {
+      "stamp": "175106",
+      "crop_source_xyxy": [
+        19,
+        9,
+        348,
+        185
+      ],
+      "boxes": {
+        "name": {
+          "source_xyxy": [
+            200,
+            20,
+            337,
+            51
+          ],
+          "panel_local_xyxy": [
+            181,
+            11,
+            318,
+            42
+          ],
+          "normalized_960x540_xyxy": [
+            528.15,
+            33.75,
+            927.9,
+            128.86
+          ],
+          "uncertainty_source_px": 1
+        },
+        "radio": {
+          "source_xyxy": [
+            206,
+            53,
+            336,
+            81
+          ],
+          "panel_local_xyxy": [
+            187,
+            44,
+            317,
+            72
+          ],
+          "normalized_960x540_xyxy": [
+            545.65,
+            135,
+            924.98,
+            220.91
+          ],
+          "uncertainty_source_px": 1
+        },
+        "numeral": {
+          "source_xyxy": [
+            30,
+            85,
+            164,
+            174
+          ],
+          "panel_local_xyxy": [
+            11,
+            76,
+            145,
+            165
+          ],
+          "normalized_960x540_xyxy": [
+            32.1,
+            233.18,
+            423.1,
+            506.25
+          ],
+          "uncertainty_source_px": 2
+        },
+        "logo": {
+          "source_xyxy": [
+            286,
+            145,
+            335,
+            173
+          ],
+          "panel_local_xyxy": [
+            267,
+            136,
+            316,
+            164
+          ],
+          "normalized_960x540_xyxy": [
+            779.09,
+            417.27,
+            922.07,
+            503.18
+          ],
+          "uncertainty_source_px": 1
+        }
+      },
+      "wave": {
+        "baseline_y_source": 185,
+        "boundaries_x_source": [
+          19,
+          55.56,
+          92.11,
+          128.67,
+          165.22,
+          201.78,
+          238.33,
+          274.89,
+          311.44,
+          348
+        ],
+        "boundaries_x_960": [
+          0,
+          106.67,
+          213.33,
+          320,
+          426.67,
+          533.33,
+          640,
+          746.67,
+          853.33,
+          960
+        ],
+        "top_ranges_source_y": [
+          null,
+          null,
+          null,
+          null,
+          [
+            166,
+            172
+          ],
+          [
+            177,
+            181
+          ],
+          [
+            178,
+            182
+          ],
+          [
+            177,
+            181
+          ],
+          [
+            178,
+            182
+          ]
+        ],
+        "height_ranges_source_px": [
+          null,
+          null,
+          null,
+          null,
+          [
+            13,
+            19
+          ],
+          [
+            4,
+            8
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            4,
+            8
+          ],
+          [
+            3,
+            7
+          ]
+        ],
+        "height_ranges_540": [
+          null,
+          null,
+          null,
+          null,
+          [
+            39.89,
+            58.3
+          ],
+          [
+            12.27,
+            24.55
+          ],
+          [
+            9.2,
+            21.48
+          ],
+          [
+            12.27,
+            24.55
+          ],
+          [
+            9.2,
+            21.48
+          ]
+        ],
+        "notes": "Null = cannot isolate wave contour from overlaid numeral. Top ranges span visible antialiased/faded transition, not precise latent block top. Logo regions measured at exposed floor below logo. Nine equal widths are imposed by explicit user requirement and corroborated by visible steps."
+      }
+    },
+    "HADJAR": {
+      "stamp": "174758",
+      "crop_source_xyxy": [
+        13,
+        15,
+        342,
+        191
+      ],
+      "boxes": {
+        "name": {
+          "source_xyxy": [
+            148,
+            26,
+            331,
+            56
+          ],
+          "panel_local_xyxy": [
+            135,
+            11,
+            318,
+            41
+          ],
+          "normalized_960x540_xyxy": [
+            393.92,
+            33.75,
+            927.9,
+            125.8
+          ],
+          "uncertainty_source_px": 1
+        },
+        "radio": {
+          "source_xyxy": [
+            200,
+            59,
+            330,
+            87
+          ],
+          "panel_local_xyxy": [
+            187,
+            44,
+            317,
+            72
+          ],
+          "normalized_960x540_xyxy": [
+            545.65,
+            135,
+            924.98,
+            220.91
+          ],
+          "uncertainty_source_px": 1
+        },
+        "numeral": {
+          "source_xyxy": [
+            25,
+            91,
+            88,
+            180
+          ],
+          "panel_local_xyxy": [
+            12,
+            76,
+            75,
+            165
+          ],
+          "normalized_960x540_xyxy": [
+            35.02,
+            233.18,
+            218.84,
+            506.25
+          ],
+          "uncertainty_source_px": 2
+        },
+        "logo": {
+          "source_xyxy": [
+            260,
+            152,
+            329,
+            179
+          ],
+          "panel_local_xyxy": [
+            247,
+            137,
+            316,
+            164
+          ],
+          "normalized_960x540_xyxy": [
+            720.73,
+            420.34,
+            922.07,
+            503.18
+          ],
+          "uncertainty_source_px": 1
+        }
+      },
+      "wave": {
+        "baseline_y_source": 191,
+        "boundaries_x_source": [
+          13,
+          49.56,
+          86.11,
+          122.67,
+          159.22,
+          195.78,
+          232.33,
+          268.89,
+          305.44,
+          342
+        ],
+        "boundaries_x_960": [
+          0,
+          106.67,
+          213.33,
+          320,
+          426.67,
+          533.33,
+          640,
+          746.67,
+          853.33,
+          960
+        ],
+        "top_ranges_source_y": [
+          null,
+          null,
+          [
+            164,
+            172
+          ],
+          [
+            154,
+            162
+          ],
+          [
+            154,
+            164
+          ],
+          [
+            183,
+            188
+          ],
+          [
+            181,
+            187
+          ],
+          [
+            183,
+            188
+          ],
+          [
+            180,
+            187
+          ]
+        ],
+        "height_ranges_source_px": [
+          null,
+          null,
+          [
+            19,
+            27
+          ],
+          [
+            29,
+            37
+          ],
+          [
+            27,
+            37
+          ],
+          [
+            3,
+            8
+          ],
+          [
+            4,
+            10
+          ],
+          [
+            3,
+            8
+          ],
+          [
+            4,
+            11
+          ]
+        ],
+        "height_ranges_540": [
+          null,
+          null,
+          [
+            58.3,
+            82.84
+          ],
+          [
+            88.98,
+            113.52
+          ],
+          [
+            82.84,
+            113.52
+          ],
+          [
+            9.2,
+            24.55
+          ],
+          [
+            12.27,
+            30.68
+          ],
+          [
+            9.2,
+            24.55
+          ],
+          [
+            12.27,
+            33.75
+          ]
+        ],
+        "notes": "Null = cannot isolate wave contour from overlaid numeral. Top ranges span visible antialiased/faded transition, not precise latent block top. Logo regions measured at exposed floor below logo. Nine equal widths are imposed by explicit user requirement and corroborated by visible steps."
+      }
+    },
+    "BEARMAN": {
+      "stamp": "174857",
+      "crop_source_xyxy": [
+        10,
+        15,
+        339,
+        191
+      ],
+      "boxes": {
+        "name": {
+          "source_xyxy": [
+            92,
+            27,
+            327,
+            56
+          ],
+          "panel_local_xyxy": [
+            82,
+            12,
+            317,
+            41
+          ],
+          "normalized_960x540_xyxy": [
+            239.27,
+            36.82,
+            924.98,
+            125.8
+          ],
+          "uncertainty_source_px": 1
+        },
+        "radio": {
+          "source_xyxy": [
+            197,
+            59,
+            327,
+            87
+          ],
+          "panel_local_xyxy": [
+            187,
+            44,
+            317,
+            72
+          ],
+          "normalized_960x540_xyxy": [
+            545.65,
+            135,
+            924.98,
+            220.91
+          ],
+          "uncertainty_source_px": 1
+        },
+        "numeral": {
+          "source_xyxy": [
+            22,
+            91,
+            154,
+            180
+          ],
+          "panel_local_xyxy": [
+            12,
+            76,
+            144,
+            165
+          ],
+          "normalized_960x540_xyxy": [
+            35.02,
+            233.18,
+            420.18,
+            506.25
+          ],
+          "uncertainty_source_px": 2
+        },
+        "logo": {
+          "source_xyxy": [
+            273,
+            130,
+            328,
+            179
+          ],
+          "panel_local_xyxy": [
+            263,
+            115,
+            318,
+            164
+          ],
+          "normalized_960x540_xyxy": [
+            767.42,
+            352.84,
+            927.9,
+            503.18
+          ],
+          "uncertainty_source_px": 1
+        }
+      },
+      "wave": {
+        "baseline_y_source": 191,
+        "boundaries_x_source": [
+          10,
+          46.56,
+          83.11,
+          119.67,
+          156.22,
+          192.78,
+          229.33,
+          265.89,
+          302.44,
+          339
+        ],
+        "boundaries_x_960": [
+          0,
+          106.67,
+          213.33,
+          320,
+          426.67,
+          533.33,
+          640,
+          746.67,
+          853.33,
+          960
+        ],
+        "top_ranges_source_y": [
+          null,
+          null,
+          null,
+          null,
+          [
+            177,
+            185
+          ],
+          [
+            178,
+            185
+          ],
+          [
+            185,
+            191
+          ],
+          [
+            181,
+            188
+          ],
+          [
+            181,
+            188
+          ]
+        ],
+        "height_ranges_source_px": [
+          null,
+          null,
+          null,
+          null,
+          [
+            6,
+            14
+          ],
+          [
+            6,
+            13
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            3,
+            10
+          ],
+          [
+            3,
+            10
+          ]
+        ],
+        "height_ranges_540": [
+          null,
+          null,
+          null,
+          null,
+          [
+            18.41,
+            42.95
+          ],
+          [
+            18.41,
+            39.89
+          ],
+          [
+            0,
+            18.41
+          ],
+          [
+            9.2,
+            30.68
+          ],
+          [
+            9.2,
+            30.68
+          ]
+        ],
+        "notes": "Null = cannot isolate wave contour from overlaid numeral. Top ranges span visible antialiased/faded transition, not precise latent block top. Logo regions measured at exposed floor below logo. Nine equal widths are imposed by explicit user requirement and corroborated by visible steps."
+      }
+    },
+    "BOTTAS": {
+      "stamp": "180835",
+      "crop_source_xyxy": [
+        10,
+        12,
+        339,
+        188
+      ],
+      "boxes": {
+        "name": {
+          "source_xyxy": [
+            147,
+            24,
+            327,
+            53
+          ],
+          "panel_local_xyxy": [
+            137,
+            12,
+            317,
+            41
+          ],
+          "normalized_960x540_xyxy": [
+            399.76,
+            36.82,
+            924.98,
+            125.8
+          ],
+          "uncertainty_source_px": 1
+        },
+        "radio": {
+          "source_xyxy": [
+            197,
+            56,
+            327,
+            84
+          ],
+          "panel_local_xyxy": [
+            187,
+            44,
+            317,
+            72
+          ],
+          "normalized_960x540_xyxy": [
+            545.65,
+            135,
+            924.98,
+            220.91
+          ],
+          "uncertainty_source_px": 1
+        },
+        "numeral": {
+          "source_xyxy": [
+            22,
+            88,
+            154,
+            177
+          ],
+          "panel_local_xyxy": [
+            12,
+            76,
+            144,
+            165
+          ],
+          "normalized_960x540_xyxy": [
+            35.02,
+            233.18,
+            420.18,
+            506.25
+          ],
+          "uncertainty_source_px": 2
+        },
+        "logo": {
+          "source_xyxy": [
+            264,
+            151,
+            327,
+            175
+          ],
+          "panel_local_xyxy": [
+            254,
+            139,
+            317,
+            163
+          ],
+          "normalized_960x540_xyxy": [
+            741.16,
+            426.48,
+            924.98,
+            500.11
+          ],
+          "uncertainty_source_px": 1
+        }
+      },
+      "wave": {
+        "baseline_y_source": 188,
+        "boundaries_x_source": [
+          10,
+          46.56,
+          83.11,
+          119.67,
+          156.22,
+          192.78,
+          229.33,
+          265.89,
+          302.44,
+          339
+        ],
+        "boundaries_x_960": [
+          0,
+          106.67,
+          213.33,
+          320,
+          426.67,
+          533.33,
+          640,
+          746.67,
+          853.33,
+          960
+        ],
+        "top_ranges_source_y": [
+          null,
+          null,
+          null,
+          null,
+          [
+            124,
+            160
+          ],
+          [
+            144,
+            164
+          ],
+          [
+            174,
+            182
+          ],
+          [
+            180,
+            187
+          ],
+          [
+            181,
+            188
+          ]
+        ],
+        "height_ranges_source_px": [
+          null,
+          null,
+          null,
+          null,
+          [
+            28,
+            64
+          ],
+          [
+            24,
+            44
+          ],
+          [
+            6,
+            14
+          ],
+          [
+            1,
+            8
+          ],
+          [
+            0,
+            7
+          ]
+        ],
+        "height_ranges_540": [
+          null,
+          null,
+          null,
+          null,
+          [
+            85.91,
+            196.36
+          ],
+          [
+            73.64,
+            135
+          ],
+          [
+            18.41,
+            42.95
+          ],
+          [
+            3.07,
+            24.55
+          ],
+          [
+            0,
+            21.48
+          ]
+        ],
+        "notes": "Null = cannot isolate wave contour from overlaid numeral. Top ranges span visible antialiased/faded transition, not precise latent block top. Logo regions measured at exposed floor below logo. Nine equal widths are imposed by explicit user requirement and corroborated by visible steps."
+      }
+    }
+  },
+  "additional_logos": {
+    "mercedes_175245": {
+      "source_xyxy": [
+        284,
+        130,
+        333,
+        179
+      ],
+      "local_xyxy": [
+        268,
+        115,
+        317,
+        164
+      ],
+      "size": [
+        49,
+        49
+      ]
+    },
+    "ferrari_175513": {
+      "source_xyxy": [
+        291,
+        131,
+        327,
+        178
+      ],
+      "local_xyxy": [
+        281,
+        116,
+        317,
+        163
+      ],
+      "size": [
+        36,
+        47
+      ]
+    },
+    "aston_174845": {
+      "source_xyxy": [
+        262,
+        162,
+        333,
+        177
+      ],
+      "local_xyxy": [
+        246,
+        147,
+        317,
+        162
+      ],
+      "size": [
+        71,
+        15
+      ]
+    },
+    "aston_175712": {
+      "source_xyxy": [
+        257,
+        156,
+        328,
+        171
+      ],
+      "local_xyxy": [
+        246,
+        147,
+        317,
+        162
+      ],
+      "size": [
+        71,
+        15
+      ]
+    },
+    "uncertainty_source_px": 1,
+    "note": "High contrast ink core. Outer antialias fringe may extend ~1px; Ferrari yellow threshold includes shield rim."
+  },
+  "background": {
+    "common_pattern": "Dark bluish base with fixed broad diagonal bands ascending right, consistent at aligned local coordinates across teams. No procedural sinusoid inferred.",
+    "sample_order_local": [
+      [
+        20,
+        20
+      ],
+      [
+        110,
+        70
+      ],
+      [
+        180,
+        90
+      ],
+      [
+        230,
+        110
+      ],
+      [
+        250,
+        120
+      ],
+      [
+        220,
+        140
+      ]
+    ],
+    "RGB": {
+      "SAINZ": [
+        [
+          20,
+          24,
+          37
+        ],
+        [
+          24,
+          25,
+          36
+        ],
+        [
+          35,
+          34,
+          46
+        ],
+        [
+          22,
+          21,
+          33
+        ],
+        [
+          22,
+          21,
+          33
+        ],
+        [
+          22,
+          21,
+          33
+        ]
+      ],
+      "HADJAR": [
+        [
+          21,
+          25,
+          35
+        ],
+        [
+          24,
+          25,
+          36
+        ],
+        [
+          34,
+          33,
+          44
+        ],
+        [
+          22,
+          21,
+          33
+        ],
+        [
+          22,
+          21,
+          33
+        ],
+        [
+          22,
+          21,
+          33
+        ]
+      ],
+      "BEARMAN": [
+        [
+          28,
+          27,
+          36
+        ],
+        [
+          24,
+          26,
+          32
+        ],
+        [
+          34,
+          33,
+          42
+        ],
+        [
+          22,
+          21,
+          30
+        ],
+        [
+          22,
+          21,
+          30
+        ],
+        [
+          22,
+          21,
+          30
+        ]
+      ],
+      "BOTTAS": [
+        [
+          21,
+          23,
+          30
+        ],
+        [
+          24,
+          23,
+          30
+        ],
+        [
+          34,
+          33,
+          44
+        ],
+        [
+          22,
+          21,
+          30
+        ],
+        [
+          22,
+          21,
+          30
+        ],
+        [
+          24,
+          23,
+          35
+        ]
+      ]
+    },
+    "limitations": "Screenshot compression, edge resampling and possible translucent scene influence prevent exact original RGBA inference. Common band bright sample ~34,33,44; dark field ~22,21,30..33."
+  },
+  "recording": {
+    "source": "resource/屏幕录制 2026-10-20 175039.mp4",
+    "width": 476,
+    "height": 296,
+    "fps": 30,
+    "frames": 226,
+    "duration_s": 7.533333333333333,
+    "final_panel_source_xyxy": [
+      117,
+      44,
+      447,
+      220
+    ],
+    "final_panel_edge_uncertainty_px": 1,
+    "diagonal_angle_degrees_source": -45,
+    "angle_uncertainty_degrees": 1,
+    "pre_entry": "Faint diagonal line already visible from frame0 through~0.9s; cannot infer intended blank state.",
+    "active_growth_start_s": [
+      0.97,
+      1.07
+    ],
+    "full_rectangle_s": [
+      1.9,
+      2
+    ],
+    "clipping_points": [
+      {
+        "frame": 36,
+        "t": 1.2,
+        "polygon_source": [
+          [
+            333,
+            45
+          ],
+          [
+            360,
+            45
+          ],
+          [
+            199,
+            208
+          ],
+          [
+            171,
+            208
+          ]
+        ],
+        "uncertainty_px": 2,
+        "polygon_normalized_960x540": [
+          [
+            628.36,
+            3.07
+          ],
+          [
+            706.91,
+            3.07
+          ],
+          [
+            238.55,
+            503.18
+          ],
+          [
+            157.09,
+            503.18
+          ]
+        ]
+      },
+      {
+        "frame": 42,
+        "t": 1.4,
+        "polygon_source": [
+          [
+            304,
+            44
+          ],
+          [
+            398,
+            44
+          ],
+          [
+            225,
+            214
+          ],
+          [
+            135,
+            214
+          ]
+        ],
+        "uncertainty_px": 3,
+        "polygon_normalized_960x540": [
+          [
+            544,
+            0
+          ],
+          [
+            817.45,
+            0
+          ],
+          [
+            314.18,
+            521.59
+          ],
+          [
+            52.36,
+            521.59
+          ]
+        ]
+      },
+      {
+        "frame": 45,
+        "t": 1.5,
+        "polygon_source": [
+          [
+            263,
+            44
+          ],
+          [
+            440,
+            44
+          ],
+          [
+            267,
+            217
+          ],
+          [
+            117,
+            217
+          ],
+          [
+            117,
+            190
+          ]
+        ],
+        "uncertainty_px": 3,
+        "polygon_normalized_960x540": [
+          [
+            424.73,
+            0
+          ],
+          [
+            939.64,
+            0
+          ],
+          [
+            436.36,
+            530.8
+          ],
+          [
+            0,
+            530.8
+          ],
+          [
+            0,
+            447.95
+          ]
+        ]
+      },
+      {
+        "frame": 48,
+        "t": 1.6,
+        "description": "Top-left triangular cut ~37x37px; lower-right diagonal still clips logo and panel."
+      },
+      {
+        "frame": 54,
+        "t": 1.8,
+        "description": "Top-left complete; lower-right cut approx20x20px."
+      },
+      {
+        "frame": 57,
+        "t": 1.9,
+        "description": "Lower-right cut approx10x10px."
+      },
+      {
+        "frame": 58,
+        "t": 1.9333333333333333,
+        "description": "Near/full rectangle, residual blur prevents subpixel boundary claim."
+      }
+    ],
+    "early_strip_center": {
+      "source_x_plus_y": 392,
+      "uncertainty_px": 3,
+      "final_panel_center_x_plus_y": 414,
+      "difference_px": -22,
+      "note": "Early strip center is visibly left of final rectangle geometric center; do not silently force exact center."
+    },
+    "phases": [
+      {
+        "range_s": [
+          0,
+          0.97
+        ],
+        "observation": "pre-existing faint line"
+      },
+      {
+        "range_s": [
+          1,
+          1.2
+        ],
+        "observation": "thin diagonal strip emerges"
+      },
+      {
+        "range_s": [
+          1.2,
+          1.5
+        ],
+        "observation": "strip broadens, exposing clipped name, RADIO and numeral"
+      },
+      {
+        "range_s": [
+          1.5,
+          1.93
+        ],
+        "observation": "rectangle nearly filled, corner clipping relaxes"
+      },
+      {
+        "range_s": [
+          1.6,
+          2.2
+        ],
+        "observation": "name continues slight horizontal settling; visible BEARMAN left x207 at1.6 versus201 at2.2"
+      }
+    ],
+    "timing_uncertainty_s": 0.03333333333333333,
+    "normalization": {
+      "x": 2.909090909090909,
+      "y": 3.0681818181818183,
+      "note": "Video outer sampled crop is330px wide; screenshot crops329. Both edges uncertain1px."
+    },
+    "wave_frame66": {
+      "time_s": 2.2,
+      "baseline_y_source": 220,
+      "boundaries_x_source": [
+        117,
+        153.67,
+        190.33,
+        227,
+        263.67,
+        300.33,
+        337,
+        373.67,
+        410.33,
+        447
+      ],
+      "boundaries_x_960": [
+        0,
+        106.67,
+        213.33,
+        320,
+        426.67,
+        533.33,
+        640,
+        746.67,
+        853.33,
+        960
+      ],
+      "top_ranges_source_y": [
+        null,
+        null,
+        null,
+        null,
+        [
+          159,
+          172
+        ],
+        [
+          175,
+          185
+        ],
+        [
+          207,
+          215
+        ],
+        [
+          210,
+          217
+        ],
+        [
+          211,
+          218
+        ]
+      ],
+      "notes": "Left four block contours hidden by87; visible central region5 contains fine vertical intensitytexture. Right lowfloorcontinues under Haas logo. Top intervals include fading edge uncertainty.",
+      "height_ranges_source_px": [
+        null,
+        null,
+        null,
+        null,
+        [
+          48,
+          61
+        ],
+        [
+          35,
+          45
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          2,
+          9
+        ]
+      ],
+      "height_ranges_540": [
+        null,
+        null,
+        null,
+        null,
+        [
+          147.27,
+          187.16
+        ],
+        [
+          107.39,
+          138.07
+        ],
+        [
+          15.34,
+          39.89
+        ],
+        [
+          9.2,
+          30.68
+        ],
+        [
+          6.14,
+          27.61
+        ]
+      ]
+    }
+  }
+}

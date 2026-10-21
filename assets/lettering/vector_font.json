@@ -1,0 +1,21 @@
+{
+  "method": "Measured source contours; <=0.18px simplification; bounded local quadratic fillets; exact stems, parallel counters, ellipse bowls and rounded M arches reconstructed from source geometry",
+  "units_per_em": 1000,
+  "cap_height": 700,
+  "native_simplification_tolerance": 0.18,
+  "native_square_corner_fillet": 0.3,
+  "name_font": "assets/fonts/RadioRounded-Bold.ttf",
+  "radio_font": "assets/fonts/RadioRounded-Radio.ttf",
+  "source_metrics": "assets/lettering/lettering.json",
+  "limitations": "A clean regularized reconstruction of the observed silhouettes, not a recovered original font file. F/Q/X remain derived from source-stroke constructions.",
+  "glyphs": {
+    "RadioRounded-Bold.ttf": {
+      "quadratic_control_points": 705,
+      "alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    },
+    "RadioRounded-Radio.ttf": {
+      "quadratic_control_points": 664,
+      "alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    }
+  }
+}

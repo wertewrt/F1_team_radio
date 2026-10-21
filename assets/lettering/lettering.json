@@ -1,0 +1,5073 @@
+{
+  "version": 1,
+  "mask_mode": "L",
+  "bbox_convention": "xyxy, exclusive right/bottom, native source pixels",
+  "method": "RGB color-line alpha estimate against inpainted local dark background; observed blur retained",
+  "limitations": "Sources are ~330x176 cards: masks reproduce observed low-resolution silhouettes, not unavailable font detail. F/Q/X and ALBON are explicitly composed.",
+  "names": {
+    "hulkenberg": {
+      "file": "name_hulkenberg.png",
+      "source_bbox": [
+        25,
+        25,
+        334,
+        60
+      ],
+      "source_window": [
+        24,
+        25,
+        334,
+        60
+      ],
+      "native_size": [
+        309,
+        35
+      ],
+      "card_bbox": [
+        13,
+        16,
+        342,
+        192
+      ],
+      "bbox_normalized_to_card": [
+        0.0364742,
+        0.0511364,
+        0.9756839,
+        0.25
+      ],
+      "core_bbox": [
+        28,
+        29,
+        330,
+        57
+      ],
+      "core_bbox_normalized_to_card": [
+        0.0455927,
+        0.0738636,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        3,
+        4,
+        305,
+        32
+      ],
+      "cap_height": 28,
+      "foreground_rgb": [
+        249,
+        46,
+        1
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 8.8285714,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 174745.png",
+      "text": "HULKENBERG"
+    },
+    "hadjar": {
+      "file": "name_hadjar.png",
+      "source_bbox": [
+        146,
+        24,
+        333,
+        59
+      ],
+      "source_window": [
+        145,
+        24,
+        333,
+        59
+      ],
+      "native_size": [
+        187,
+        35
+      ],
+      "card_bbox": [
+        13,
+        15,
+        342,
+        191
+      ],
+      "bbox_normalized_to_card": [
+        0.4042553,
+        0.0511364,
+        0.9726444,
+        0.25
+      ],
+      "core_bbox": [
+        149,
+        27,
+        330,
+        56
+      ],
+      "core_bbox_normalized_to_card": [
+        0.4133739,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        3,
+        3,
+        184,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        59,
+        114,
+        194
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 5.3428571,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 174758.png",
+      "text": "HADJAR"
+    },
+    "alonso": {
+      "file": "name_alonso.png",
+      "source_bbox": [
+        145,
+        24,
+        335,
+        59
+      ],
+      "source_window": [
+        145,
+        24,
+        337,
+        59
+      ],
+      "native_size": [
+        190,
+        35
+      ],
+      "card_bbox": [
+        16,
+        15,
+        345,
+        191
+      ],
+      "bbox_normalized_to_card": [
+        0.3920973,
+        0.0511364,
+        0.9696049,
+        0.25
+      ],
+      "core_bbox": [
+        148,
+        27,
+        333,
+        56
+      ],
+      "core_bbox_normalized_to_card": [
+        0.4012158,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        3,
+        3,
+        188,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        40,
+        153,
+        120
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 5.4285714,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 174845.png",
+      "text": "ALONSO"
+    },
+    "bearman": {
+      "file": "name_bearman.png",
+      "source_bbox": [
+        91,
+        25,
+        329,
+        59
+      ],
+      "source_window": [
+        88,
+        24,
+        331,
+        59
+      ],
+      "native_size": [
+        238,
+        34
+      ],
+      "card_bbox": [
+        10,
+        15,
+        339,
+        191
+      ],
+      "bbox_normalized_to_card": [
+        0.2462006,
+        0.0568182,
+        0.9696049,
+        0.25
+      ],
+      "core_bbox": [
+        92,
+        27,
+        327,
+        56
+      ],
+      "core_bbox_normalized_to_card": [
+        0.2492401,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        1,
+        2,
+        236,
+        31
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        224,
+        226,
+        230
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 7.0,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 174857.png",
+      "text": "BEARMAN"
+    },
+    "sainz": {
+      "file": "name_sainz.png",
+      "source_bbox": [
+        198,
+        18,
+        340,
+        52
+      ],
+      "source_window": [
+        197,
+        18,
+        340,
+        52
+      ],
+      "native_size": [
+        142,
+        34
+      ],
+      "card_bbox": [
+        19,
+        9,
+        348,
+        185
+      ],
+      "bbox_normalized_to_card": [
+        0.5440729,
+        0.0511364,
+        0.9756839,
+        0.2443182
+      ],
+      "core_bbox": [
+        200,
+        21,
+        336,
+        50
+      ],
+      "core_bbox_normalized_to_card": [
+        0.550152,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        2,
+        3,
+        138,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        27,
+        104,
+        214
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 4.1764706,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 175106.png",
+      "text": "SAINZ"
+    },
+    "ocon": {
+      "file": "name_ocon.png",
+      "source_bbox": [
+        207,
+        26,
+        335,
+        59
+      ],
+      "source_window": [
+        207,
+        25,
+        337,
+        59
+      ],
+      "native_size": [
+        128,
+        33
+      ],
+      "card_bbox": [
+        16,
+        16,
+        345,
+        192
+      ],
+      "bbox_normalized_to_card": [
+        0.5805471,
+        0.0568182,
+        0.9696049,
+        0.2443182
+      ],
+      "core_bbox": [
+        210,
+        28,
+        333,
+        57
+      ],
+      "core_bbox_normalized_to_card": [
+        0.5896657,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        3,
+        2,
+        126,
+        31
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        225,
+        224,
+        232
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 3.8787879,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 175125.png",
+      "text": "OCON"
+    },
+    "bortoleto": {
+      "file": "name_bortoleto.png",
+      "source_bbox": [
+        55,
+        21,
+        331,
+        55
+      ],
+      "source_window": [
+        55,
+        21,
+        331,
+        55
+      ],
+      "native_size": [
+        276,
+        34
+      ],
+      "card_bbox": [
+        10,
+        12,
+        339,
+        188
+      ],
+      "bbox_normalized_to_card": [
+        0.1367781,
+        0.0511364,
+        0.9756839,
+        0.2443182
+      ],
+      "core_bbox": [
+        59,
+        24,
+        327,
+        53
+      ],
+      "core_bbox_normalized_to_card": [
+        0.1489362,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        4,
+        3,
+        272,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        248,
+        46,
+        2
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 8.1176471,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 175138.png",
+      "text": "BORTOLETO"
+    },
+    "verstappen": {
+      "file": "name_verstappen.png",
+      "source_bbox": [
+        22,
+        19,
+        332,
+        53
+      ],
+      "source_window": [
+        21,
+        19,
+        332,
+        53
+      ],
+      "native_size": [
+        310,
+        34
+      ],
+      "card_bbox": [
+        10,
+        10,
+        339,
+        186
+      ],
+      "bbox_normalized_to_card": [
+        0.0364742,
+        0.0511364,
+        0.9787234,
+        0.2443182
+      ],
+      "core_bbox": [
+        24,
+        22,
+        328,
+        51
+      ],
+      "core_bbox_normalized_to_card": [
+        0.0425532,
+        0.0681818,
+        0.9665653,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        2,
+        3,
+        306,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        57,
+        114,
+        195
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 9.1176471,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 175209.png",
+      "text": "VERSTAPPEN"
+    },
+    "norris": {
+      "file": "name_norris.png",
+      "source_bbox": [
+        159,
+        24,
+        332,
+        59
+      ],
+      "source_window": [
+        158,
+        24,
+        332,
+        59
+      ],
+      "native_size": [
+        173,
+        35
+      ],
+      "card_bbox": [
+        11,
+        15,
+        340,
+        191
+      ],
+      "bbox_normalized_to_card": [
+        0.449848,
+        0.0511364,
+        0.9756839,
+        0.25
+      ],
+      "core_bbox": [
+        162,
+        27,
+        328,
+        56
+      ],
+      "core_bbox_normalized_to_card": [
+        0.4589666,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        3,
+        3,
+        169,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        251,
+        129,
+        3
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 4.9428571,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 175229.png",
+      "text": "NORRIS"
+    },
+    "antonelli": {
+      "file": "name_antonelli.png",
+      "source_bbox": [
+        73,
+        24,
+        337,
+        59
+      ],
+      "source_window": [
+        73,
+        24,
+        337,
+        59
+      ],
+      "native_size": [
+        264,
+        35
+      ],
+      "card_bbox": [
+        16,
+        15,
+        345,
+        191
+      ],
+      "bbox_normalized_to_card": [
+        0.1732523,
+        0.0511364,
+        0.9756839,
+        0.25
+      ],
+      "core_bbox": [
+        76,
+        27,
+        333,
+        56
+      ],
+      "core_bbox_normalized_to_card": [
+        0.1823708,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        3,
+        3,
+        260,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        44,
+        244,
+        209
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 7.5428571,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 175245.png",
+      "text": "ANTONELLI"
+    },
+    "colapinto": {
+      "file": "name_colapinto.png",
+      "source_bbox": [
+        74,
+        15,
+        337,
+        49
+      ],
+      "source_window": [
+        74,
+        15,
+        337,
+        49
+      ],
+      "native_size": [
+        263,
+        34
+      ],
+      "card_bbox": [
+        17,
+        6,
+        346,
+        182
+      ],
+      "bbox_normalized_to_card": [
+        0.1732523,
+        0.0511364,
+        0.9726444,
+        0.2443182
+      ],
+      "core_bbox": [
+        77,
+        18,
+        334,
+        47
+      ],
+      "core_bbox_normalized_to_card": [
+        0.1823708,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        3,
+        3,
+        260,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        2,
+        161,
+        227
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 7.7352941,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 175453.png",
+      "text": "COLAPINTO"
+    },
+    "hamilton": {
+      "file": "name_hamilton.png",
+      "source_bbox": [
+        82,
+        24,
+        331,
+        59
+      ],
+      "source_window": [
+        81,
+        24,
+        331,
+        59
+      ],
+      "native_size": [
+        249,
+        35
+      ],
+      "card_bbox": [
+        10,
+        15,
+        339,
+        191
+      ],
+      "bbox_normalized_to_card": [
+        0.218845,
+        0.0511364,
+        0.9756839,
+        0.25
+      ],
+      "core_bbox": [
+        86,
+        27,
+        327,
+        56
+      ],
+      "core_bbox_normalized_to_card": [
+        0.231003,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        4,
+        3,
+        245,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        226,
+        1,
+        48
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 7.1142857,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 175513.png",
+      "text": "HAMILTON"
+    },
+    "gasly": {
+      "file": "name_gasly.png",
+      "source_bbox": [
+        183,
+        27,
+        336,
+        61
+      ],
+      "source_window": [
+        182,
+        27,
+        337,
+        61
+      ],
+      "native_size": [
+        153,
+        34
+      ],
+      "card_bbox": [
+        17,
+        18,
+        346,
+        194
+      ],
+      "bbox_normalized_to_card": [
+        0.5045593,
+        0.0511364,
+        0.9696049,
+        0.2443182
+      ],
+      "core_bbox": [
+        186,
+        30,
+        333,
+        59
+      ],
+      "core_bbox_normalized_to_card": [
+        0.5136778,
+        0.0681818,
+        0.9604863,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        3,
+        3,
+        150,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        3,
+        161,
+        226
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 4.5,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 175609.png",
+      "text": "GASLY"
+    },
+    "stroll": {
+      "file": "name_stroll.png",
+      "source_bbox": [
+        155,
+        18,
+        330,
+        52
+      ],
+      "source_window": [
+        153,
+        18,
+        332,
+        52
+      ],
+      "native_size": [
+        175,
+        34
+      ],
+      "card_bbox": [
+        11,
+        9,
+        340,
+        185
+      ],
+      "bbox_normalized_to_card": [
+        0.43769,
+        0.0511364,
+        0.9696049,
+        0.2443182
+      ],
+      "core_bbox": [
+        157,
+        21,
+        328,
+        50
+      ],
+      "core_bbox_normalized_to_card": [
+        0.443769,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        2,
+        3,
+        173,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        39,
+        153,
+        119
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 5.1470588,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 175712.png",
+      "text": "STROLL"
+    },
+    "piastri": {
+      "file": "name_piastri.png",
+      "source_bbox": [
+        155,
+        24,
+        336,
+        59
+      ],
+      "source_window": [
+        154,
+        24,
+        337,
+        59
+      ],
+      "native_size": [
+        181,
+        35
+      ],
+      "card_bbox": [
+        16,
+        15,
+        345,
+        191
+      ],
+      "bbox_normalized_to_card": [
+        0.4224924,
+        0.0511364,
+        0.9726444,
+        0.25
+      ],
+      "core_bbox": [
+        158,
+        27,
+        333,
+        56
+      ],
+      "core_bbox_normalized_to_card": [
+        0.4316109,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        3,
+        3,
+        178,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        249,
+        129,
+        4
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 5.1714286,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 175903.png",
+      "text": "PIASTRI"
+    },
+    "leclerc": {
+      "file": "name_leclerc.png",
+      "source_bbox": [
+        128,
+        21,
+        327,
+        55
+      ],
+      "source_window": [
+        128,
+        21,
+        327,
+        55
+      ],
+      "native_size": [
+        199,
+        34
+      ],
+      "card_bbox": [
+        7,
+        12,
+        336,
+        188
+      ],
+      "bbox_normalized_to_card": [
+        0.3677812,
+        0.0511364,
+        0.9726444,
+        0.2443182
+      ],
+      "core_bbox": [
+        132,
+        25,
+        324,
+        53
+      ],
+      "core_bbox_normalized_to_card": [
+        0.3799392,
+        0.0738636,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        4,
+        4,
+        196,
+        32
+      ],
+      "cap_height": 28,
+      "foreground_rgb": [
+        223,
+        2,
+        48
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 5.8529412,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 180012.png",
+      "text": "LECLERC"
+    },
+    "russell": {
+      "file": "name_russell.png",
+      "source_bbox": [
+        127,
+        25,
+        329,
+        58
+      ],
+      "source_window": [
+        125,
+        24,
+        331,
+        59
+      ],
+      "native_size": [
+        202,
+        33
+      ],
+      "card_bbox": [
+        10,
+        15,
+        339,
+        191
+      ],
+      "bbox_normalized_to_card": [
+        0.3556231,
+        0.0568182,
+        0.9696049,
+        0.2443182
+      ],
+      "core_bbox": [
+        129,
+        28,
+        327,
+        56
+      ],
+      "core_bbox_normalized_to_card": [
+        0.3617021,
+        0.0738636,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        2,
+        3,
+        200,
+        31
+      ],
+      "cap_height": 28,
+      "foreground_rgb": [
+        46,
+        245,
+        212
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 6.1212121,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 180209.png",
+      "text": "RUSSELL"
+    },
+    "perez": {
+      "file": "name_perez.png",
+      "source_bbox": [
+        185,
+        22,
+        332,
+        55
+      ],
+      "source_window": [
+        183,
+        21,
+        333,
+        55
+      ],
+      "native_size": [
+        147,
+        33
+      ],
+      "card_bbox": [
+        13,
+        12,
+        342,
+        188
+      ],
+      "bbox_normalized_to_card": [
+        0.5227964,
+        0.0568182,
+        0.9696049,
+        0.2443182
+      ],
+      "core_bbox": [
+        186,
+        24,
+        330,
+        52
+      ],
+      "core_bbox_normalized_to_card": [
+        0.5258359,
+        0.0681818,
+        0.9635258,
+        0.2272727
+      ],
+      "mask_core_bbox": [
+        1,
+        2,
+        145,
+        30
+      ],
+      "cap_height": 28,
+      "foreground_rgb": [
+        171,
+        172,
+        176
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 4.4545455,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 180333.png",
+      "text": "PEREZ"
+    },
+    "lawson": {
+      "file": "name_lawson.png",
+      "source_bbox": [
+        129,
+        21,
+        333,
+        55
+      ],
+      "source_window": [
+        128,
+        21,
+        333,
+        55
+      ],
+      "native_size": [
+        204,
+        34
+      ],
+      "card_bbox": [
+        13,
+        12,
+        342,
+        188
+      ],
+      "bbox_normalized_to_card": [
+        0.3525836,
+        0.0511364,
+        0.9726444,
+        0.2443182
+      ],
+      "core_bbox": [
+        132,
+        24,
+        330,
+        53
+      ],
+      "core_bbox_normalized_to_card": [
+        0.3617021,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        3,
+        3,
+        201,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        105,
+        146,
+        251
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 6.0,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 180805.png",
+      "text": "LAWSON"
+    },
+    "bottas": {
+      "file": "name_bottas.png",
+      "source_bbox": [
+        144,
+        21,
+        329,
+        55
+      ],
+      "source_window": [
+        143,
+        21,
+        331,
+        55
+      ],
+      "native_size": [
+        185,
+        34
+      ],
+      "card_bbox": [
+        10,
+        12,
+        339,
+        188
+      ],
+      "bbox_normalized_to_card": [
+        0.4072948,
+        0.0511364,
+        0.9696049,
+        0.2443182
+      ],
+      "core_bbox": [
+        147,
+        24,
+        327,
+        53
+      ],
+      "core_bbox_normalized_to_card": [
+        0.4164134,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        3,
+        3,
+        183,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        171,
+        171,
+        177
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 5.4411765,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 180835.png",
+      "text": "BOTTAS"
+    },
+    "lindblad": {
+      "file": "name_lindblad.png",
+      "source_bbox": [
+        105,
+        24,
+        336,
+        59
+      ],
+      "source_window": [
+        105,
+        24,
+        337,
+        59
+      ],
+      "native_size": [
+        231,
+        35
+      ],
+      "card_bbox": [
+        16,
+        15,
+        345,
+        191
+      ],
+      "bbox_normalized_to_card": [
+        0.2705167,
+        0.0511364,
+        0.9726444,
+        0.25
+      ],
+      "core_bbox": [
+        108,
+        27,
+        333,
+        56
+      ],
+      "core_bbox_normalized_to_card": [
+        0.2796353,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        3,
+        3,
+        228,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        105,
+        147,
+        250
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 6.6,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 181452.png",
+      "text": "LINDBLAD"
+    },
+    "tsunoda": {
+      "file": "name_tsunoda.png",
+      "source_bbox": [
+        99,
+        16,
+        325,
+        50
+      ],
+      "source_window": [
+        99,
+        16,
+        325,
+        50
+      ],
+      "native_size": [
+        226,
+        34
+      ],
+      "card_bbox": [
+        5,
+        7,
+        334,
+        183
+      ],
+      "bbox_normalized_to_card": [
+        0.2857143,
+        0.0511364,
+        0.9726444,
+        0.2443182
+      ],
+      "core_bbox": [
+        102,
+        19,
+        322,
+        48
+      ],
+      "core_bbox_normalized_to_card": [
+        0.2948328,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "mask_core_bbox": [
+        3,
+        3,
+        223,
+        32
+      ],
+      "cap_height": 29,
+      "foreground_rgb": [
+        104,
+        145,
+        249
+      ],
+      "alpha_bbox_threshold": 0.025,
+      "cap_height_alpha_threshold": 0.5,
+      "aspect_ratio": 6.6470588,
+      "kind": "source_word",
+      "source_image": "resource/屏幕截图 2026-10-20 181507.png",
+      "text": "TSUNODA"
+    },
+    "albon": {
+      "file": "name_albon.png",
+      "text": "ALBON",
+      "native_size": [
+        159,
+        35
+      ],
+      "cap_height": 29,
+      "kind": "composed_word",
+      "source_image": null,
+      "source_bbox": null,
+      "card_bbox": [
+        19,
+        9,
+        348,
+        185
+      ],
+      "nominal_layout_bbox": [
+        179,
+        18,
+        338,
+        53
+      ],
+      "bbox_normalized_to_card": [
+        0.4863222,
+        0.0511364,
+        0.9696049,
+        0.25
+      ],
+      "core_bbox": null,
+      "mask_core_bbox": [
+        2,
+        3,
+        157,
+        32
+      ],
+      "core_bbox_normalized_to_card": [
+        0.4924012,
+        0.0681818,
+        0.9635258,
+        0.2329545
+      ],
+      "foreground_rgb": [
+        27,
+        104,
+        214
+      ],
+      "aspect_ratio": 4.542857142857143,
+      "construction": "A,L,B,O,N from extracted atlas, one native pixel ink gap; no glyph dilation"
+    }
+  },
+  "glyphs": {
+    "A": {
+      "source_image": "resource/屏幕截图 2026-10-20 174857.png",
+      "source_driver": "bearman",
+      "source_bbox": [
+        148,
+        24,
+        185,
+        58
+      ],
+      "source_column_cut": [
+        58,
+        93
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0357142857142858,
+      "original_cap_height": 28,
+      "file": "glyph_A.png",
+      "native_size": [
+        38,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        36,
+        32
+      ],
+      "advance": 35
+    },
+    "B": {
+      "source_image": "resource/屏幕截图 2026-10-20 174857.png",
+      "source_driver": "bearman",
+      "source_bbox": [
+        90,
+        25,
+        122,
+        58
+      ],
+      "source_column_cut": [
+        0,
+        30
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0740740740740742,
+      "original_cap_height": 27,
+      "file": "glyph_B.png",
+      "native_size": [
+        33,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        31,
+        32
+      ],
+      "advance": 30
+    },
+    "C": {
+      "source_image": "resource/屏幕截图 2026-10-20 175453.png",
+      "source_driver": "colapinto",
+      "source_bbox": [
+        75,
+        16,
+        105,
+        49
+      ],
+      "source_column_cut": [
+        0,
+        30
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0740740740740742,
+      "original_cap_height": 27,
+      "file": "glyph_C.png",
+      "native_size": [
+        32,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        30,
+        32
+      ],
+      "advance": 29
+    },
+    "D": {
+      "source_image": "resource/屏幕截图 2026-10-20 174758.png",
+      "source_driver": "hadjar",
+      "source_bbox": [
+        213,
+        25,
+        246,
+        58
+      ],
+      "source_column_cut": [
+        68,
+        99
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0740740740740742,
+      "original_cap_height": 27,
+      "file": "glyph_D.png",
+      "native_size": [
+        35,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        33,
+        32
+      ],
+      "advance": 32
+    },
+    "E": {
+      "source_image": "resource/屏幕截图 2026-10-20 174857.png",
+      "source_driver": "bearman",
+      "source_bbox": [
+        120,
+        25,
+        150,
+        58
+      ],
+      "source_column_cut": [
+        30,
+        58
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0740740740740742,
+      "original_cap_height": 27,
+      "file": "glyph_E.png",
+      "native_size": [
+        32,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        30,
+        32
+      ],
+      "advance": 29
+    },
+    "G": {
+      "source_image": "resource/屏幕截图 2026-10-20 175609.png",
+      "source_driver": "gasly",
+      "source_bbox": [
+        184,
+        28,
+        217,
+        62
+      ],
+      "source_column_cut": [
+        0,
+        32
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0357142857142858,
+      "original_cap_height": 28,
+      "file": "glyph_G.png",
+      "native_size": [
+        34,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        31,
+        31
+      ],
+      "advance": 30
+    },
+    "H": {
+      "source_image": "resource/屏幕截图 2026-10-20 174758.png",
+      "source_driver": "hadjar",
+      "source_bbox": [
+        147,
+        25,
+        180,
+        59
+      ],
+      "source_column_cut": [
+        0,
+        34
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0357142857142858,
+      "original_cap_height": 28,
+      "file": "glyph_H.png",
+      "native_size": [
+        34,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        32,
+        31
+      ],
+      "advance": 31
+    },
+    "I": {
+      "source_image": "resource/屏幕截图 2026-10-20 175903.png",
+      "source_driver": "piastri",
+      "source_bbox": [
+        184,
+        25,
+        199,
+        59
+      ],
+      "source_column_cut": [
+        31,
+        43
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0357142857142858,
+      "original_cap_height": 28,
+      "file": "glyph_I.png",
+      "native_size": [
+        16,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        14,
+        31
+      ],
+      "advance": 13
+    },
+    "J": {
+      "source_image": "resource/屏幕截图 2026-10-20 174758.png",
+      "source_driver": "hadjar",
+      "source_bbox": [
+        243,
+        25,
+        268,
+        58
+      ],
+      "source_column_cut": [
+        98,
+        121
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0740740740740742,
+      "original_cap_height": 27,
+      "file": "glyph_J.png",
+      "native_size": [
+        27,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        25,
+        32
+      ],
+      "advance": 24
+    },
+    "K": {
+      "source_image": "resource/屏幕截图 2026-10-20 174745.png",
+      "source_driver": "hulkenberg",
+      "source_bbox": [
+        115,
+        26,
+        149,
+        59
+      ],
+      "source_column_cut": [
+        92,
+        123
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0740740740740742,
+      "original_cap_height": 27,
+      "file": "glyph_K.png",
+      "native_size": [
+        36,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        34,
+        32
+      ],
+      "advance": 33
+    },
+    "L": {
+      "source_image": "resource/屏幕截图 2026-10-20 175245.png",
+      "source_driver": "antonelli",
+      "source_bbox": [
+        269,
+        25,
+        298,
+        58
+      ],
+      "source_column_cut": [
+        197,
+        223
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0740740740740742,
+      "original_cap_height": 27,
+      "file": "glyph_L.png",
+      "native_size": [
+        31,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        28,
+        32
+      ],
+      "advance": 27
+    },
+    "M": {
+      "source_image": "resource/屏幕截图 2026-10-20 174857.png",
+      "source_driver": "bearman",
+      "source_bbox": [
+        213,
+        24,
+        260,
+        59
+      ],
+      "source_column_cut": [
+        123,
+        168
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0,
+      "original_cap_height": 29,
+      "file": "glyph_M.png",
+      "native_size": [
+        47,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        45,
+        32
+      ],
+      "advance": 44
+    },
+    "N": {
+      "source_image": "resource/屏幕截图 2026-10-20 175245.png",
+      "source_driver": "antonelli",
+      "source_bbox": [
+        109,
+        24,
+        145,
+        59
+      ],
+      "source_column_cut": [
+        37,
+        71
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0,
+      "original_cap_height": 29,
+      "file": "glyph_N.png",
+      "native_size": [
+        36,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        34,
+        32
+      ],
+      "advance": 33
+    },
+    "O": {
+      "source_image": "resource/屏幕截图 2026-10-20 175125.png",
+      "source_driver": "ocon",
+      "source_bbox": [
+        208,
+        25,
+        242,
+        60
+      ],
+      "source_column_cut": [
+        0,
+        33
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0,
+      "original_cap_height": 29,
+      "file": "glyph_O.png",
+      "native_size": [
+        34,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        32,
+        32
+      ],
+      "advance": 31
+    },
+    "P": {
+      "source_image": "resource/屏幕截图 2026-10-20 175903.png",
+      "source_driver": "piastri",
+      "source_bbox": [
+        156,
+        25,
+        188,
+        58
+      ],
+      "source_column_cut": [
+        0,
+        31
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0740740740740742,
+      "original_cap_height": 27,
+      "file": "glyph_P.png",
+      "native_size": [
+        34,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        32,
+        32
+      ],
+      "advance": 31
+    },
+    "R": {
+      "source_image": "resource/屏幕截图 2026-10-20 174857.png",
+      "source_driver": "bearman",
+      "source_bbox": [
+        183,
+        25,
+        216,
+        58
+      ],
+      "source_column_cut": [
+        93,
+        123
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0740740740740742,
+      "original_cap_height": 27,
+      "file": "glyph_R.png",
+      "native_size": [
+        35,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        32,
+        32
+      ],
+      "advance": 31
+    },
+    "S": {
+      "source_image": "resource/屏幕截图 2026-10-20 175903.png",
+      "source_driver": "piastri",
+      "source_bbox": [
+        231,
+        25,
+        262,
+        58
+      ],
+      "source_column_cut": [
+        78,
+        106
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0740740740740742,
+      "original_cap_height": 27,
+      "file": "glyph_S.png",
+      "native_size": [
+        33,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        31,
+        32
+      ],
+      "advance": 30
+    },
+    "T": {
+      "source_image": "resource/屏幕截图 2026-10-20 175903.png",
+      "source_driver": "piastri",
+      "source_bbox": [
+        259,
+        24,
+        294,
+        58
+      ],
+      "source_column_cut": [
+        105,
+        137
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0357142857142858,
+      "original_cap_height": 28,
+      "file": "glyph_T.png",
+      "native_size": [
+        36,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        4,
+        34,
+        32
+      ],
+      "advance": 33
+    },
+    "U": {
+      "source_image": "resource/屏幕截图 2026-10-20 181507.png",
+      "source_driver": "tsunoda",
+      "source_bbox": [
+        159,
+        17,
+        193,
+        51
+      ],
+      "source_column_cut": [
+        62,
+        94
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0357142857142858,
+      "original_cap_height": 28,
+      "file": "glyph_U.png",
+      "native_size": [
+        34,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        32,
+        32
+      ],
+      "advance": 31
+    },
+    "V": {
+      "source_image": "resource/屏幕截图 2026-10-20 175209.png",
+      "source_driver": "verstappen",
+      "source_bbox": [
+        22,
+        20,
+        60,
+        54
+      ],
+      "source_column_cut": [
+        0,
+        37
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0357142857142858,
+      "original_cap_height": 28,
+      "file": "glyph_V.png",
+      "native_size": [
+        39,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        37,
+        32
+      ],
+      "advance": 36
+    },
+    "W": {
+      "source_image": "resource/屏幕截图 2026-10-20 180805.png",
+      "source_driver": "lawson",
+      "source_bbox": [
+        187,
+        21,
+        239,
+        56
+      ],
+      "source_column_cut": [
+        60,
+        109
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0,
+      "original_cap_height": 29,
+      "file": "glyph_W.png",
+      "native_size": [
+        52,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        50,
+        32
+      ],
+      "advance": 49
+    },
+    "Y": {
+      "source_image": "resource/屏幕截图 2026-10-20 175609.png",
+      "source_driver": "gasly",
+      "source_bbox": [
+        300,
+        27,
+        335,
+        61
+      ],
+      "source_column_cut": [
+        119,
+        153
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0357142857142858,
+      "original_cap_height": 28,
+      "file": "glyph_Y.png",
+      "native_size": [
+        36,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        4,
+        34,
+        32
+      ],
+      "advance": 33
+    },
+    "Z": {
+      "source_image": "resource/屏幕截图 2026-10-20 175106.png",
+      "source_driver": "sainz",
+      "source_bbox": [
+        307,
+        19,
+        338,
+        52
+      ],
+      "source_column_cut": [
+        110,
+        142
+      ],
+      "kind": "source_glyph",
+      "scale_from_source": 1.0740740740740742,
+      "original_cap_height": 27,
+      "file": "glyph_Z.png",
+      "native_size": [
+        33,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        31,
+        32
+      ],
+      "advance": 30
+    },
+    "F": {
+      "kind": "derived_glyph",
+      "derived_from": [
+        "E"
+      ],
+      "construction": "E lower bar removed, preserving its measured stem profile",
+      "file": "glyph_F.png",
+      "native_size": [
+        32,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        30,
+        32
+      ],
+      "advance": 29
+    },
+    "Q": {
+      "kind": "derived_glyph",
+      "derived_from": [
+        "O",
+        "R"
+      ],
+      "construction": "O plus short original R diagonal stroke",
+      "file": "glyph_Q.png",
+      "native_size": [
+        34,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        32,
+        34
+      ],
+      "advance": 31
+    },
+    "X": {
+      "kind": "derived_glyph",
+      "derived_from": [
+        "V"
+      ],
+      "construction": "Source V diagonals compressed vertically and mirrored",
+      "file": "glyph_X.png",
+      "native_size": [
+        39,
+        35
+      ],
+      "cap_height": 29,
+      "baseline": 32,
+      "core_bbox": [
+        2,
+        3,
+        37,
+        32
+      ],
+      "advance": 36
+    }
+  },
+  "sources": {
+    "hulkenberg": {
+      "name": {
+        "file": "name_hulkenberg.png",
+        "source_bbox": [
+          25,
+          25,
+          334,
+          60
+        ],
+        "source_window": [
+          24,
+          25,
+          334,
+          60
+        ],
+        "native_size": [
+          309,
+          35
+        ],
+        "card_bbox": [
+          13,
+          16,
+          342,
+          192
+        ],
+        "bbox_normalized_to_card": [
+          0.0364742,
+          0.0511364,
+          0.9756839,
+          0.25
+        ],
+        "core_bbox": [
+          28,
+          29,
+          330,
+          57
+        ],
+        "core_bbox_normalized_to_card": [
+          0.0455927,
+          0.0738636,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          3,
+          4,
+          305,
+          32
+        ],
+        "cap_height": 28,
+        "foreground_rgb": [
+          249,
+          46,
+          1
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 8.8285714,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 174745.png",
+        "text": "HULKENBERG"
+      },
+      "radio": {
+        "file": "radio_hulkenberg.png",
+        "source_bbox": [
+          198,
+          58,
+          332,
+          90
+        ],
+        "source_window": [
+          192,
+          58,
+          335,
+          91
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          13,
+          16,
+          342,
+          192
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          200,
+          60,
+          330,
+          87
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          255,
+          253,
+          254
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 174745.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        355,
+        201
+      ]
+    },
+    "hadjar": {
+      "name": {
+        "file": "name_hadjar.png",
+        "source_bbox": [
+          146,
+          24,
+          333,
+          59
+        ],
+        "source_window": [
+          145,
+          24,
+          333,
+          59
+        ],
+        "native_size": [
+          187,
+          35
+        ],
+        "card_bbox": [
+          13,
+          15,
+          342,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.4042553,
+          0.0511364,
+          0.9726444,
+          0.25
+        ],
+        "core_bbox": [
+          149,
+          27,
+          330,
+          56
+        ],
+        "core_bbox_normalized_to_card": [
+          0.4133739,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          3,
+          3,
+          184,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          59,
+          114,
+          194
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 5.3428571,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 174758.png",
+        "text": "HADJAR"
+      },
+      "radio": {
+        "file": "radio_hadjar.png",
+        "source_bbox": [
+          198,
+          57,
+          332,
+          89
+        ],
+        "source_window": [
+          192,
+          57,
+          335,
+          90
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          13,
+          15,
+          342,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          200,
+          59,
+          330,
+          86
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          252,
+          255,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 174758.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        355,
+        202
+      ]
+    },
+    "alonso": {
+      "name": {
+        "file": "name_alonso.png",
+        "source_bbox": [
+          145,
+          24,
+          335,
+          59
+        ],
+        "source_window": [
+          145,
+          24,
+          337,
+          59
+        ],
+        "native_size": [
+          190,
+          35
+        ],
+        "card_bbox": [
+          16,
+          15,
+          345,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.3920973,
+          0.0511364,
+          0.9696049,
+          0.25
+        ],
+        "core_bbox": [
+          148,
+          27,
+          333,
+          56
+        ],
+        "core_bbox_normalized_to_card": [
+          0.4012158,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          3,
+          3,
+          188,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          40,
+          153,
+          120
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 5.4285714,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 174845.png",
+        "text": "ALONSO"
+      },
+      "radio": {
+        "file": "radio_alonso.png",
+        "source_bbox": [
+          201,
+          57,
+          335,
+          89
+        ],
+        "source_window": [
+          195,
+          57,
+          338,
+          90
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          16,
+          15,
+          345,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          203,
+          59,
+          333,
+          86
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          250,
+          254,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 174845.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        361,
+        208
+      ]
+    },
+    "bearman": {
+      "name": {
+        "file": "name_bearman.png",
+        "source_bbox": [
+          91,
+          25,
+          329,
+          59
+        ],
+        "source_window": [
+          88,
+          24,
+          331,
+          59
+        ],
+        "native_size": [
+          238,
+          34
+        ],
+        "card_bbox": [
+          10,
+          15,
+          339,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.2462006,
+          0.0568182,
+          0.9696049,
+          0.25
+        ],
+        "core_bbox": [
+          92,
+          27,
+          327,
+          56
+        ],
+        "core_bbox_normalized_to_card": [
+          0.2492401,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          1,
+          2,
+          236,
+          31
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          224,
+          226,
+          230
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 7.0,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 174857.png",
+        "text": "BEARMAN"
+      },
+      "radio": {
+        "file": "radio_bearman.png",
+        "source_bbox": [
+          195,
+          57,
+          329,
+          89
+        ],
+        "source_window": [
+          189,
+          57,
+          332,
+          90
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          10,
+          15,
+          339,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          197,
+          59,
+          327,
+          87
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4090909
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          30
+        ],
+        "cap_height": 28,
+        "foreground_rgb": [
+          252,
+          254,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 174857.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        345,
+        201
+      ]
+    },
+    "sainz": {
+      "name": {
+        "file": "name_sainz.png",
+        "source_bbox": [
+          198,
+          18,
+          340,
+          52
+        ],
+        "source_window": [
+          197,
+          18,
+          340,
+          52
+        ],
+        "native_size": [
+          142,
+          34
+        ],
+        "card_bbox": [
+          19,
+          9,
+          348,
+          185
+        ],
+        "bbox_normalized_to_card": [
+          0.5440729,
+          0.0511364,
+          0.9756839,
+          0.2443182
+        ],
+        "core_bbox": [
+          200,
+          21,
+          336,
+          50
+        ],
+        "core_bbox_normalized_to_card": [
+          0.550152,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          2,
+          3,
+          138,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          27,
+          104,
+          214
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1764706,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175106.png",
+        "text": "SAINZ"
+      },
+      "radio": {
+        "file": "radio_sainz.png",
+        "source_bbox": [
+          204,
+          51,
+          338,
+          83
+        ],
+        "source_window": [
+          198,
+          51,
+          341,
+          84
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          19,
+          9,
+          348,
+          185
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          206,
+          53,
+          336,
+          80
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          252,
+          254,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175106.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        366,
+        195
+      ]
+    },
+    "ocon": {
+      "name": {
+        "file": "name_ocon.png",
+        "source_bbox": [
+          207,
+          26,
+          335,
+          59
+        ],
+        "source_window": [
+          207,
+          25,
+          337,
+          59
+        ],
+        "native_size": [
+          128,
+          33
+        ],
+        "card_bbox": [
+          16,
+          16,
+          345,
+          192
+        ],
+        "bbox_normalized_to_card": [
+          0.5805471,
+          0.0568182,
+          0.9696049,
+          0.2443182
+        ],
+        "core_bbox": [
+          210,
+          28,
+          333,
+          57
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5896657,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          3,
+          2,
+          126,
+          31
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          225,
+          224,
+          232
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 3.8787879,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175125.png",
+        "text": "OCON"
+      },
+      "radio": {
+        "file": "radio_ocon.png",
+        "source_bbox": [
+          201,
+          58,
+          335,
+          90
+        ],
+        "source_window": [
+          195,
+          58,
+          338,
+          91
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          16,
+          16,
+          345,
+          192
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          203,
+          60,
+          333,
+          87
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          254,
+          253,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175125.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        355,
+        207
+      ]
+    },
+    "bortoleto": {
+      "name": {
+        "file": "name_bortoleto.png",
+        "source_bbox": [
+          55,
+          21,
+          331,
+          55
+        ],
+        "source_window": [
+          55,
+          21,
+          331,
+          55
+        ],
+        "native_size": [
+          276,
+          34
+        ],
+        "card_bbox": [
+          10,
+          12,
+          339,
+          188
+        ],
+        "bbox_normalized_to_card": [
+          0.1367781,
+          0.0511364,
+          0.9756839,
+          0.2443182
+        ],
+        "core_bbox": [
+          59,
+          24,
+          327,
+          53
+        ],
+        "core_bbox_normalized_to_card": [
+          0.1489362,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          4,
+          3,
+          272,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          248,
+          46,
+          2
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 8.1176471,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175138.png",
+        "text": "BORTOLETO"
+      },
+      "radio": {
+        "file": "radio_bortoleto.png",
+        "source_bbox": [
+          195,
+          54,
+          329,
+          86
+        ],
+        "source_window": [
+          189,
+          54,
+          332,
+          87
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          10,
+          12,
+          339,
+          188
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          197,
+          56,
+          327,
+          83
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          255,
+          252,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175138.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        346,
+        195
+      ]
+    },
+    "verstappen": {
+      "name": {
+        "file": "name_verstappen.png",
+        "source_bbox": [
+          22,
+          19,
+          332,
+          53
+        ],
+        "source_window": [
+          21,
+          19,
+          332,
+          53
+        ],
+        "native_size": [
+          310,
+          34
+        ],
+        "card_bbox": [
+          10,
+          10,
+          339,
+          186
+        ],
+        "bbox_normalized_to_card": [
+          0.0364742,
+          0.0511364,
+          0.9787234,
+          0.2443182
+        ],
+        "core_bbox": [
+          24,
+          22,
+          328,
+          51
+        ],
+        "core_bbox_normalized_to_card": [
+          0.0425532,
+          0.0681818,
+          0.9665653,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          2,
+          3,
+          306,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          57,
+          114,
+          195
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 9.1176471,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175209.png",
+        "text": "VERSTAPPEN"
+      },
+      "radio": {
+        "file": "radio_verstappen.png",
+        "source_bbox": [
+          196,
+          52,
+          330,
+          84
+        ],
+        "source_window": [
+          189,
+          52,
+          332,
+          85
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          10,
+          10,
+          339,
+          186
+        ],
+        "bbox_normalized_to_card": [
+          0.5653495,
+          0.2386364,
+          0.9726444,
+          0.4204545
+        ],
+        "core_bbox": [
+          198,
+          54,
+          328,
+          81
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5714286,
+          0.25,
+          0.9665653,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          253,
+          255,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175209.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        348,
+        193
+      ]
+    },
+    "norris": {
+      "name": {
+        "file": "name_norris.png",
+        "source_bbox": [
+          159,
+          24,
+          332,
+          59
+        ],
+        "source_window": [
+          158,
+          24,
+          332,
+          59
+        ],
+        "native_size": [
+          173,
+          35
+        ],
+        "card_bbox": [
+          11,
+          15,
+          340,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.449848,
+          0.0511364,
+          0.9756839,
+          0.25
+        ],
+        "core_bbox": [
+          162,
+          27,
+          328,
+          56
+        ],
+        "core_bbox_normalized_to_card": [
+          0.4589666,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          3,
+          3,
+          169,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          251,
+          129,
+          3
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.9428571,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175229.png",
+        "text": "NORRIS"
+      },
+      "radio": {
+        "file": "radio_norris.png",
+        "source_bbox": [
+          196,
+          57,
+          330,
+          89
+        ],
+        "source_window": [
+          190,
+          57,
+          333,
+          90
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          11,
+          15,
+          340,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          198,
+          59,
+          328,
+          86
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          255,
+          253,
+          254
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175229.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        354,
+        202
+      ]
+    },
+    "antonelli": {
+      "name": {
+        "file": "name_antonelli.png",
+        "source_bbox": [
+          73,
+          24,
+          337,
+          59
+        ],
+        "source_window": [
+          73,
+          24,
+          337,
+          59
+        ],
+        "native_size": [
+          264,
+          35
+        ],
+        "card_bbox": [
+          16,
+          15,
+          345,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.1732523,
+          0.0511364,
+          0.9756839,
+          0.25
+        ],
+        "core_bbox": [
+          76,
+          27,
+          333,
+          56
+        ],
+        "core_bbox_normalized_to_card": [
+          0.1823708,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          3,
+          3,
+          260,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          44,
+          244,
+          209
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 7.5428571,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175245.png",
+        "text": "ANTONELLI"
+      },
+      "radio": {
+        "file": "radio_antonelli.png",
+        "source_bbox": [
+          201,
+          57,
+          335,
+          89
+        ],
+        "source_window": [
+          195,
+          57,
+          338,
+          90
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          16,
+          15,
+          345,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          203,
+          59,
+          333,
+          86
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          249,
+          254,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175245.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        369,
+        204
+      ]
+    },
+    "colapinto": {
+      "name": {
+        "file": "name_colapinto.png",
+        "source_bbox": [
+          74,
+          15,
+          337,
+          49
+        ],
+        "source_window": [
+          74,
+          15,
+          337,
+          49
+        ],
+        "native_size": [
+          263,
+          34
+        ],
+        "card_bbox": [
+          17,
+          6,
+          346,
+          182
+        ],
+        "bbox_normalized_to_card": [
+          0.1732523,
+          0.0511364,
+          0.9726444,
+          0.2443182
+        ],
+        "core_bbox": [
+          77,
+          18,
+          334,
+          47
+        ],
+        "core_bbox_normalized_to_card": [
+          0.1823708,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          3,
+          3,
+          260,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          2,
+          161,
+          227
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 7.7352941,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175453.png",
+        "text": "COLAPINTO"
+      },
+      "radio": {
+        "file": "radio_colapinto.png",
+        "source_bbox": [
+          202,
+          48,
+          336,
+          80
+        ],
+        "source_window": [
+          196,
+          48,
+          339,
+          81
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          17,
+          6,
+          346,
+          182
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          204,
+          50,
+          334,
+          77
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          250,
+          254,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175453.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        372,
+        190
+      ]
+    },
+    "hamilton": {
+      "name": {
+        "file": "name_hamilton.png",
+        "source_bbox": [
+          82,
+          24,
+          331,
+          59
+        ],
+        "source_window": [
+          81,
+          24,
+          331,
+          59
+        ],
+        "native_size": [
+          249,
+          35
+        ],
+        "card_bbox": [
+          10,
+          15,
+          339,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.218845,
+          0.0511364,
+          0.9756839,
+          0.25
+        ],
+        "core_bbox": [
+          86,
+          27,
+          327,
+          56
+        ],
+        "core_bbox_normalized_to_card": [
+          0.231003,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          4,
+          3,
+          245,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          226,
+          1,
+          48
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 7.1142857,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175513.png",
+        "text": "HAMILTON"
+      },
+      "radio": {
+        "file": "radio_hamilton.png",
+        "source_bbox": [
+          195,
+          57,
+          329,
+          89
+        ],
+        "source_window": [
+          189,
+          57,
+          332,
+          90
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          10,
+          15,
+          339,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          197,
+          59,
+          327,
+          87
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4090909
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          30
+        ],
+        "cap_height": 28,
+        "foreground_rgb": [
+          255,
+          253,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175513.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        351,
+        208
+      ]
+    },
+    "gasly": {
+      "name": {
+        "file": "name_gasly.png",
+        "source_bbox": [
+          183,
+          27,
+          336,
+          61
+        ],
+        "source_window": [
+          182,
+          27,
+          337,
+          61
+        ],
+        "native_size": [
+          153,
+          34
+        ],
+        "card_bbox": [
+          17,
+          18,
+          346,
+          194
+        ],
+        "bbox_normalized_to_card": [
+          0.5045593,
+          0.0511364,
+          0.9696049,
+          0.2443182
+        ],
+        "core_bbox": [
+          186,
+          30,
+          333,
+          59
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5136778,
+          0.0681818,
+          0.9604863,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          3,
+          3,
+          150,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          3,
+          161,
+          226
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.5,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175609.png",
+        "text": "GASLY"
+      },
+      "radio": {
+        "file": "radio_gasly.png",
+        "source_bbox": [
+          202,
+          60,
+          336,
+          92
+        ],
+        "source_window": [
+          196,
+          60,
+          339,
+          93
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          17,
+          18,
+          346,
+          194
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          204,
+          62,
+          334,
+          89
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          249,
+          254,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175609.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        366,
+        204
+      ]
+    },
+    "stroll": {
+      "name": {
+        "file": "name_stroll.png",
+        "source_bbox": [
+          155,
+          18,
+          330,
+          52
+        ],
+        "source_window": [
+          153,
+          18,
+          332,
+          52
+        ],
+        "native_size": [
+          175,
+          34
+        ],
+        "card_bbox": [
+          11,
+          9,
+          340,
+          185
+        ],
+        "bbox_normalized_to_card": [
+          0.43769,
+          0.0511364,
+          0.9696049,
+          0.2443182
+        ],
+        "core_bbox": [
+          157,
+          21,
+          328,
+          50
+        ],
+        "core_bbox_normalized_to_card": [
+          0.443769,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          2,
+          3,
+          173,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          39,
+          153,
+          119
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 5.1470588,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175712.png",
+        "text": "STROLL"
+      },
+      "radio": {
+        "file": "radio_stroll.png",
+        "source_bbox": [
+          196,
+          51,
+          330,
+          83
+        ],
+        "source_window": [
+          190,
+          51,
+          333,
+          84
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          11,
+          9,
+          340,
+          185
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          198,
+          53,
+          328,
+          80
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          251,
+          255,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175712.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        355,
+        190
+      ]
+    },
+    "piastri": {
+      "name": {
+        "file": "name_piastri.png",
+        "source_bbox": [
+          155,
+          24,
+          336,
+          59
+        ],
+        "source_window": [
+          154,
+          24,
+          337,
+          59
+        ],
+        "native_size": [
+          181,
+          35
+        ],
+        "card_bbox": [
+          16,
+          15,
+          345,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.4224924,
+          0.0511364,
+          0.9726444,
+          0.25
+        ],
+        "core_bbox": [
+          158,
+          27,
+          333,
+          56
+        ],
+        "core_bbox_normalized_to_card": [
+          0.4316109,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          3,
+          3,
+          178,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          249,
+          129,
+          4
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 5.1714286,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175903.png",
+        "text": "PIASTRI"
+      },
+      "radio": {
+        "file": "radio_piastri.png",
+        "source_bbox": [
+          201,
+          57,
+          335,
+          89
+        ],
+        "source_window": [
+          195,
+          57,
+          338,
+          90
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          16,
+          15,
+          345,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          203,
+          59,
+          333,
+          86
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          255,
+          253,
+          254
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 175903.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        357,
+        201
+      ]
+    },
+    "leclerc": {
+      "name": {
+        "file": "name_leclerc.png",
+        "source_bbox": [
+          128,
+          21,
+          327,
+          55
+        ],
+        "source_window": [
+          128,
+          21,
+          327,
+          55
+        ],
+        "native_size": [
+          199,
+          34
+        ],
+        "card_bbox": [
+          7,
+          12,
+          336,
+          188
+        ],
+        "bbox_normalized_to_card": [
+          0.3677812,
+          0.0511364,
+          0.9726444,
+          0.2443182
+        ],
+        "core_bbox": [
+          132,
+          25,
+          324,
+          53
+        ],
+        "core_bbox_normalized_to_card": [
+          0.3799392,
+          0.0738636,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          4,
+          4,
+          196,
+          32
+        ],
+        "cap_height": 28,
+        "foreground_rgb": [
+          223,
+          2,
+          48
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 5.8529412,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 180012.png",
+        "text": "LECLERC"
+      },
+      "radio": {
+        "file": "radio_leclerc.png",
+        "source_bbox": [
+          192,
+          54,
+          326,
+          86
+        ],
+        "source_window": [
+          186,
+          54,
+          329,
+          87
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          7,
+          12,
+          336,
+          188
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          194,
+          56,
+          324,
+          84
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4090909
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          30
+        ],
+        "cap_height": 28,
+        "foreground_rgb": [
+          255,
+          252,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 180012.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        342,
+        198
+      ]
+    },
+    "russell": {
+      "name": {
+        "file": "name_russell.png",
+        "source_bbox": [
+          127,
+          25,
+          329,
+          58
+        ],
+        "source_window": [
+          125,
+          24,
+          331,
+          59
+        ],
+        "native_size": [
+          202,
+          33
+        ],
+        "card_bbox": [
+          10,
+          15,
+          339,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.3556231,
+          0.0568182,
+          0.9696049,
+          0.2443182
+        ],
+        "core_bbox": [
+          129,
+          28,
+          327,
+          56
+        ],
+        "core_bbox_normalized_to_card": [
+          0.3617021,
+          0.0738636,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          2,
+          3,
+          200,
+          31
+        ],
+        "cap_height": 28,
+        "foreground_rgb": [
+          46,
+          245,
+          212
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 6.1212121,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 180209.png",
+        "text": "RUSSELL"
+      },
+      "radio": {
+        "file": "radio_russell.png",
+        "source_bbox": [
+          195,
+          57,
+          329,
+          89
+        ],
+        "source_window": [
+          189,
+          57,
+          332,
+          90
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          10,
+          15,
+          339,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          197,
+          59,
+          327,
+          86
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          248,
+          254,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 180209.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        346,
+        199
+      ]
+    },
+    "perez": {
+      "name": {
+        "file": "name_perez.png",
+        "source_bbox": [
+          185,
+          22,
+          332,
+          55
+        ],
+        "source_window": [
+          183,
+          21,
+          333,
+          55
+        ],
+        "native_size": [
+          147,
+          33
+        ],
+        "card_bbox": [
+          13,
+          12,
+          342,
+          188
+        ],
+        "bbox_normalized_to_card": [
+          0.5227964,
+          0.0568182,
+          0.9696049,
+          0.2443182
+        ],
+        "core_bbox": [
+          186,
+          24,
+          330,
+          52
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5258359,
+          0.0681818,
+          0.9635258,
+          0.2272727
+        ],
+        "mask_core_bbox": [
+          1,
+          2,
+          145,
+          30
+        ],
+        "cap_height": 28,
+        "foreground_rgb": [
+          171,
+          172,
+          176
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.4545455,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 180333.png",
+        "text": "PEREZ"
+      },
+      "radio": {
+        "file": "radio_perez.png",
+        "source_bbox": [
+          198,
+          54,
+          332,
+          87
+        ],
+        "source_window": [
+          192,
+          54,
+          335,
+          87
+        ],
+        "native_size": [
+          134,
+          33
+        ],
+        "card_bbox": [
+          13,
+          12,
+          342,
+          188
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4261364
+        ],
+        "core_bbox": [
+          200,
+          56,
+          330,
+          83
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          254,
+          254,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.0606061,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 180333.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        354,
+        198
+      ]
+    },
+    "lawson": {
+      "name": {
+        "file": "name_lawson.png",
+        "source_bbox": [
+          129,
+          21,
+          333,
+          55
+        ],
+        "source_window": [
+          128,
+          21,
+          333,
+          55
+        ],
+        "native_size": [
+          204,
+          34
+        ],
+        "card_bbox": [
+          13,
+          12,
+          342,
+          188
+        ],
+        "bbox_normalized_to_card": [
+          0.3525836,
+          0.0511364,
+          0.9726444,
+          0.2443182
+        ],
+        "core_bbox": [
+          132,
+          24,
+          330,
+          53
+        ],
+        "core_bbox_normalized_to_card": [
+          0.3617021,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          3,
+          3,
+          201,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          105,
+          146,
+          251
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 6.0,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 180805.png",
+        "text": "LAWSON"
+      },
+      "radio": {
+        "file": "radio_lawson.png",
+        "source_bbox": [
+          198,
+          54,
+          332,
+          86
+        ],
+        "source_window": [
+          192,
+          54,
+          335,
+          87
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          13,
+          12,
+          342,
+          188
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          200,
+          56,
+          330,
+          83
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          251,
+          254,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 180805.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        349,
+        196
+      ]
+    },
+    "bottas": {
+      "name": {
+        "file": "name_bottas.png",
+        "source_bbox": [
+          144,
+          21,
+          329,
+          55
+        ],
+        "source_window": [
+          143,
+          21,
+          331,
+          55
+        ],
+        "native_size": [
+          185,
+          34
+        ],
+        "card_bbox": [
+          10,
+          12,
+          339,
+          188
+        ],
+        "bbox_normalized_to_card": [
+          0.4072948,
+          0.0511364,
+          0.9696049,
+          0.2443182
+        ],
+        "core_bbox": [
+          147,
+          24,
+          327,
+          53
+        ],
+        "core_bbox_normalized_to_card": [
+          0.4164134,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          3,
+          3,
+          183,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          171,
+          171,
+          177
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 5.4411765,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 180835.png",
+        "text": "BOTTAS"
+      },
+      "radio": {
+        "file": "radio_bottas.png",
+        "source_bbox": [
+          195,
+          54,
+          329,
+          86
+        ],
+        "source_window": [
+          189,
+          54,
+          332,
+          87
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          10,
+          12,
+          339,
+          188
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          197,
+          56,
+          327,
+          83
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          254,
+          253,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 180835.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        345,
+        198
+      ]
+    },
+    "lindblad": {
+      "name": {
+        "file": "name_lindblad.png",
+        "source_bbox": [
+          105,
+          24,
+          336,
+          59
+        ],
+        "source_window": [
+          105,
+          24,
+          337,
+          59
+        ],
+        "native_size": [
+          231,
+          35
+        ],
+        "card_bbox": [
+          16,
+          15,
+          345,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.2705167,
+          0.0511364,
+          0.9726444,
+          0.25
+        ],
+        "core_bbox": [
+          108,
+          27,
+          333,
+          56
+        ],
+        "core_bbox_normalized_to_card": [
+          0.2796353,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          3,
+          3,
+          228,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          105,
+          147,
+          250
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 6.6,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 181452.png",
+        "text": "LINDBLAD"
+      },
+      "radio": {
+        "file": "radio_lindblad.png",
+        "source_bbox": [
+          201,
+          57,
+          335,
+          89
+        ],
+        "source_window": [
+          195,
+          57,
+          338,
+          90
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          16,
+          15,
+          345,
+          191
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          203,
+          59,
+          333,
+          86
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          253,
+          254,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 181452.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        357,
+        207
+      ]
+    },
+    "tsunoda": {
+      "name": {
+        "file": "name_tsunoda.png",
+        "source_bbox": [
+          99,
+          16,
+          325,
+          50
+        ],
+        "source_window": [
+          99,
+          16,
+          325,
+          50
+        ],
+        "native_size": [
+          226,
+          34
+        ],
+        "card_bbox": [
+          5,
+          7,
+          334,
+          183
+        ],
+        "bbox_normalized_to_card": [
+          0.2857143,
+          0.0511364,
+          0.9726444,
+          0.2443182
+        ],
+        "core_bbox": [
+          102,
+          19,
+          322,
+          48
+        ],
+        "core_bbox_normalized_to_card": [
+          0.2948328,
+          0.0681818,
+          0.9635258,
+          0.2329545
+        ],
+        "mask_core_bbox": [
+          3,
+          3,
+          223,
+          32
+        ],
+        "cap_height": 29,
+        "foreground_rgb": [
+          104,
+          145,
+          249
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 6.6470588,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 181507.png",
+        "text": "TSUNODA"
+      },
+      "radio": {
+        "file": "radio_tsunoda.png",
+        "source_bbox": [
+          190,
+          49,
+          324,
+          81
+        ],
+        "source_window": [
+          184,
+          49,
+          327,
+          82
+        ],
+        "native_size": [
+          134,
+          32
+        ],
+        "card_bbox": [
+          5,
+          7,
+          334,
+          183
+        ],
+        "bbox_normalized_to_card": [
+          0.56231,
+          0.2386364,
+          0.9696049,
+          0.4204545
+        ],
+        "core_bbox": [
+          192,
+          51,
+          322,
+          78
+        ],
+        "core_bbox_normalized_to_card": [
+          0.5683891,
+          0.25,
+          0.9635258,
+          0.4034091
+        ],
+        "mask_core_bbox": [
+          2,
+          2,
+          132,
+          29
+        ],
+        "cap_height": 27,
+        "foreground_rgb": [
+          252,
+          254,
+          255
+        ],
+        "alpha_bbox_threshold": 0.025,
+        "cap_height_alpha_threshold": 0.5,
+        "aspect_ratio": 4.1875,
+        "kind": "source_word",
+        "source_image": "resource/屏幕截图 2026-10-20 181507.png",
+        "text": "RADIO"
+      },
+      "image_size": [
+        343,
+        186
+      ]
+    }
+  },
+  "radio": {
+    "file": "radio.png",
+    "source_bbox": [
+      201,
+      58,
+      335,
+      90
+    ],
+    "source_window": [
+      195,
+      58,
+      338,
+      91
+    ],
+    "native_size": [
+      134,
+      32
+    ],
+    "card_bbox": [
+      16,
+      16,
+      345,
+      192
+    ],
+    "bbox_normalized_to_card": [
+      0.56231,
+      0.2386364,
+      0.9696049,
+      0.4204545
+    ],
+    "core_bbox": [
+      203,
+      60,
+      333,
+      87
+    ],
+    "core_bbox_normalized_to_card": [
+      0.5683891,
+      0.25,
+      0.9635258,
+      0.4034091
+    ],
+    "mask_core_bbox": [
+      2,
+      2,
+      132,
+      29
+    ],
+    "cap_height": 27,
+    "foreground_rgb": [
+      254,
+      253,
+      255
+    ],
+    "alpha_bbox_threshold": 0.025,
+    "cap_height_alpha_threshold": 0.5,
+    "aspect_ratio": 4.1875,
+    "kind": "source_word",
+    "source_image": "resource/屏幕截图 2026-10-20 175125.png",
+    "text": "RADIO"
+  },
+  "atlas": {
+    "cap_height": 29,
+    "canvas_height": 35,
+    "cap_top": 3,
+    "baseline": 32,
+    "letter_gap": 1,
+    "space_advance": 15,
+    "advance_rule": "Place each glyph at pen; next pen += advance; masks include two-pixel blur sidebearings. Advance gives a 1-pixel gap between 50%-alpha ink boxes.",
+    "synthetic_letters": [
+      "F",
+      "Q",
+      "X"
+    ]
+  }
+}

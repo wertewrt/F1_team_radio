@@ -1,0 +1,23 @@
+{
+  "driver": "albon",
+  "name": null,
+  "number": null,
+  "team": null,
+  "color": null,
+  "logo_path": null,
+  "logo_variant": null,
+  "width": 960,
+  "height": 540,
+  "fps": 30,
+  "entrance": 0.95,
+  "fade_out": 0.3,
+  "hold": 0.25,
+  "start_delay": 0,
+  "background": "transparent",
+  "background_color": "#10121a",
+  "card_scale": 0.9,
+  "position": "center",
+  "custom_x": 0,
+  "custom_y": 0,
+  "gain": 1
+}
