@@ -1,0 +1,7 @@
+# Windows x64 / Python 3.13 release environment.
+# Install requirements-dev.txt alongside this file only when running source tests.
+PyInstaller==6.20.0
+pyinstaller-hooks-contrib==2026.9
+numpy==2.5.1
+Pillow==12.3.0
+imageio-ffmpeg==0.6.0

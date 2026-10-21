@@ -4,7 +4,15 @@
 
 ![桌面工作室](examples/studio_ui.png)
 
-## 快速开始
+## Windows 单文件 EXE（推荐）
+
+在 [v1.0.0 下载页](https://github.com/wertewrt/F1_team_radio/releases/tag/v1.0.0) 下载 **F1-Team-Radio-Studio-v1.0.0-windows-x64.exe**，双击即可打开中文桌面工作室。支持 Windows 10/11 x64，无需安装 Python、FFmpeg 或额外运行依赖；下载完成后可离线使用。
+
+EXE 内置运行环境、字体、车队徽标和 FFmpeg，启动时会解压到系统临时目录，因此首次启动需要稍等。音频、配置及导出位置仍由用户选择，无需把 EXE 放在项目目录，也不需要管理员权限。程序尚未进行 Windows 代码签名，系统可能显示未知发布者提示。
+
+发布页的 `SHA256SUMS.txt` 可用于核对下载完整性；`THIRD-PARTY-NOTICES.txt` 与许可证 ZIP 用于查阅依赖许可，日常运行只需要 EXE。发生启动或界面异常时，日志保存在 `%LOCALAPPDATA%/F1TeamRadioStudio/logs/`，错误提示会显示具体路径。
+
+## 从源码运行
 
 本机已验证 Python 与所需依赖可用，直接双击 [start.bat](start.bat)，或在本文件夹打开终端运行：
 
@@ -230,6 +238,28 @@ python -m teamradio render --config "my_style.json" --audio "another.wav" --outp
 - [examples/reference_comparison.png](examples/reference_comparison.png)：原图和高清矢量重建的并排对照。
 
 示例语音内容为 Box this lap, Alex. Great job. Keep pushing. We are looking good. 原有 resource 文件夹完整保留，程序日常运行使用已经提取好的 assets 素材，无需每次重新处理截图。
+
+## Windows EXE 构建
+
+使用 Windows x64、Python 3.13，从独立环境构建：
+
+~~~powershell
+python -m venv .venv-build
+.venv-build/Scripts/python.exe -m pip install -r requirements-build.txt -r requirements-dev.txt
+.venv-build/Scripts/python.exe -m unittest discover -s tests -v
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/build_windows.ps1 -Python .venv-build/Scripts/python.exe
+~~~
+
+构建脚本使用 PyInstaller 单文件窗口模式，等待生成的 EXE 完成实际渲染、音频分析与导出自检，再生成许可证附件和 SHA-256 清单。产物位于 `dist/`；构建缓存、EXE 和临时验证文件不提交到 Git。配置位于 `packaging/TeamRadioStudio.spec`，构建依赖版本固定在 `requirements-build.txt`。
+
+GitHub Actions 的「Build Windows x64」支持手动构建和 `v*` 标签构建，上传经过自检的工作流产物。公开 Release 使用完成验收的产物单独发布。更新依赖后运行 `tools/collect_licenses.py` 重新收集实际环境中的许可文本。
+
+打包版也可单独验收（使用 PowerShell `Start-Process -Wait` 等待窗口程序结束）：
+
+~~~powershell
+Start-Process ./dist/F1-Team-Radio-Studio-v1.0.0-windows-x64.exe -ArgumentList '--self-test --report self-test.json' -Wait
+Start-Process ./dist/F1-Team-Radio-Studio-v1.0.0-windows-x64.exe -ArgumentList '--gui-smoke-test --report gui-test.json' -Wait
+~~~
 
 ## 验证与排错
 

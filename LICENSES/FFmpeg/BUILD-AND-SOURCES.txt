@@ -1,0 +1,17 @@
+FFmpeg distributed with F1 Team Radio Studio v1.0.0
+
+Version: 7.1-essentials_build-www.gyan.dev
+Source package: imageio-ffmpeg 0.6.0 Windows x64 wheel
+License: GPL-3.0-or-later (see COPYING.GPLv3 and LICENSE.md)
+
+This executable is redistributed unmodified and run as a subprocess.
+Upstream FFmpeg source: https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz
+Source mirror: https://github.com/FFmpeg/FFmpeg/tree/n7.1
+Binary builder and library links: https://www.gyan.dev/ffmpeg/builds/#libraries
+Original binary release: https://github.com/GyanD/codexffmpeg/releases/tag/7.1
+Imageio packaging/build scripts: https://github.com/imageio/imageio-ffmpeg/tree/v0.6.0
+
+The ffmpeg-7.1.tar.xz release attachment is the upstream FFmpeg core source.
+External codec/library sources are maintained by their respective upstream projects
+and are linked by the original binary builder above; the core archive is not a
+complete source bundle of those external libraries.

@@ -1,0 +1,59 @@
+name: Build Windows x64
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-2022
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Python 3.13 x64
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13.14"
+          architecture: x64
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-dev.txt
+            requirements-build.txt
+      - name: Install fixed build and development dependencies
+        run: python -m pip install -r requirements-build.txt -r requirements-dev.txt
+      - name: Run source tests
+        run: python -m unittest discover -s tests -v
+      - name: Build and verify packaged executable
+        run: ./tools/build_windows.ps1 -Python (Get-Command python).Source
+      - name: Upload verified release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: F1-Team-Radio-Studio-v1.0.0-windows-x64
+          if-no-files-found: error
+          path: |
+            dist/F1-Team-Radio-Studio-v1.0.0-windows-x64.exe
+            dist/F1-Team-Radio-Studio-v1.0.0-licenses.zip
+            dist/THIRD-PARTY-NOTICES.txt
+            dist/LICENSES/
+            dist/SHA256SUMS.txt
+            dist/self-test-report.json
+            dist/gui-smoke-test-report.json
+      - name: Upload failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build-diagnostics
+          if-no-files-found: ignore
+          path: |
+            dist/self-test-report.json
+            build/pyinstaller/TeamRadioStudio/warn-TeamRadioStudio.txt

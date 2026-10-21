@@ -718,7 +718,7 @@ class TeamRadioApp(ttk.Frame):
                        "-vn", "-ac", "2", "-ar", "44100", "-c:a", "pcm_s16le", str(target)]
             with tempfile.TemporaryFile() as errors:
                 process = subprocess.Popen(command, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
-                                           stderr=errors, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+                                           stderr=errors, **media.ffmpeg_process_options())
                 while process.poll() is None:
                     if cancel.wait(.08) or self._closing:
                         process.terminate()
@@ -1292,14 +1292,17 @@ def _enable_high_dpi():
 
 def main():
     _enable_high_dpi()
+    from .runtime import install_tk_exception_handler
     root = tk.Tk()
+    install_tk_exception_handler(root)
     try:
         TeamRadioApp(root)
-    except Exception as exc:
-        messagebox.showerror("无法启动 Team Radio Studio", str(exc), parent=root)
-        root.destroy()
-        raise
-    root.mainloop()
+        root.mainloop()
+    finally:
+        try:
+            root.destroy()
+        except tk.TclError:
+            pass
 
 
 if __name__ == "__main__":

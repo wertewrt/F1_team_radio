@@ -1,0 +1,34 @@
+F1 Team Radio Studio v1.0.0 — Third-party notices
+================================================
+These notices cover bundled third-party components, not a new license grant for project code.
+
+Python 3.13.14 — Python Software Foundation License (see Python-LICENSE.txt).
+Tcl/Tk 8.6.15 — BSD-style licenses (see tcl-license.terms and tk-license.terms).
+numpy 2.5.1 — complete wheel license texts are under LICENSES/numpy/.
+Pillow 12.3.0 — complete wheel license texts are under LICENSES/Pillow/.
+imageio-ffmpeg 0.6.0 — complete wheel license texts are under LICENSES/imageio-ffmpeg/.
+pyinstaller 6.20.0 — complete wheel license texts are under LICENSES/pyinstaller/.
+
+Pillow includes FreeType and other native libraries; their complete notices are included in its LICENSE.
+Portions of this software are copyright The FreeType Project (https://freetype.org). All rights reserved.
+NumPy wheel notices include OpenBLAS and its bundled native components.
+PyInstaller bootloader redistribution is covered by the special exception in its COPYING.txt.
+
+FFmpeg 7.1-essentials_build-www.gyan.dev (unmodified imageio-ffmpeg 0.6.0 Windows binary)
+Copyright (c) 2000-2024 the FFmpeg developers.
+License: GNU GPL version 3 or later; this is distinct from the imageio-ffmpeg wrapper BSD license.
+The application invokes FFmpeg as a separate executable. No FFmpeg libraries are linked into Python.
+Full GPL text and FFmpeg license details: LICENSES/FFmpeg/.
+Build configuration and upstream component links: LICENSES/FFmpeg/BUILD-AND-SOURCES.txt.
+FFmpeg core source archive is provided alongside this release as ffmpeg-7.1.tar.xz.
+Upstream release source: https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz
+Binary builder: https://www.gyan.dev/ffmpeg/builds/
+Binary mirror: https://github.com/GyanD/codexffmpeg/releases/tag/7.1
+Bundled binary distributor: https://github.com/imageio/imageio-ffmpeg/tree/v0.6.0
+
+DejaVu fonts — Bitstream Vera/DejaVu terms: LICENSES/DejaVu-LICENSE.txt.
+Microsoft YaHei is loaded from Windows when available and is not redistributed.
+Team names/logos belong to their respective rights holders; asset provenance is documented in LICENSES/ASSET_NOTES.md.
+
+Permission texts are also embedded in the executable and included in the release licenses ZIP.
+No warranty is provided by the third-party components beyond their respective license terms.

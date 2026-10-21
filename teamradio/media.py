@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import tempfile
 import threading
 import zipfile
@@ -41,6 +42,16 @@ def ffmpeg_exe() -> str:
         if path.is_file():
             return str(path.resolve())
         raise FileNotFoundError(f"FFMPEG_BINARY does not name an executable: {configured}")
+    # The release supplies a known binary; never let PATH shadow it.
+    root = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent.parent))
+    for relative in ("ffmpeg/ffmpeg.exe", "bin/ffmpeg.exe", "ffmpeg.exe"):
+        bundled = root / relative
+        if bundled.is_file():
+            return str(bundled.resolve())
+    if getattr(sys, "frozen", False):
+        bundled = sorted((root / "imageio_ffmpeg" / "binaries").glob("ffmpeg*.exe"))
+        if bundled:
+            return str(bundled[0].resolve())
     candidate = shutil.which("ffmpeg")
     if candidate:
         return candidate
@@ -49,6 +60,11 @@ def ffmpeg_exe() -> str:
         return imageio_ffmpeg.get_ffmpeg_exe()
     except (ImportError, RuntimeError, OSError) as exc:
         raise RuntimeError("FFmpeg is unavailable. Install imageio-ffmpeg or set FFMPEG_BINARY.") from exc
+
+
+def ffmpeg_process_options():
+    """Keep FFmpeg invisible in Windows GUI builds and normal on other OSes."""
+    return {"creationflags": getattr(subprocess, "CREATE_NO_WINDOW", 0)}
 
 
 def _error_text(log):
@@ -90,7 +106,7 @@ def _run(args, cancel=None):
     _check_cancel(cancel)
     with tempfile.TemporaryFile() as log:
         process = subprocess.Popen(args, stdin=subprocess.DEVNULL,
-                                   stdout=subprocess.DEVNULL, stderr=log)
+                                   stdout=subprocess.DEVNULL, stderr=log, **ffmpeg_process_options())
         _wait(process, log, cancel)
 
 
@@ -257,7 +273,7 @@ def _stream_frames(args, frames, cancel):
     with tempfile.TemporaryFile() as log:
         _check_cancel(cancel)
         process = subprocess.Popen(args, stdin=subprocess.PIPE,
-                                   stdout=subprocess.DEVNULL, stderr=log)
+                                   stdout=subprocess.DEVNULL, stderr=log, **ffmpeg_process_options())
         finished = threading.Event()
 
         def interrupt_on_cancel():
