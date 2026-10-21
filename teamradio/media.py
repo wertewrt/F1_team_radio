@@ -343,7 +343,7 @@ def export_video(audio_path, output_path, config, progress=None, cancel=None) ->
     report(0., "Analyzing audio")
     with AudioAnalyzer(source, fps=config.fps, gain=config.gain, cancel=cancel) as audio:
         audio_start = float(config.start_delay + config.entrance)
-        total = audio_start + audio.duration + config.hold + config.fade_out
+        total = audio_start + config.content_duration(audio.duration) + config.hold + config.fade_out
         count = max(1, math.ceil(total * config.fps))
         renderer = CardRenderer(config)
         zeros = np.zeros(9, dtype=np.float32)
@@ -391,6 +391,8 @@ def export_video(audio_path, output_path, config, progress=None, cancel=None) ->
                         "hold": config.hold, "fade_out": config.fade_out,
                         "frames": "frames/%08d.png", "soundtrack": "soundtrack.wav",
                         "soundtrack_start": 0, "alpha": True,
+                        "dialogue_enabled": config.dialogue_enabled,
+                        "dialogue": config.dialogue if config.dialogue_enabled else [],
                     }, indent=2))
             else:
                 raw = _base_ffmpeg() + ["-f", "rawvideo", "-pix_fmt", mode.lower(),

@@ -1,0 +1,32 @@
+[
+  {
+    "start": 0.0,
+    "end": 4.148753,
+    "speaker": "driver",
+    "text": "\"CHECK THE CAR, I HAD WEIRD BEHAVIOUR LAST CORNER\""
+  },
+  {
+    "start": 4.39873,
+    "end": 8.507891,
+    "speaker": "other",
+    "text": "\"OK, COPY. WE WILL HAVE A LOOK\""
+  },
+  {
+    "start": 8.757868,
+    "end": 28.413651,
+    "speaker": "other",
+    "text": "\"WE HAVE CHECKED THE CAR. THE TYRE PRESSURES ARE STABLE, THE TEMPERATURES ARE NORMAL AND THE BALANCE LOOKS GOOD. KEEP THE CURRENT SETTINGS FOR THE NEXT LAP, WATCH THE EXIT OF THE LAST CORNER, AND TELL US IF THE MOVEMENT HAPPENS AGAIN. WE WILL COMPARE YOUR DATA WITH THE PREVIOUS RUN BEFORE MAKING ANOTHER CHANGE.\""
+  },
+  {
+    "start": 28.663628,
+    "end": 34.492426,
+    "speaker": "driver",
+    "text": "\"UNDERSTOOD. THE CAR FEELS BETTER NOW. I WILL KEEP PUSHING.\""
+  },
+  {
+    "start": 34.742404,
+    "end": 38.07161,
+    "speaker": "other",
+    "text": "\"COPY. BOX THIS LAP.\""
+  }
+]

@@ -33,6 +33,12 @@ def main(argv=None):
         p.add_argument('--background-color')
         p.add_argument('--position',choices=['center','top-left','top-right','bottom-left','bottom-right','custom'])
         p.add_argument('--custom-x',type=int); p.add_argument('--custom-y',type=int)
+        dialogue_mode=p.add_mutually_exclusive_group()
+        dialogue_mode.add_argument('--dialogue',dest='dialogue_file',type=Path,help='导入带 start/end/speaker/text 的留言 JSON 并启用下方文字框')
+        dialogue_mode.add_argument('--no-dialogue',dest='dialogue_enabled',action='store_false',default=None,help='仅显示原来的上方卡片')
+        p.add_argument('--dialogue-expand',type=float,help='文字框向下展开时间（秒）')
+        p.add_argument('--dialogue-scroll',type=float,help='新段落滚至顶部的时间（秒）')
+        p.add_argument('--dialogue-font-size',type=int,help='原始卡片坐标中的文字字号，14–40')
         p.add_argument('--save-config',type=Path,help='保存最终采用的配置')
         p.add_argument('--overwrite',action='store_true',help='允许替换已有导出文件')
         if cmd=='preview': p.add_argument('--time',type=float,default=1.4,help='预览时间（秒）')
@@ -58,7 +64,7 @@ def main(argv=None):
         for t in TEAMS:
             for variant in ('color','white'):
                 if not logo_path(t,variant).is_file(): missing.append(str(logo_path(t,variant)))
-        for fn in ('RadioRounded-Bold.ttf','RadioRounded-Radio.ttf','DejaVuSans-Bold.ttf'):
+        for fn in ('RadioRounded-Bold.ttf','RadioRounded-Radio.ttf','DejaVuSans-Bold.ttf','DejaVuSans.ttf'):
             if not (ASSETS/'fonts'/fn).is_file(): missing.append(fn)
         if missing: raise RuntimeError('缺少必需资源或编码器：'+', '.join(missing))
         print('OK · 23 个车手预设 / 11 队彩色与白色徽标 / 7 种导出格式')
@@ -75,6 +81,10 @@ def main(argv=None):
     for field in fields(RenderConfig):
         value=getattr(args,field.name,None)
         if value is not None: data[field.name]=value
+    if args.dialogue_file:
+        transcript=json.loads(args.dialogue_file.read_text(encoding='utf-8-sig'))
+        data['dialogue']=transcript.get('dialogue') if isinstance(transcript,dict) else transcript
+        data['dialogue_enabled']=True
     if args.size:
         try: data['width'],data['height']=map(int,args.size.lower().split('x'))
         except ValueError: raise ValueError('--size 格式须为 宽x高，如 1920x1080')
@@ -83,11 +93,12 @@ def main(argv=None):
     target=args.output.resolve()
     if any(target.is_relative_to(p.resolve()) for p in protected): raise ValueError('请导出到其他文件夹，不能覆盖素材或程序')
     if args.audio and target==args.audio.resolve(): raise ValueError('输出不能覆盖输入语音')
+    if args.dialogue_file and target==args.dialogue_file.resolve(): raise ValueError('输出不能覆盖留言 JSON')
     if config.logo_path and target==Path(config.logo_path).resolve(): raise ValueError('输出不能覆盖自定义队标')
     if target.exists() and not args.overwrite: raise FileExistsError('输出已存在；请换文件名，或使用 --overwrite')
     if args.save_config:
         cfg_target=args.save_config.resolve()
-        if cfg_target==target or (args.audio and cfg_target==args.audio.resolve()) or (config.logo_path and cfg_target==Path(config.logo_path).resolve()):
+        if cfg_target==target or (args.audio and cfg_target==args.audio.resolve()) or (args.dialogue_file and cfg_target==args.dialogue_file.resolve()) or (config.logo_path and cfg_target==Path(config.logo_path).resolve()):
             raise ValueError('配置路径不能与输入或输出文件相同')
         if any(cfg_target.is_relative_to(p.resolve()) for p in protected): raise ValueError('请将配置保存到工作区其他位置')
         if cfg_target.exists() and not args.overwrite: raise FileExistsError('配置已存在；使用 --overwrite 允许替换')

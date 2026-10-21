@@ -1,6 +1,7 @@
 """Local Chinese Tk desktop studio. Importing this module opens no windows."""
 from __future__ import annotations
 
+from copy import deepcopy
 from dataclasses import asdict, fields
 import json
 import math
@@ -17,7 +18,7 @@ import wave
 
 import numpy as np
 from PIL import Image, ImageColor, ImageDraw, ImageTk
-from . import media, presets, renderer
+from . import dialogue, media, presets, renderer
 
 BG = "#0c1018"
 PANEL = "#141b27"
@@ -25,7 +26,8 @@ INPUT = "#1c2635"
 TEXT = "#edf3fb"
 MUTED = "#8f9db2"
 ACCENT = "#57ddbe"
-RESOLUTIONS = ("960 × 540", "1920 × 1080", "3840 × 2160", "540 × 960")
+RESOLUTIONS = ("960 × 540", "1920 × 1080", "3840 × 2160", "540 × 960", "720 × 1280", "1080 × 1920")
+DIALOGUE_MODES = ("仅显示上方卡片", "下方展开对话")
 POSITIONS = {"居中": "center", "左上": "top-left", "右上": "top-right",
              "左下": "bottom-left", "右下": "bottom-right", "自定义": "custom"}
 FORMATS = ("MP4", "MOV", "WEBM", "MKV", "AVI", "GIF", "ZIP")
@@ -123,6 +125,12 @@ class TeamRadioApp(ttk.Frame):
                   selectforeground=[("readonly", TEXT)])
         style.configure("TSpinbox", fieldbackground=INPUT, background=INPUT,
                         foreground=TEXT, arrowcolor=ACCENT, padding=6)
+        style.configure("Dialogue.Treeview", background=INPUT, fieldbackground=INPUT,
+                        foreground=TEXT, rowheight=30)
+        style.map("Dialogue.Treeview", background=[("selected", "#314457")],
+                  foreground=[("selected", TEXT)])
+        style.configure("Dialogue.Treeview.Heading", background=PANEL, foreground=MUTED,
+                        font=("Microsoft YaHei UI", 10, "bold"), padding=7)
         style.configure("Horizontal.TScale", background=PANEL, troughcolor=INPUT)
         style.configure("TProgressbar", background=ACCENT, troughcolor=INPUT, borderwidth=0, thickness=6)
         style.configure("Vertical.TScrollbar", background=INPUT, troughcolor=PANEL, arrowcolor=MUTED)
@@ -141,7 +149,12 @@ class TeamRadioApp(ttk.Frame):
                         resolution=RESOLUTIONS[0], fps="30", entrance=str(render_defaults.entrance), fade_out="0.3",
                         hold="0.25", start_delay="0", gain="1", card_scale="0.90",
                         position="居中", custom_x="0", custom_y="0",
-                        background="透明", background_color="#10121a", format="MP4")
+                        background="透明", background_color="#10121a", format="MP4",
+                        dialogue_mode=DIALOGUE_MODES[0], dialogue_expand="0.35",
+                        dialogue_scroll="0.45", dialogue_font_size="26")
+        self.dialogue_messages = []
+        self._dialogue_editor = None
+        self.dialogue_count = tk.StringVar(self.root, value="尚未添加对话")
         self.vars = {key: tk.StringVar(self.root, value=value) for key, value in defaults.items()}
         self.status = tk.StringVar(self.root, value="选择一段音频，开始制作。")
         self.audio_label = tk.StringVar(self.root, value="尚未选择音频")
@@ -217,7 +230,7 @@ class TeamRadioApp(ttk.Frame):
         ttk.Button(logos, text="上传…", command=self._upload_logo).pack(side="left", padx=(7, 0))
         self._section(c, "03  画布与背景")
         self._combo(c, "输出分辨率", "resolution", RESOLUTIONS)
-        self._combo(c, "帧率 FPS", "fps", ("24", "25", "30", "50", "60"))
+        self._combo(c, "帧率 FPS", "fps", ("20", "24", "25", "30", "50", "60"))
         self._combo(c, "背景", "background", ("透明", "纯色"))
         backgrounds = ttk.Frame(c)
         backgrounds.pack(fill="x", pady=4)
@@ -242,7 +255,13 @@ class TeamRadioApp(ttk.Frame):
         custom.columnconfigure((0, 1), weight=1)
         self._grid_entry(custom, "自定义 X（像素）", "custom_x", 0)
         self._grid_entry(custom, "自定义 Y（像素）", "custom_y", 1)
-        self._section(c, "05  导出成片")
+        self._section(c, "05  无线电对话")
+        self._combo(c, "显示方式", "dialogue_mode", DIALOGUE_MODES)
+        ttk.Label(c, textvariable=self.dialogue_count, style="Muted.TLabel").pack(anchor="w", pady=4)
+        ttk.Button(c, text="编辑对话时间轴…", command=self.open_dialogue_editor).pack(fill="x", pady=4)
+        ttk.Label(c, text="车手文字跟随强调色，其他人为白色。\n竖屏 540 × 960、720 × 1280 或 1080 × 1920 更适合对话。",
+                  style="Muted.TLabel", wraplength=290).pack(anchor="w", pady=4)
+        self._section(c, "06  导出成片")
         self._combo(c, "文件格式", "format", FORMATS)
         ttk.Label(c, textvariable=self.format_note, style="Muted.TLabel", wraplength=290).pack(anchor="w", pady=(5, 10))
         self.export_button = ttk.Button(c, text="导出视频 / 序列帧  →", command=self.start_export, style="Accent.TButton")
@@ -333,6 +352,17 @@ class TeamRadioApp(ttk.Frame):
             if widget == self.settings_canvas:
                 return self._settings_mousewheel(event)
             widget = getattr(widget, "master", None)
+
+    def _update_dialogue_count(self):
+        count = len(self.dialogue_messages)
+        self.dialogue_count.set(f"共 {count} 段对话" if count else "尚未添加对话")
+
+    def open_dialogue_editor(self):
+        if self._dialogue_editor is None or not self._dialogue_editor.winfo_exists():
+            self._dialogue_editor = DialogueEditor(self)
+        self._dialogue_editor.deiconify()
+        self._dialogue_editor.lift()
+        return self._dialogue_editor
 
     def _key_for(self, key, labels):
         for item, label in labels.items():
@@ -434,7 +464,11 @@ class TeamRadioApp(ttk.Frame):
             width=width, height=height, fps=int(values["fps"]),
             background="transparent" if values["background"] == "透明" else "color",
             background_color=values["background_color"], position=POSITIONS[values["position"]],
-            custom_x=int(values["custom_x"]), custom_y=int(values["custom_y"]), **numeric)
+            custom_x=int(values["custom_x"]), custom_y=int(values["custom_y"]),
+            dialogue_enabled=values["dialogue_mode"] == DIALOGUE_MODES[1],
+            dialogue=deepcopy(dialogue.validate_messages(self.dialogue_messages)),
+            dialogue_expand=float(values["dialogue_expand"]), dialogue_scroll=float(values["dialogue_scroll"]),
+            dialogue_font_size=int(values["dialogue_font_size"]), **numeric)
         config.validate()
         return config
 
@@ -449,6 +483,8 @@ class TeamRadioApp(ttk.Frame):
             card = renderer.CardRenderer(config)
             self.config, self._card = config, card
             self.color_swatch.configure(bg=self.vars["color"].get())
+            if self._dialogue_editor is not None and self._dialogue_editor.winfo_exists():
+                self._dialogue_editor.tree.tag_configure("driver", foreground=self.vars["color"].get())
             self._last_error = ""
             self.scrubber.configure(to=max(self.total_duration, .01))
             self.timeline.set(min(self.timeline.get(), self.total_duration))
@@ -468,7 +504,7 @@ class TeamRadioApp(ttk.Frame):
     def total_duration(self):
         if not self.config:
             return 1.2
-        duration = self.audio_duration if self.analyzer is not None else 3.0
+        duration = self.config.content_duration(self.audio_duration)
         return self.audio_start + duration + self.config.hold + self.config.fade_out
 
     @staticmethod
@@ -488,7 +524,7 @@ class TeamRadioApp(ttk.Frame):
                 levels = np.asarray(self.analyzer.levels_at(relative))
             else:
                 levels = np.zeros(9, dtype=np.float32)
-            duration = self.audio_duration if self.analyzer is not None else 3.0
+            duration = self.audio_duration
             frame = self._card.frame(t, self.audio_start, duration, levels).convert("RGBA")
             cw, ch = max(30, self.preview_canvas.winfo_width()), max(30, self.preview_canvas.winfo_height())
             scale = min((cw - 20) / frame.width, (ch - 20) / frame.height)
@@ -794,9 +830,9 @@ class TeamRadioApp(ttk.Frame):
         team = config.team or presets.DRIVERS[config.driver]["team"]
         resolution = f"{config.width} × {config.height}"
         if resolution not in RESOLUTIONS:
-            raise ValueError("请选择界面支持的四种分辨率之一。")
-        if config.fps not in (24, 25, 30, 50, 60):
-            raise ValueError("请选择界面支持的帧率：24 / 25 / 30 / 50 / 60。")
+            raise ValueError("请选择界面支持的分辨率。")
+        if config.fps not in (20, 24, 25, 30, 50, 60):
+            raise ValueError("请选择界面支持的帧率：20 / 24 / 25 / 30 / 50 / 60。")
         updates = {"driver": self.driver_labels[config.driver], "team": self.team_labels[team],
                    "name": config.name if config.name is not None else presets.DRIVERS[config.driver]["name"],
                    "number": config.number if config.number is not None else presets.DRIVERS[config.driver]["number"],
@@ -804,7 +840,9 @@ class TeamRadioApp(ttk.Frame):
                    "logo_variant": "上传图片" if config.logo_path else ("彩色队标" if (config.logo_variant or presets.TEAMS[team].get("logo_variant")) == "color" else "白色队标"),
                    "resolution": resolution, "background": "透明" if config.background == "transparent" else "纯色",
                    "position": next(key for key, value in POSITIONS.items() if value == config.position)}
-        for key in NUMERIC + ("fps", "custom_x", "custom_y", "background_color"):
+        updates["dialogue_mode"] = DIALOGUE_MODES[int(config.dialogue_enabled)]
+        for key in NUMERIC + ("fps", "custom_x", "custom_y", "background_color",
+                              "dialogue_expand", "dialogue_scroll", "dialogue_font_size"):
             updates[key] = getattr(config, key)
         gui = data.get("_gui", {})
         if not isinstance(gui, dict):
@@ -814,6 +852,10 @@ class TeamRadioApp(ttk.Frame):
         self._pause()
         self._loading = True
         try:
+            self.dialogue_messages = deepcopy(dialogue.validate_messages(config.dialogue))
+            self._update_dialogue_count()
+            if self._dialogue_editor is not None and self._dialogue_editor.winfo_exists():
+                self._dialogue_editor.refresh()
             for key, value in updates.items():
                 self.vars[key].set(str(value))
         finally:
@@ -823,7 +865,11 @@ class TeamRadioApp(ttk.Frame):
         if self._last_error:
             raise ValueError(self._last_error)
         audio = gui.get("audio_path")
-        if audio and Path(audio).is_file() and not self._exporting:
+        if audio:
+            audio = Path(audio).expanduser()
+            if not audio.is_absolute():
+                audio = Path(path).resolve().parent / audio
+        if audio and audio.is_file() and not self._exporting:
             self.load_audio(audio)
 
     def _poll(self):
@@ -944,6 +990,286 @@ class TeamRadioApp(ttk.Frame):
             self.analyzer = None
         shutil.rmtree(self._temp_dir, ignore_errors=True)
         self.root.destroy()
+
+
+class DialogueEditor(tk.Toplevel):
+    """Non-modal audio-relative timeline editor; edits update the studio preview."""
+
+    ROLES = {"车手": "driver", "其他人": "other"}
+
+    def __init__(self, app):
+        super().__init__(app.root)
+        self.app = app
+        self.title("无线电对话 · 时间轴")
+        self.configure(bg=PANEL)
+        self.transient(app.root)
+        width = min(1100, self.winfo_screenwidth() - 60)
+        height = min(960, self.winfo_screenheight() - 100)
+        self.geometry(f"{width}x{height}")
+        self.minsize(min(940, width), min(650, height))
+        self.start_var = tk.StringVar(self, value="0")
+        self.end_var = tk.StringVar(self, value="4")
+        self.role_var = tk.StringVar(self, value="车手")
+        self.note = tk.StringVar(self)
+        body = ttk.Frame(self, padding=18)
+        body.pack(fill="both", expand=True)
+        body.columnconfigure(0, weight=1)
+        body.rowconfigure(2, weight=1, minsize=90)
+        body.rowconfigure(5, weight=1, minsize=65)
+        ttk.Label(body, text="对话时间轴", style="Section.TLabel").grid(row=0, column=0, sticky="w")
+        ttk.Label(body, text='时间从音频的 0 秒开始，与卡片入场和开始延迟无关。每一对英文双引号 \"…\" 表示一段。',
+                  style="Muted.TLabel", wraplength=850).grid(row=1, column=0, sticky="w", pady=(5, 10))
+        table = ttk.Frame(body)
+        table.grid(row=2, column=0, sticky="nsew")
+        self.tree = ttk.Treeview(table, columns=("start", "end", "speaker", "text"), show="headings", height=7, selectmode="browse", style="Dialogue.Treeview")
+        for key, title, column_width in (("start", "开始（秒）", 120), ("end", "结束（秒）", 120),
+                                          ("speaker", "说话人", 100), ("text", "对话内容", 480)):
+            self.tree.heading(key, text=title)
+            self.tree.column(key, width=column_width, minwidth=65, stretch=key == "text")
+        self.tree.pack(side="left", fill="both", expand=True)
+        scroll = ttk.Scrollbar(table, orient="vertical", command=self.tree.yview)
+        scroll.pack(side="right", fill="y")
+        self.tree.configure(yscrollcommand=scroll.set)
+        self.tree.bind("<<TreeviewSelect>>", self._selected)
+        self.tree.bind("<Double-1>", lambda _e: self.jump_to_selected())
+        row = ttk.Frame(body)
+        row.grid(row=3, column=0, sticky="ew", pady=(12, 5))
+        self.start_spin = self._time_field(row, "开始（秒）", self.start_var)
+        self.end_spin = self._time_field(row, "结束（秒）", self.end_var)
+        role = ttk.Frame(row)
+        role.pack(side="left", padx=(0, 12))
+        ttk.Label(role, text="说话人", style="Muted.TLabel").pack(anchor="w")
+        self.role_combo = ttk.Combobox(role, textvariable=self.role_var, values=tuple(self.ROLES), state="readonly", width=9)
+        self.role_combo.pack(pady=(3, 0))
+        ttk.Button(row, text="预览此段", command=self.jump_to_selected).pack(side="right", anchor="s")
+        ttk.Button(row, text="当前时间作开始", command=lambda: self._take_time(self.start_var)).pack(side="right", anchor="s", padx=6)
+        ttk.Label(body, text='对话内容（保留英文双引号；粘贴多段时会按所填时间等分）', style="Muted.TLabel").grid(row=4, column=0, sticky="w", pady=(6, 4))
+        text_frame = ttk.Frame(body)
+        text_frame.grid(row=5, column=0, sticky="nsew")
+        self.text = tk.Text(text_frame, height=4, wrap="word", bg=INPUT, fg=TEXT, insertbackground=TEXT,
+                            font=("Microsoft YaHei UI", 11), relief="flat", padx=10, pady=8, undo=True)
+        self.text.pack(side="left", fill="both", expand=True)
+        text_scroll = ttk.Scrollbar(text_frame, command=self.text.yview)
+        text_scroll.pack(side="right", fill="y")
+        self.text.configure(yscrollcommand=text_scroll.set)
+        actions = ttk.Frame(body)
+        actions.grid(row=6, column=0, sticky="ew", pady=(10, 6))
+        for label, command in (("添加", self.add_message), ("更新选中", self.update_message),
+                               ("删除选中", self.delete_message), ("清空输入", self.clear_fields)):
+            ttk.Button(actions, text=label, command=command).pack(side="left", padx=(0, 7))
+        ttk.Label(body, textvariable=self.note, style="Muted.TLabel", wraplength=850).grid(row=7, column=0, sticky="w", pady=(2, 7))
+        timing = ttk.Frame(body)
+        timing.grid(row=8, column=0, sticky="ew", pady=5)
+        self.option_spins = []
+        for label, key, low, high, step in (("面板展开（秒）", "dialogue_expand", 0, 10, .05),
+                                           ("文字滚动（秒）", "dialogue_scroll", 0, 10, .05),
+                                           ("文字大小", "dialogue_font_size", 14, 40, 1)):
+            cell = ttk.Frame(timing)
+            cell.pack(side="left", fill="x", expand=True, padx=(0, 12))
+            ttk.Label(cell, text=label, style="Muted.TLabel").pack(anchor="w")
+            widget = ttk.Spinbox(cell, textvariable=app.vars[key], from_=low, to=high, increment=step, width=10)
+            widget.pack(fill="x", pady=(3, 0))
+            self.option_spins.append(widget)
+        footer = ttk.Frame(body)
+        footer.grid(row=9, column=0, sticky="ew", pady=(10, 0))
+        ttk.Button(footer, text="导入对话 JSON…", command=self.import_json).pack(side="left", padx=(0, 7))
+        ttk.Button(footer, text="导出对话 JSON…", command=self.export_json).pack(side="left", padx=(0, 7))
+        ttk.Button(footer, text="载入示例", command=self.load_example).pack(side="left")
+        ttk.Button(footer, text="完成", command=self.finish, style="Accent.TButton").pack(side="right")
+        self._protect_mousewheel()
+        self.protocol("WM_DELETE_WINDOW", self.finish)
+        self.refresh()
+
+    def _time_field(self, parent, label, variable):
+        cell = ttk.Frame(parent)
+        cell.pack(side="left", padx=(0, 12))
+        ttk.Label(cell, text=label, style="Muted.TLabel").pack(anchor="w")
+        widget = ttk.Spinbox(cell, textvariable=variable, from_=0, to=86400, increment=.1, width=10)
+        widget.pack(pady=(3, 0))
+        return widget
+
+    def _protect_mousewheel(self):
+        # Run before ttk's class bindings so focus/hover never changes a value.
+        tag = f"DialogueWheel:{self}"
+        for sequence in ("<MouseWheel>", "<Shift-MouseWheel>", "<Button-4>", "<Button-5>"):
+            self.bind_class(tag, sequence, self._wheel)
+        for widget in (self.start_spin, self.end_spin, self.role_combo, *self.option_spins):
+            widget.bindtags((tag,) + widget.bindtags())
+        self._wheel_tag = tag
+
+    def _wheel(self, event):
+        button, delta = getattr(event, "num", None), getattr(event, "delta", 0)
+        units = (-1 if button == 4 else 1) if button in (4, 5) else (-1 if delta > 0 else 1 if delta < 0 else 0)
+        if units:
+            self.tree.yview_scroll(units, "units")
+        return "break"
+
+    def refresh(self):
+        selection = self.tree.selection()
+        self.tree.delete(*self.tree.get_children())
+        self.tree.tag_configure("driver", foreground=self.app.vars["color"].get())
+        self.tree.tag_configure("other", foreground="#ffffff")
+        for index, item in enumerate(self.app.dialogue_messages):
+            role = next(label for label, key in self.ROLES.items() if key == item["speaker"])
+            self.tree.insert("", "end", iid=str(index), values=(f'{item["start"]:.3f}', f'{item["end"]:.3f}', role,
+                                                              item["text"].replace("\n", " ")), tags=(item["speaker"],))
+        if selection and self.tree.exists(selection[0]):
+            self.tree.selection_set(selection[0])
+        self.app._update_dialogue_count()
+
+    def _selected_index(self):
+        selection = self.tree.selection()
+        if not selection:
+            raise ValueError("请先在列表中选择一段对话。")
+        return int(selection[0])
+
+    def _selected(self, _event=None):
+        selection = self.tree.selection()
+        if not selection:
+            return
+        item = self.app.dialogue_messages[int(selection[0])]
+        self.start_var.set(str(item["start"]))
+        self.end_var.set(str(item["end"]))
+        self.role_var.set(next(label for label, key in self.ROLES.items() if key == item["speaker"]))
+        self.text.delete("1.0", "end")
+        self.text.insert("1.0", item["text"])
+
+    def _field_messages(self):
+        try:
+            start, end = float(self.start_var.get()), float(self.end_var.get())
+        except ValueError as exc:
+            raise ValueError("开始和结束时间请填写秒数，例如 1.5。") from exc
+        if not math.isfinite(start) or not math.isfinite(end) or start < 0 or end <= start:
+            raise ValueError("开始时间须不小于 0，结束时间须大于开始时间。")
+        if self.role_var.get() not in self.ROLES:
+            raise ValueError("请选择车手或其他人。")
+        paragraphs = dialogue.split_quoted_text(self.text.get("1.0", "end-1c"))
+        if not paragraphs:
+            raise ValueError('请输入用英文双引号包住的对话，例如 "Keep pushing."。')
+        span = (end - start) / len(paragraphs)
+        return dialogue.validate_messages([{"start": start + i * span, "end": end if i == len(paragraphs) - 1 else start + (i + 1) * span,
+                                            "speaker": self.ROLES[self.role_var.get()], "text": paragraph}
+                                           for i, paragraph in enumerate(paragraphs)])
+
+    def _replace_messages(self, messages):
+        normalized = dialogue.validate_messages(messages)
+        self.app._pause()
+        self.app.dialogue_messages = deepcopy(normalized)
+        self.refresh()
+        self.app._refresh_config()
+        self.note.set("已保存到当前配置。选择下方展开对话即可预览；关闭显示方式会保留全部对话。")
+
+    def _edit_message(self, update=False):
+        try:
+            messages = deepcopy(self.app.dialogue_messages)
+            if update:
+                del messages[self._selected_index()]
+            additions = self._field_messages()
+            messages.extend(additions)
+            messages.sort(key=lambda item: item["start"])
+            self._replace_messages(messages)
+            if any(item["end"] - item["start"] < .5 for item in additions):
+                self.note.set("已保存。部分对话不足 0.5 秒，可能来不及阅读；可延长结束时间。")
+            elif len(additions) > 1:
+                self.note.set(f"已按时间等分为 {len(additions)} 段，可在列表中逐段调整。")
+            return True
+        except (ValueError, TypeError) as exc:
+            self._error(exc)
+            return False
+
+    def add_message(self):
+        return self._edit_message()
+
+    def update_message(self):
+        return self._edit_message(update=True)
+
+    def delete_message(self):
+        try:
+            messages = deepcopy(self.app.dialogue_messages)
+            del messages[self._selected_index()]
+            self._replace_messages(messages)
+            self.clear_fields()
+            return True
+        except (ValueError, TypeError) as exc:
+            self._error(exc)
+            return False
+
+    def clear_fields(self):
+        self.tree.selection_remove(*self.tree.selection())
+        self.start_var.set(str(max((item["end"] for item in self.app.dialogue_messages), default=0)))
+        self.end_var.set(str(float(self.start_var.get()) + 4))
+        self.text.delete("1.0", "end")
+        self.text.focus_set()
+
+    def _take_time(self, variable):
+        variable.set(f"{max(0, self.app.timeline.get() - self.app.audio_start):.3f}")
+
+    def jump_to_selected(self):
+        try:
+            item = self.app.dialogue_messages[self._selected_index()]
+            self.app._pause()
+            self.app._refresh_config()
+            self.app.timeline.set(self.app.audio_start + item["start"])
+            self.app._render_preview()
+            self.note.set("已跳转到所选对话的开始。可在主窗口拖动时间轴继续检查。")
+        except (ValueError, TypeError) as exc:
+            self._error(exc)
+
+    def import_json(self, path=None):
+        path = path or filedialog.askopenfilename(parent=self, title="导入对话", filetypes=[("JSON 文件", "*.json")])
+        if not path:
+            return False
+        try:
+            data = json.loads(Path(path).read_text(encoding="utf-8-sig"))
+            if isinstance(data, dict):
+                data = data.get("dialogue")
+            self._replace_messages(data)
+            self.note.set(f"已导入 {len(self.app.dialogue_messages)} 段对话，并替换原列表。")
+            return True
+        except (OSError, ValueError, TypeError) as exc:
+            self._error(exc)
+            return False
+
+    def export_json(self, path=None):
+        path = path or filedialog.asksaveasfilename(parent=self, title="导出对话", defaultextension=".json",
+                                                   initialfile="radio_dialogue.json", filetypes=[("JSON 文件", "*.json")])
+        if not path:
+            return False
+        try:
+            data = dialogue.validate_messages(self.app.dialogue_messages)
+            Path(path).write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+            self.note.set("对话列表已导出。")
+            return True
+        except (OSError, ValueError, TypeError) as exc:
+            self._error(exc)
+            return False
+
+    def load_example(self):
+        if self.app.dialogue_messages and not messagebox.askyesno("载入示例", "用示例替换当前对话列表？", parent=self):
+            return
+        self._replace_messages([
+            {"start": 0, "end": 4, "speaker": "other", "text": '\"Keep pushing. You are doing a good job.\"'},
+            {"start": 4, "end": 8, "speaker": "driver", "text": '\"Copy. The car feels good.\"'},
+            {"start": 8, "end": 12, "speaker": "other", "text": '\"We are checking the gap ahead. Stay focused.\"'},
+            {"start": 12, "end": 16, "speaker": "driver", "text": '\"Understood. Let us keep going.\"'},
+        ])
+        self.note.set("已载入示例。可启用对话并选择竖屏预览；这些文字仅作编辑演示。")
+
+    def _error(self, error):
+        self.note.set(f"请检查对话：{error}")
+        messagebox.showerror("请检查对话", str(error), parent=self)
+
+    def finish(self):
+        try:
+            self.app.build_config()
+        except (ValueError, TypeError) as exc:
+            self._error(exc)
+            return
+        self.app._refresh_config()
+        for sequence in ("<MouseWheel>", "<Shift-MouseWheel>", "<Button-4>", "<Button-5>"):
+            self.unbind_class(self._wheel_tag, sequence)
+        self.app._dialogue_editor = None
+        self.destroy()
 
 
 App = TeamRadioApp

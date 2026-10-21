@@ -3,7 +3,7 @@
 All geometry uses a 329 x 176 source-card coordinate system. The diagonal reveal is
 inspired by the supplied recording; source footage is never baked into output.
 """
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 import math
 import numbers
@@ -35,6 +35,16 @@ class RenderConfig:
     custom_x: int = 0
     custom_y: int = 0
     gain: float = 1
+    dialogue_enabled: bool = False
+    dialogue: list[dict] = field(default_factory=list)
+    dialogue_expand: float = .35
+    dialogue_scroll: float = .45
+    dialogue_font_size: int = 26
+
+    def content_duration(self, audio_duration):
+        """Keep late messages on screen after the voice track has ended."""
+        last = max((message["end"] for message in self.dialogue), default=0) if self.dialogue_enabled else 0
+        return max(audio_duration, last)
 
     def validate(self):
         if self.driver not in DRIVERS: raise ValueError('未知车手预设：'+str(self.driver))
@@ -63,6 +73,15 @@ class RenderConfig:
             if not re.fullmatch(r'[0-9]{1,3}',str(self.number)): raise ValueError('车号须为 1–3 位数字')
         if self.logo_variant not in (None,'white','color'): raise ValueError('队标版本须为 white 或 color')
         if self.logo_path is not None and not Path(self.logo_path).is_file(): raise ValueError('自定义队标不存在')
+        if not isinstance(self.dialogue_enabled,bool): raise ValueError("留言模式须为布尔值")
+        for key in ("dialogue_expand","dialogue_scroll"):
+            value=getattr(self,key)
+            if isinstance(value,bool) or not isinstance(value,numbers.Real) or not math.isfinite(value) or not 0<=value<=10:
+                raise ValueError("文字展开和滚动时间须为 0–10 秒")
+        if isinstance(self.dialogue_font_size,bool) or not isinstance(self.dialogue_font_size,int) or not 14<=self.dialogue_font_size<=40:
+            raise ValueError("留言字号须为 14–40")
+        from .dialogue import validate_messages
+        self.dialogue=validate_messages(self.dialogue)
         return self
 
 # Original source-card dimensions, independent of the output video's aspect.
@@ -142,8 +161,15 @@ class CardRenderer:
         self.color=ImageColor.getrgb(config.color or TEAMS[self.team]['color'])
         self.name=(config.name or preset['name']).strip().upper()
         self.number=str(config.number if config.number is not None else preset['number'])
-        width=min(config.width*config.card_scale,config.height*config.card_scale*CARD_ASPECT)
+        aspect=CARD_WIDTH/(CARD_HEIGHT+276) if config.dialogue_enabled else CARD_ASPECT
+        width=min(config.width*config.card_scale,config.height*config.card_scale*aspect)
         self.w=max(16,int(width)); self.h=max(9,round(self.w/CARD_ASPECT))
+        self.dialogue_panel=None
+        if config.dialogue_enabled:
+            from .dialogue import DialoguePanel
+            self.dialogue_panel=DialoguePanel(config.dialogue,self.color,self.w,expand=config.dialogue_expand,
+                scroll=config.dialogue_scroll,font_size=config.dialogue_font_size)
+        self.layout_h=self.h+(self.dialogue_panel.max_height if self.dialogue_panel else 0)
         self.x,self.y=self._position()
         self._base,self._foreground=self._static_layers()
         self._xx=np.arange(self.w,dtype=np.float32)[None,:]/self.w
@@ -156,9 +182,9 @@ class CardRenderer:
     def _position(self):
         c=self.config; margin=round(min(c.width,c.height)*.05)
         if c.position=='custom': return c.custom_x,c.custom_y
-        if c.position=='center': return (c.width-self.w)//2,(c.height-self.h)//2
+        if c.position=='center': return (c.width-self.w)//2,(c.height-self.layout_h)//2
         return (margin if c.position.endswith('left') else c.width-self.w-margin,
-                margin if c.position.startswith('top') else c.height-self.h-margin)
+                margin if c.position.startswith('top') else c.height-self.layout_h-margin)
 
     def _static_layers(self):
         s=max(4,min(12,math.ceil(self.w/329*1.4)))
@@ -259,7 +285,7 @@ class CardRenderer:
         c=self.config
         canvas=(Image.new('RGBA',(c.width,c.height),ImageColor.getrgb(c.background_color)+(255,))
                 if c.background=='color' else self._zero.copy())
-        begin=c.start_delay; end=audio_start+audio_duration+c.hold
+        begin=c.start_delay; end=audio_start+c.content_duration(audio_duration)+c.hold
         if t<begin or t>=end+c.fade_out: return canvas
         card=Image.alpha_composite(self._base,self._wave(levels))
         card=Image.alpha_composite(card,self._foreground)
@@ -279,4 +305,10 @@ class CardRenderer:
             opacity=max(0,1-(t-end)/c.fade_out)
             card.putalpha(card.getchannel('A').point(lambda v:round(v*opacity)))
         canvas.alpha_composite(card,(self.x,self.y))
+        if self.dialogue_panel is not None and t>=audio_start:
+            panel=self.dialogue_panel.frame(t-audio_start)
+            if t>=end and c.fade_out>0:
+                opacity=max(0,1-(t-end)/c.fade_out)
+                panel.putalpha(panel.getchannel("A").point(lambda value:round(value*opacity)))
+            canvas.alpha_composite(panel,(self.x,self.y+self.h))
         return canvas

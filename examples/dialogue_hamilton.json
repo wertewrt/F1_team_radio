@@ -1,0 +1,35 @@
+{
+  "driver": "hamilton",
+  "name": null,
+  "number": null,
+  "team": null,
+  "color": null,
+  "logo_path": null,
+  "logo_variant": null,
+  "width": 540,
+  "height": 960,
+  "fps": 20,
+  "entrance": 0.95,
+  "fade_out": 0.3,
+  "hold": 0.25,
+  "start_delay": 0,
+  "background": "transparent",
+  "background_color": "#10121a",
+  "card_scale": 0.9,
+  "position": "center",
+  "custom_x": 0,
+  "custom_y": 0,
+  "gain": 1,
+  "dialogue_enabled": true,
+  "dialogue": [
+    {
+      "start": 0.0,
+      "end": 7.5,
+      "speaker": "other",
+      "text": "\"CHARLES IS TRYING TO PICK UP THE PACE. HE IS NOW ON PLAN C, WE ARE ON B\""
+    }
+  ],
+  "dialogue_expand": 0.35,
+  "dialogue_scroll": 0.45,
+  "dialogue_font_size": 26
+}
