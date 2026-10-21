@@ -85,7 +85,7 @@ class BundledFFmpegTests(unittest.TestCase):
             override = root / "custom.exe"
             override.write_bytes(b"explicit")
             with mock.patch.object(sys, "_MEIPASS", str(root), create=True), mock.patch.dict(os.environ, {"FFMPEG_BINARY": str(override)}):
-                self.assertEqual(Path(media.ffmpeg_exe()), override.resolve())
+                self.assertTrue(Path(media.ffmpeg_exe()).samefile(override))
 
     def test_bundle_wins_over_path_and_imageio_in_frozen_app(self):
         with tempfile.TemporaryDirectory() as temporary:
