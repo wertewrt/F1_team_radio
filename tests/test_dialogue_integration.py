@@ -46,7 +46,9 @@ class DialogueIntegrationTests(unittest.TestCase):
 
     def test_dialogue_configuration_validation(self):
         for kwargs in ({'dialogue_enabled':'yes'},{'dialogue_font_size':0},{'dialogue_expand':-1},
-                       {'dialogue_scroll':float('nan')},{'dialogue':[{'start':0,'end':1,'speaker':'driver','text':'No quotes'}]}):
+                       {'dialogue_scroll':float('nan')},{'dialogue_scroll_delay':float('nan')},
+                       {'dialogue_scroll_delay':-1},{'dialogue_scroll_delay':True},{'dialogue_scroll_delay':10.1},
+                       {'dialogue':[{'start':0,'end':1,'speaker':'driver','text':'No quotes'}]}):
             with self.subTest(kwargs=kwargs),self.assertRaises(ValueError): RenderConfig(**kwargs).validate()
 
 if __name__=='__main__':unittest.main()

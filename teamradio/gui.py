@@ -151,7 +151,8 @@ class TeamRadioApp(ttk.Frame):
                         position="居中", custom_x="0", custom_y="0",
                         background="透明", background_color="#10121a", format="MP4",
                         dialogue_mode=DIALOGUE_MODES[0], dialogue_expand="0.35",
-                        dialogue_scroll="0.45", dialogue_font_size="26")
+                        dialogue_scroll="0.45", dialogue_scroll_delay=str(render_defaults.dialogue_scroll_delay),
+                        dialogue_font_size="26")
         self.dialogue_messages = []
         self._dialogue_editor = None
         self.dialogue_count = tk.StringVar(self.root, value="尚未添加对话")
@@ -468,6 +469,7 @@ class TeamRadioApp(ttk.Frame):
             dialogue_enabled=values["dialogue_mode"] == DIALOGUE_MODES[1],
             dialogue=deepcopy(dialogue.validate_messages(self.dialogue_messages)),
             dialogue_expand=float(values["dialogue_expand"]), dialogue_scroll=float(values["dialogue_scroll"]),
+            dialogue_scroll_delay=float(values["dialogue_scroll_delay"]),
             dialogue_font_size=int(values["dialogue_font_size"]), **numeric)
         config.validate()
         return config
@@ -842,7 +844,7 @@ class TeamRadioApp(ttk.Frame):
                    "position": next(key for key, value in POSITIONS.items() if value == config.position)}
         updates["dialogue_mode"] = DIALOGUE_MODES[int(config.dialogue_enabled)]
         for key in NUMERIC + ("fps", "custom_x", "custom_y", "background_color",
-                              "dialogue_expand", "dialogue_scroll", "dialogue_font_size"):
+                              "dialogue_expand", "dialogue_scroll", "dialogue_scroll_delay", "dialogue_font_size"):
             updates[key] = getattr(config, key)
         gui = data.get("_gui", {})
         if not isinstance(gui, dict):
@@ -1063,6 +1065,7 @@ class DialogueEditor(tk.Toplevel):
         self.option_spins = []
         for label, key, low, high, step in (("面板展开（秒）", "dialogue_expand", 0, 10, .05),
                                            ("文字滚动（秒）", "dialogue_scroll", 0, 10, .05),
+                                           ("滚动前停留（秒）", "dialogue_scroll_delay", 0, 10, .05),
                                            ("文字大小", "dialogue_font_size", 14, 40, 1)):
             cell = ttk.Frame(timing)
             cell.pack(side="left", fill="x", expand=True, padx=(0, 12))

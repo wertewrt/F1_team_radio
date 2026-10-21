@@ -163,6 +163,8 @@ def _smooth(t):
 
 
 def _progress(t, start, duration):
+    if t < start:
+        return 0.0
     return 1.0 if duration == 0 else _smooth((t - start) / duration)
 
 
@@ -184,6 +186,7 @@ class _Event:
     final_scroll: float
     expand_duration: float
     anchor_duration: float
+    anchor_start: float
     own_start: float
     own_end: float
 
@@ -193,12 +196,13 @@ class DialoguePanel:
 
     color accepts an RGB tuple or a Pillow color string. max_height optionally
     lowers the natural round(width * 276 / 329) cap. font_size is in source pixels.
-    Short intervals compress animation/reading holds to finish within end time.
+    Overflow waits scroll_delay seconds before moving. Short intervals retain
+    that delay up to end time and compress the animation into the remaining time.
     After the last end, the last viewport persists for the caller's fade-out.
     """
 
     def __init__(self, messages, color, width, expand=.35, scroll=.45, font_size=26,
-                 *, max_height=None, font_path=None):
+                 *, max_height=None, font_path=None, scroll_delay=1.0):
         self.messages = validate_messages(messages)
         if isinstance(width, bool) or not isinstance(width, int) or width < 32:
             raise ValueError('对白面板宽度须为不小于 32 的整数像素')
@@ -213,6 +217,7 @@ class DialoguePanel:
             self.max_height = min(max_height, natural_height)
         self.expand = _seconds(expand, '对白展开时间')
         self.scroll = _seconds(scroll, '对白滚动时间')
+        self.scroll_delay = _seconds(scroll_delay, '对白滚动前停留时间')
         if (isinstance(font_size, bool) or not isinstance(font_size, numbers.Real)
                 or not math.isfinite(font_size) or not 1 <= font_size <= 128):
             raise ValueError('对白字号须为 1–128 内的有限数值')
@@ -238,7 +243,6 @@ class DialoguePanel:
         fonts = {}
         previous_bottom = self.padding_top - self.paragraph_gap
         previous_height = previous_scroll = 0.0
-        overflowed = False
         for message in self.messages:
             cjk = bool(re.search('[\u2e80-\u9fff\uac00-\ud7af\uf900-\ufaff]', message['text']))
             path = _font_path(cjk, font_path)
@@ -253,19 +257,26 @@ class DialoguePanel:
             paragraph = _Paragraph(top, height, len(self._lines))
             self._paragraphs.append(paragraph)
             required_height = top + height + self.padding_bottom
-            overflowed = overflowed or required_height > self.max_height
-            target_height = min(self.max_height, max(previous_height, required_height))
-            anchor = max(0.0, top - self.padding_top) if overflowed else 0.0
-            final_scroll = max(anchor, top + height + self.padding_bottom - target_height)
+            # Compare the whole quoted paragraph against the *current* viewport,
+            # not the cumulative transcript height after an earlier overflow.
+            visible_height = required_height - previous_scroll
+            target_height = min(self.max_height, max(previous_height, visible_height))
+            anchor = (max(previous_scroll, top - self.padding_top)
+                      if visible_height > self.max_height else previous_scroll)
+            final_scroll = max(anchor, required_height - target_height)
             span = message['end'] - message['start']
+            delay = min(self.scroll_delay, span) if final_scroll > previous_scroll else 0.0
+            remaining = span - delay
+            anchor_start = message['start'] + delay
             expand_duration = min(self.expand, span / 4) if target_height != previous_height else 0.0
-            anchor_duration = min(self.scroll, span / 4) if anchor != previous_scroll else 0.0
-            hold = min(.35, span * .15)
-            own_start = message['start'] + max(expand_duration, anchor_duration) + hold
+            anchor_duration = min(self.scroll, remaining / 4) if anchor != previous_scroll else 0.0
+            hold = min(.35, remaining * .15)
+            own_start = max(message['start'] + expand_duration,
+                            anchor_start + anchor_duration) + hold
             own_end = message['end'] - hold
             self._events.append(_Event(message['start'], message['end'], previous_height,
                                        target_height, previous_scroll, anchor, final_scroll,
-                                       expand_duration, anchor_duration, own_start, own_end))
+                                       expand_duration, anchor_duration, anchor_start, own_start, own_end))
             previous_bottom = top + height
             previous_height = target_height
             previous_scroll = final_scroll
@@ -293,7 +304,7 @@ class DialoguePanel:
         paragraph = self._paragraphs[index]
         growth = _progress(audio_t, event.start, event.expand_duration)
         panel_height = event.previous_height + (event.height - event.previous_height) * growth
-        entry = _progress(audio_t, event.start, event.anchor_duration)
+        entry = _progress(audio_t, event.anchor_start, event.anchor_duration)
         scroll_y = event.previous_scroll + (event.anchor - event.previous_scroll) * entry
         own = _progress(audio_t, event.own_start, event.own_end - event.own_start)
         scroll_y += (event.final_scroll - event.anchor) * own

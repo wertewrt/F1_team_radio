@@ -39,6 +39,7 @@ class RenderConfig:
     dialogue: list[dict] = field(default_factory=list)
     dialogue_expand: float = .35
     dialogue_scroll: float = .45
+    dialogue_scroll_delay: float = 1.0
     dialogue_font_size: int = 26
 
     def content_duration(self, audio_duration):
@@ -74,10 +75,10 @@ class RenderConfig:
         if self.logo_variant not in (None,'white','color'): raise ValueError('队标版本须为 white 或 color')
         if self.logo_path is not None and not Path(self.logo_path).is_file(): raise ValueError('自定义队标不存在')
         if not isinstance(self.dialogue_enabled,bool): raise ValueError("留言模式须为布尔值")
-        for key in ("dialogue_expand","dialogue_scroll"):
+        for key in ("dialogue_expand","dialogue_scroll","dialogue_scroll_delay"):
             value=getattr(self,key)
             if isinstance(value,bool) or not isinstance(value,numbers.Real) or not math.isfinite(value) or not 0<=value<=10:
-                raise ValueError("文字展开和滚动时间须为 0–10 秒")
+                raise ValueError("文字展开、滚动和滚动前停留时间须为 0–10 秒")
         if isinstance(self.dialogue_font_size,bool) or not isinstance(self.dialogue_font_size,int) or not 14<=self.dialogue_font_size<=40:
             raise ValueError("留言字号须为 14–40")
         from .dialogue import validate_messages
@@ -168,7 +169,7 @@ class CardRenderer:
         if config.dialogue_enabled:
             from .dialogue import DialoguePanel
             self.dialogue_panel=DialoguePanel(config.dialogue,self.color,self.w,expand=config.dialogue_expand,
-                scroll=config.dialogue_scroll,font_size=config.dialogue_font_size)
+                scroll=config.dialogue_scroll,scroll_delay=config.dialogue_scroll_delay,font_size=config.dialogue_font_size)
         self.layout_h=self.h+(self.dialogue_panel.max_height if self.dialogue_panel else 0)
         self.x,self.y=self._position()
         self._base,self._foreground=self._static_layers()

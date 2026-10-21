@@ -67,10 +67,12 @@ class GuiDialogueTests(unittest.TestCase):
 
     def test_configuration_roundtrip_and_legacy_defaults(self):
         self.assertFalse(self.app.build_config().dialogue_enabled)
+        self.assertEqual(self.app.build_config().dialogue_scroll_delay, 1.0)
         editor = self.editor_with_two_paragraphs()
         self.app.vars["dialogue_mode"].set(DIALOGUE_MODES[1])
         self.app.vars["dialogue_expand"].set("0.6")
         self.app.vars["dialogue_scroll"].set("0.8")
+        self.app.vars["dialogue_scroll_delay"].set("1.7")
         self.app.vars["dialogue_font_size"].set("28")
         self.app.vars["resolution"].set("1080 × 1920")
         self.app.vars["format"].set("WEBM")
@@ -102,6 +104,7 @@ class GuiDialogueTests(unittest.TestCase):
             config = self.app.build_config()
             self.assertFalse(config.dialogue_enabled)
             self.assertEqual(config.dialogue, [])
+            self.assertEqual(config.dialogue_scroll_delay, 1.0)
             self.assertEqual((config.dialogue_expand, config.dialogue_scroll, config.dialogue_font_size), (.35, .45, 26))
         self.assertIn("720 × 1280", RESOLUTIONS)
         self.assertEqual(self.errors, [])

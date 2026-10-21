@@ -146,13 +146,16 @@ class DialogueRenderingTests(unittest.TestCase):
         last_line_y = round(final['paragraph_top'] + final['paragraph_height'] - 32)
         quote_pixels = np.asarray(panel.frame(16.7).crop((305, last_line_y, 318, last_line_y + 32))).astype(int)
         self.assertTrue(np.any(np.max(np.abs(quote_pixels[:, :, :3] - (16, 17, 22)), axis=2) > 30))
-        entering = panel.state_at(17.7)
-        anchored = panel.state_at(18)
+        self.assertEqual(panel.state_at(18.49)['scroll_y'], final['scroll_y'])
+        entering = panel.state_at(18.7)
+        anchored = panel.state_at(19)
         self.assertGreater(entering['scroll_y'], final['scroll_y'])
         self.assertLess(entering['scroll_y'], anchored['scroll_y'])
         self.assertAlmostEqual(anchored['paragraph_top'], 28)
         self.assertEqual(anchored['active_index'], 1)
-        self.assertAlmostEqual(panel.state_at(23)['paragraph_top'], 28)
+        # A short reply after the overflow still fits below COPY.
+        self.assertAlmostEqual(panel.state_at(23)['paragraph_top'], 76)
+        self.assertEqual(panel.state_at(23)['scroll_y'], anchored['scroll_y'])
         for t in (8, 8.1, 10, 16.9, 17.5, 18, 23, 100):
             self.assertLessEqual(panel.state_at(t)['panel_height'], 276)
         # The final viewport persists for the parent's fade-out.
@@ -163,9 +166,56 @@ class DialogueRenderingTests(unittest.TestCase):
                                     speaker='other' if i % 2 else 'driver')
                             for i in range(8)])
         self.assertEqual(panel.state_at(6.8)['scroll_y'], 0)
-        self.assertAlmostEqual(panel.state_at(8.8)['paragraph_top'], 28)
+        self.assertEqual(panel.state_at(8.99)['scroll_y'], 0)
+        self.assertAlmostEqual(panel.state_at(9.5)['paragraph_top'], 28)
         self.assertEqual(panel.state_at(10.8)['panel_height'], 276)
-        self.assertAlmostEqual(panel.state_at(14.8)['paragraph_top'], 28)
+        for t, top in ((10.8, 76), (12.8, 124), (14.8, 172)):
+            self.assertAlmostEqual(panel.state_at(t)['paragraph_top'], top)
+            self.assertEqual(panel.state_at(t)['scroll_y'], panel.state_at(9.5)['scroll_y'])
+
+    def test_exact_fit_stays_still_and_one_pixel_overflow_waits(self):
+        messages = [message(start=i * 3, end=i * 3 + 3) for i in range(4)]
+        for cap in (136, 135):
+            with self.subTest(cap=cap):
+                panel = self.panel(messages, max_height=cap)
+                before = panel.state_at(2.9)['scroll_y']
+                if cap == 136:
+                    for t in (3, 3.5, 4.5, 5.9):
+                        self.assertEqual(panel.state_at(t)['scroll_y'], before)
+                    # The third quote overflows; the fourth fits after that scroll.
+                    self.assertEqual(panel.state_at(6.99)['scroll_y'], before)
+                    self.assertAlmostEqual(panel.state_at(7.5)['paragraph_top'], 28)
+                    self.assertEqual(panel.state_at(10.5)['scroll_y'], panel.state_at(7.5)['scroll_y'])
+                else:
+                    self.assertEqual(panel.state_at(3.99)['scroll_y'], before)
+                    self.assertGreater(panel.state_at(4.2)['scroll_y'], before)
+                    self.assertAlmostEqual(panel.state_at(4.5)['paragraph_top'], 28)
+
+    def test_configurable_delay_and_zero_duration_scroll(self):
+        messages = [message(start=i * 4, end=i * 4 + 4) for i in range(2)]
+        for delay in (0, .25, 1, 2):
+            for duration in (0, .45):
+                with self.subTest(delay=delay, duration=duration):
+                    panel = self.panel(messages, max_height=100, scroll_delay=delay, scroll=duration)
+                    if delay:
+                        self.assertEqual(panel.state_at(4 + delay - .001)['scroll_y'], 0)
+                    self.assertGreater(panel.state_at(4 + delay + .1)['scroll_y'], 0)
+                    self.assertAlmostEqual(panel.state_at(7.99)['paragraph_top'], 28)
+                    # Seeking backwards must restore the full delay, including with instant scroll.
+                    self.assertEqual(panel.state_at(3.9)['scroll_y'], 0)
+                    self.assertEqual(panel.state_at(4 + max(0, delay - .001))['scroll_y'],
+                                     48 if delay == 0 and duration == 0 else 0)
+
+    def test_quote_is_one_sentence_despite_punctuation_and_line_breaks(self):
+        messages = [message('"First. Second?\nThird!"', end=4),
+                    message('"COPY"', start=4, end=8),
+                    message('"OK"', start=8, end=12)]
+        panel = self.panel(messages, max_height=150)
+        self.assertEqual(len(panel._paragraphs), 3)
+        self.assertEqual(panel.state_at(3)['scroll_y'], 0)
+        self.assertEqual(panel.state_at(4.99)['scroll_y'], 0)
+        self.assertAlmostEqual(panel.state_at(5.5)['paragraph_top'], 28)
+        self.assertAlmostEqual(panel.state_at(9.5)['paragraph_top'], 76)
 
     def test_scrolled_descenders_do_not_leak_into_top_margin(self):
         for width in (329, 486, 658):
@@ -183,9 +233,9 @@ class DialogueRenderingTests(unittest.TestCase):
                         expected = np.array([16, 17, 22, 255], dtype=np.uint8)
                         self.assertTrue(np.all(pixels[:margin] == expected))
                     # The active quote still starts at the original 28px inset.
-                    self.assertAlmostEqual(panel.state_at(5)['paragraph_top'], panel.padding_top)
-                    pixels = np.asarray(panel.frame(5))
-                    body = pixels[margin:round(panel.state_at(5)['panel_height']), :, :3]
+                    self.assertAlmostEqual(panel.state_at(5.5)['paragraph_top'], panel.padding_top)
+                    pixels = np.asarray(panel.frame(5.5))
+                    body = pixels[margin:round(panel.state_at(5.5)['panel_height']), :, :3]
                     self.assertTrue(np.any(np.max(np.abs(body.astype(int) - (255, 255, 255)), axis=2) < 10))
 
     def test_random_seeking_is_identical_to_fresh_and_sequential_frames(self):
@@ -238,12 +288,17 @@ class DialogueRenderingTests(unittest.TestCase):
         immediate = self.panel(expand=0, scroll=0)
         self.assertEqual(immediate.state_at(0)['panel_height'], 88)
         brief = self.panel([message('"' + 'LONG ' * 100 + '"', end=.02)])
-        self.assertTrue(brief.state_at(.019)['fully_read'])
+        self.assertFalse(brief.state_at(.019)['fully_read'])
+        self.assertEqual(brief.state_at(.019)['scroll_y'], 0)
+        self.assertTrue(brief.state_at(.02)['fully_read'])
         self.assertEqual(brief.state_at(.019)['panel_height'], 276)
+        compressed = self.panel([message('"' + 'LONG ' * 100 + '"', end=.02)], scroll_delay=0)
+        self.assertTrue(compressed.state_at(.019)['fully_read'])
 
     def test_invalid_panel_options_and_sample_times_raise_value_error(self):
         for kwargs in (dict(expand=float('nan')), dict(scroll=-1), dict(font_size=True),
-                       dict(font_size=0), dict(max_height=0), dict(font_size=math.inf)):
+                       dict(font_size=0), dict(max_height=0), dict(font_size=math.inf),
+                       dict(scroll_delay=-1), dict(scroll_delay=True), dict(scroll_delay=math.nan)):
             with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
                 self.panel(**kwargs)
         for width in (0, 31, True, 329.0):
