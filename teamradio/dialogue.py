@@ -323,5 +323,11 @@ class DialoguePanel:
                  if driver else self.padding_x * 2)
             draw.text((x, (top - offset) * 2), text, font=font,
                       fill=(*self.color, 255) if driver else (255, 255, 255, 255), anchor='lt')
-        result.paste(viewport.resize((self.width, height), Image.Resampling.LANCZOS), (0, 0))
+        viewport = viewport.resize((self.width, height), Image.Resampling.LANCZOS)
+        if offset > 0:
+            # Clip after downsampling so old descenders and antialias fringes
+            # cannot leak into the fixed top reading margin while scrolling.
+            clip_bottom = min(height, math.ceil(self.padding_top))
+            ImageDraw.Draw(viewport).rectangle((0, 0, self.width - 1, clip_bottom - 1), fill=_BACKGROUND)
+        result.paste(viewport, (0, 0))
         return result

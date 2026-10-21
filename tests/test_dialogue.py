@@ -167,6 +167,27 @@ class DialogueRenderingTests(unittest.TestCase):
         self.assertEqual(panel.state_at(10.8)['panel_height'], 276)
         self.assertAlmostEqual(panel.state_at(14.8)['paragraph_top'], 28)
 
+    def test_scrolled_descenders_do_not_leak_into_top_margin(self):
+        for width in (329, 486, 658):
+            for ending in ('good.', 'happy.', 'gypqj'):
+                with self.subTest(width=width, ending=ending):
+                    quote = chr(34)
+                    messages = [message(quote + ('ROW' + chr(10)) * 7 + ending + quote, end=4),
+                                message(quote + 'NEXT MESSAGE' + quote, start=4, end=7, speaker='other')]
+                    panel = DialoguePanel(messages, self.COLOR, width)
+                    for t in (4.1, 4.25, 5):
+                        state = panel.state_at(t)
+                        self.assertGreater(state['scroll_y'], 0)
+                        pixels = np.asarray(panel.frame(t))
+                        margin = math.ceil(panel.padding_top)
+                        expected = np.array([16, 17, 22, 255], dtype=np.uint8)
+                        self.assertTrue(np.all(pixels[:margin] == expected))
+                    # The active quote still starts at the original 28px inset.
+                    self.assertAlmostEqual(panel.state_at(5)['paragraph_top'], panel.padding_top)
+                    pixels = np.asarray(panel.frame(5))
+                    body = pixels[margin:round(panel.state_at(5)['panel_height']), :, :3]
+                    self.assertTrue(np.any(np.max(np.abs(body.astype(int) - (255, 255, 255)), axis=2) < 10))
+
     def test_random_seeking_is_identical_to_fresh_and_sequential_frames(self):
         panel = self.panel([message('"' + 'LONG MESSAGE ' * 50 + '"', end=6),
                             message('"COPY"', start=7, end=9, speaker='other')])
