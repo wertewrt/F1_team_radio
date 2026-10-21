@@ -35,7 +35,7 @@ Windows 支持系统音频有声预览。其他系统或音频播放不可用时
 
 「保存配置 / 载入配置」可以保留样式、动画参数和界面选择的音频路径。JSON 样式配置也可用于命令行；换电脑后需要重新选择当地的音频和自定义队标文件。
 
-## 下方展开对话模式（feature 分支）
+## 下方展开对话模式
 
 新模式参照新增的安东内利、汉密尔顿图片。在「05 无线电对话 → 显示方式」选择「下方展开对话」，点击「编辑对话时间轴…」。也可以先载入 [安东内利示例配置](examples/dialogue_antonelli.json) 或 [完整滚动示例配置](examples/dialogue_scroll.json)。示例配置会从同目录读取演示语音。
 
@@ -89,13 +89,15 @@ python -m teamradio preview --config "examples/dialogue_hamilton.json" --time 4 
 
 ## Git 工作方式
 
-工作区已初始化 Git，origin 指向 https://github.com/wertewrt/F1_team_radio。原程序保存在本地 main 基线提交，以上新模式在 feature 分支开发；没有把功能提交合并进本地 main。本次仅配置/读取远端，未自动推送。
+项目使用 `main` 作为开发和发布分支，远端 `origin` 指向 [GitHub 仓库](https://github.com/wertewrt/F1_team_radio)。下方展开对话模式、条件滚动及按完整可见行数调整停留时间的功能均已包含在 `main` 中。本地 `feature` 分支已删除，后续在 `main` 上提交并推送更新。
 
 ~~~powershell
+git switch main
 git status
-git switch feature
-# 需要发布当前分支时自行执行：
-git push -u origin feature
+# 开始修改前，同步远端更新：
+git pull --ff-only origin main
+# 完成修改、验证并提交后发布：
+git push origin main
 ~~~
 
 ## 视觉与动画
@@ -116,7 +118,7 @@ git push -u origin feature
 | entrance | 0.95 秒 | 斜向展开时间；结束后开始播放语音 |
 | hold | 0.25 秒 | 语音结束后，卡片继续停留多久 |
 | fade_out | 0.3 秒 | 停留结束后的淡出时间 |
-| dialogue_scroll_delay | 1.0 秒 | 对话滚动前停留，范围 0–10 秒；短区间保留停留至该段 end，滚动动画在剩余时间内压缩 |
+| dialogue_scroll_delay | 1.0 秒 | 最大滚动前停留，范围 0–10 秒；新段完整可见 0 行立即滚动，1 行最多等 0.3 秒，2 行及以上等设定时间；实际停留不超过该段 end |
 | gain | 1.0 | 波形灵敏度，不调整导出声音 |
 
 **总时长 = 开场等待 + 入场 + 内容时长 + 结束停留 + 淡出。** 原模式的内容时长等于完整语音时长；对话模式取「语音时长」与「最后一段留言结束时间」中的较大值。 语音从 start_delay + entrance 时刻开始播放，没有截去开头，也不会变速。视频帧按所选 FPS 对齐，成片时长最多存在约一帧的取整差异；音频分析时间精度为 1/16000 秒。语音停止后，波形停止，卡片按停留和淡出参数结束。
