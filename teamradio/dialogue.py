@@ -196,8 +196,9 @@ class DialoguePanel:
 
     color accepts an RGB tuple or a Pillow color string. max_height optionally
     lowers the natural round(width * 276 / 329) cap. font_size is in source pixels.
-    Overflow waits scroll_delay seconds before moving. Short intervals retain
-    that delay up to end time and compress the animation into the remaining time.
+    Overflow waits up to scroll_delay seconds: no complete visible new line
+    moves immediately, one line waits at most .3 seconds, two or more use the
+    configured delay. Short intervals cap the wait at end time.
     After the last end, the last viewport persists for the caller's fade-out.
     """
 
@@ -265,7 +266,16 @@ class DialoguePanel:
                       if visible_height > self.max_height else previous_scroll)
             final_scroll = max(anchor, required_height - target_height)
             span = message['end'] - message['start']
-            delay = min(self.scroll_delay, span) if final_scroll > previous_scroll else 0.0
+            # Count complete, nonblank lines of this new quote before scrolling.
+            # Use the expanded panel's actual clipping edge, including any usable
+            # bottom margin, so a partly clipped line never earns reading time.
+            visible_lines = sum(
+                bool(line.strip()) and
+                top + (index + 1) * self.line_height - previous_scroll <= target_height + 1e-9
+                for index, line in enumerate(lines))
+            delay_limit = (self.scroll_delay if visible_lines >= 2 else
+                           min(self.scroll_delay, .3) if visible_lines == 1 else 0.0)
+            delay = min(delay_limit, span) if final_scroll > previous_scroll else 0.0
             remaining = span - delay
             anchor_start = message['start'] + delay
             expand_duration = min(self.expand, span / 4) if target_height != previous_height else 0.0

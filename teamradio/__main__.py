@@ -38,7 +38,7 @@ def main(argv=None):
         dialogue_mode.add_argument('--no-dialogue',dest='dialogue_enabled',action='store_false',default=None,help='仅显示原来的上方卡片')
         p.add_argument('--dialogue-expand',type=float,help='文字框向下展开时间（秒）')
         p.add_argument('--dialogue-scroll',type=float,help='溢出时新段落滚至顶部的时间（秒）')
-        p.add_argument('--dialogue-scroll-delay',type=float,help='滚动前停留时间，默认 1.0 秒，范围 0–10 秒')
+        p.add_argument('--dialogue-scroll-delay',type=float,help='最大滚动前停留，默认 1.0 秒，范围 0–10 秒；新句完整可见 0/1/至少2 行时分别等待 0/最多0.3/设定秒数')
         p.add_argument('--dialogue-font-size',type=int,help='原始卡片坐标中的文字字号，14–40')
         p.add_argument('--save-config',type=Path,help='保存最终采用的配置')
         p.add_argument('--overwrite',action='store_true',help='允许替换已有导出文件')

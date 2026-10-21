@@ -146,9 +146,9 @@ class DialogueRenderingTests(unittest.TestCase):
         last_line_y = round(final['paragraph_top'] + final['paragraph_height'] - 32)
         quote_pixels = np.asarray(panel.frame(16.7).crop((305, last_line_y, 318, last_line_y + 32))).astype(int)
         self.assertTrue(np.any(np.max(np.abs(quote_pixels[:, :, :3] - (16, 17, 22)), axis=2) > 30))
-        self.assertEqual(panel.state_at(18.49)['scroll_y'], final['scroll_y'])
-        entering = panel.state_at(18.7)
-        anchored = panel.state_at(19)
+        # The next quote has no complete visible line, so entry starts immediately.
+        entering = panel.state_at(17.7)
+        anchored = panel.state_at(18)
         self.assertGreater(entering['scroll_y'], final['scroll_y'])
         self.assertLess(entering['scroll_y'], anchored['scroll_y'])
         self.assertAlmostEqual(anchored['paragraph_top'], 28)
@@ -166,8 +166,9 @@ class DialogueRenderingTests(unittest.TestCase):
                                     speaker='other' if i % 2 else 'driver')
                             for i in range(8)])
         self.assertEqual(panel.state_at(6.8)['scroll_y'], 0)
-        self.assertEqual(panel.state_at(8.99)['scroll_y'], 0)
-        self.assertAlmostEqual(panel.state_at(9.5)['paragraph_top'], 28)
+        # One complete new line is visible: wait .3 seconds instead of 1.
+        self.assertEqual(panel.state_at(8.29)['scroll_y'], 0)
+        self.assertAlmostEqual(panel.state_at(8.8)['paragraph_top'], 28)
         self.assertEqual(panel.state_at(10.8)['panel_height'], 276)
         for t, top in ((10.8, 76), (12.8, 124), (14.8, 172)):
             self.assertAlmostEqual(panel.state_at(t)['paragraph_top'], top)
@@ -183,20 +184,21 @@ class DialogueRenderingTests(unittest.TestCase):
                     for t in (3, 3.5, 4.5, 5.9):
                         self.assertEqual(panel.state_at(t)['scroll_y'], before)
                     # The third quote overflows; the fourth fits after that scroll.
-                    self.assertEqual(panel.state_at(6.99)['scroll_y'], before)
-                    self.assertAlmostEqual(panel.state_at(7.5)['paragraph_top'], 28)
+                    self.assertGreater(panel.state_at(6.1)['scroll_y'], before)
+                    self.assertAlmostEqual(panel.state_at(6.5)['paragraph_top'], 28)
                     self.assertEqual(panel.state_at(10.5)['scroll_y'], panel.state_at(7.5)['scroll_y'])
                 else:
-                    self.assertEqual(panel.state_at(3.99)['scroll_y'], before)
-                    self.assertGreater(panel.state_at(4.2)['scroll_y'], before)
+                    self.assertEqual(panel.state_at(3.29)['scroll_y'], before)
+                    self.assertGreater(panel.state_at(3.5)['scroll_y'], before)
                     self.assertAlmostEqual(panel.state_at(4.5)['paragraph_top'], 28)
 
     def test_configurable_delay_and_zero_duration_scroll(self):
-        messages = [message(start=i * 4, end=i * 4 + 4) for i in range(2)]
+        messages = [message(end=4),
+                    message('"ONE\nTWO\nTHREE"', start=4, end=8)]
         for delay in (0, .25, 1, 2):
             for duration in (0, .45):
                 with self.subTest(delay=delay, duration=duration):
-                    panel = self.panel(messages, max_height=100, scroll_delay=delay, scroll=duration)
+                    panel = self.panel(messages, max_height=170, scroll_delay=delay, scroll=duration)
                     if delay:
                         self.assertEqual(panel.state_at(4 + delay - .001)['scroll_y'], 0)
                     self.assertGreater(panel.state_at(4 + delay + .1)['scroll_y'], 0)
@@ -206,6 +208,48 @@ class DialogueRenderingTests(unittest.TestCase):
                     self.assertEqual(panel.state_at(4 + max(0, delay - .001))['scroll_y'],
                                      48 if delay == 0 and duration == 0 else 0)
 
+    def test_visible_new_lines_select_delay_at_scaled_clipping_boundaries(self):
+        messages = [message(end=4),
+                    message('"ONE\nTWO\nTHREE\nFOUR"', start=4, end=8)]
+        for width in (329, 658):
+            for cap, visible in ((100, 0), (107, 0), (108, 1), (139, 1),
+                                 (140, 2), (171, 2), (172, 3)):
+                for maximum in (0, .1, 1, 2):
+                    for duration in (0, .45):
+                        with self.subTest(width=width, cap=cap, maximum=maximum, duration=duration):
+                            panel = DialoguePanel(messages, self.COLOR, width,
+                                                  max_height=cap * width // 329,
+                                                  scroll_delay=maximum, scroll=duration)
+                            wait = (maximum if visible >= 2 else
+                                    min(maximum, .3) if visible == 1 else 0)
+                            before = panel.state_at(3.99)['scroll_y']
+                            if wait:
+                                self.assertEqual(panel.state_at(4 + wait - .001)['scroll_y'], before)
+                            moving = panel.state_at(4 + wait + .05)['scroll_y']
+                            self.assertGreater(moving, before)
+                            self.assertAlmostEqual(panel.state_at(4 + wait + duration)['paragraph_top'],
+                                                   panel.padding_top)
+                            # Backward seeking reproduces the waiting period exactly.
+                            if wait:
+                                self.assertEqual(panel.state_at(4 + wait - .001)['scroll_y'], before)
+
+    def test_blank_new_lines_do_not_earn_reading_delay(self):
+        # Two line slots fit, but only the first contains text.
+        panel = self.panel([message(end=4),
+                            message('"ONE\n\nTHREE\nFOUR"', start=4, end=8)], max_height=140)
+        self.assertEqual(panel.state_at(4.299)['scroll_y'], 0)
+        self.assertGreater(panel.state_at(4.4)['scroll_y'], 0)
+
+    def test_fitting_quote_never_moves_even_after_previous_overflow(self):
+        messages = [message('"FIRST\nSECOND"', end=3),
+                    message('"ONE\nTWO\nTHREE"', start=3, end=6),
+                    message('"COPY"', start=6, end=9)]
+        panel = self.panel(messages, max_height=200)
+        before = panel.state_at(5.99)['scroll_y']
+        self.assertGreater(before, 0)
+        for t in (6, 6.1, 6.3, 7, 8.99):
+            self.assertEqual(panel.state_at(t)['scroll_y'], before)
+
     def test_quote_is_one_sentence_despite_punctuation_and_line_breaks(self):
         messages = [message('"First. Second?\nThird!"', end=4),
                     message('"COPY"', start=4, end=8),
@@ -213,7 +257,7 @@ class DialogueRenderingTests(unittest.TestCase):
         panel = self.panel(messages, max_height=150)
         self.assertEqual(len(panel._paragraphs), 3)
         self.assertEqual(panel.state_at(3)['scroll_y'], 0)
-        self.assertEqual(panel.state_at(4.99)['scroll_y'], 0)
+        self.assertEqual(panel.state_at(4.29)['scroll_y'], 0)
         self.assertAlmostEqual(panel.state_at(5.5)['paragraph_top'], 28)
         self.assertAlmostEqual(panel.state_at(9.5)['paragraph_top'], 76)
 

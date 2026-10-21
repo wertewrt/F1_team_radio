@@ -1065,7 +1065,7 @@ class DialogueEditor(tk.Toplevel):
         self.option_spins = []
         for label, key, low, high, step in (("面板展开（秒）", "dialogue_expand", 0, 10, .05),
                                            ("文字滚动（秒）", "dialogue_scroll", 0, 10, .05),
-                                           ("滚动前停留（秒）", "dialogue_scroll_delay", 0, 10, .05),
+                                           ("最大停留（秒）", "dialogue_scroll_delay", 0, 10, .05),
                                            ("文字大小", "dialogue_font_size", 14, 40, 1)):
             cell = ttk.Frame(timing)
             cell.pack(side="left", fill="x", expand=True, padx=(0, 12))
