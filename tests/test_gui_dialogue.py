@@ -184,6 +184,41 @@ class GuiDialogueTests(unittest.TestCase):
         self.assertEqual({key: value.get() for key, value in self.app.vars.items()}, expected_vars)
         self.assertEqual(self.errors, [])
 
+    def test_posted_combobox_wheel_keeps_native_scrolling_without_callback_errors(self):
+        editor = self.editor_with_two_paragraphs()
+        expected = {key: value.get() for key, value in self.app.vars.items()}
+        for combo in (self.app.driver_combo, self.app.team_combo, editor.role_combo):
+            with self.subTest(combo=str(combo)):
+                combo.winfo_toplevel().lift()
+                self.root.update()
+                self.root.tk.call("ttk::combobox::Post", str(combo))
+                try:
+                    self.root.update()
+                    popdown = str(self.root.tk.call("ttk::combobox::PopdownWindow", str(combo)))
+                    listbox = popdown + ".f.l"
+                    x = int(self.root.tk.call("winfo", "rootx", listbox)) + 12
+                    y = int(self.root.tk.call("winfo", "rooty", listbox)) + 12
+                    # This real Tcl widget is deliberately absent from Tkinter's
+                    # children map, reproducing the original KeyError: popdown.
+                    self.assertEqual(str(self.root.tk.call("winfo", "containing", x, y)), listbox)
+                    settings_before = self.app.settings_canvas.yview()
+                    selection_before = combo.get()
+                    view_before = self.root.tk.call(listbox, "yview")
+                    for _ in range(3):
+                        self.root.tk.call("event", "generate", listbox, "<MouseWheel>",
+                                          "-delta", -120, "-rootx", x, "-rooty", y, "-x", 12, "-y", 12)
+                        self.root.update()
+                    if combo is self.app.driver_combo:
+                        self.assertGreater(float(self.root.tk.call(listbox, "yview")[0]), float(view_before[0]))
+                    self.assertEqual(combo.get(), selection_before)
+                    self.assertEqual(self.app.settings_canvas.yview(), settings_before)
+                    self.assertEqual(self.errors, [])
+                finally:
+                    self.root.tk.call("ttk::combobox::Unpost", str(combo))
+                    self.root.update()
+        self.assertEqual({key: value.get() for key, value in self.app.vars.items()}, expected)
+        self.showerror.assert_not_called()
+
     def test_duration_uses_audio_and_only_enabled_messages_extend_output(self):
         self.editor_with_two_paragraphs()
         self.app.audio_duration = 1.25

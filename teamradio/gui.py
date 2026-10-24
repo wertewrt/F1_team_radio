@@ -348,7 +348,12 @@ class TeamRadioApp(ttk.Frame):
     def _mousewheel(self, event):
         if self._closing:
             return
-        widget = self.root.winfo_containing(event.x_root, event.y_root)
+        try:
+            widget = self.root.winfo_containing(event.x_root, event.y_root)
+        except (KeyError, tk.TclError):
+            # ttk owns its popdown/listbox in Tcl; it has no Python widget.
+            # Leave its wheel event to the native listbox bindings.
+            return
         while widget is not None:
             if widget == self.settings_canvas:
                 return self._settings_mousewheel(event)

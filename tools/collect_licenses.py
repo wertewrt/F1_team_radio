@@ -41,7 +41,7 @@ for name in ('COPYING.GPLv3','LICENSE.md','COPYING.LGPLv3'):
 import imageio_ffmpeg
 build_info=subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(), '-version'], capture_output=True, text=True, check=True, creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
 (ffmpeg/'BUILD-CONFIGURATION.txt').write_text(build_info.stdout + build_info.stderr, encoding='utf-8')
-lines=['F1 Team Radio Studio v1.0.1 — Third-party notices',
+lines=['F1 Team Radio Studio v1.0.2 — Third-party notices',
        '================================================',
        'These notices cover bundled third-party components, not a new license grant for project code.',
        '',f'Python {sys.version.split()[0]} — Python Software Foundation License (see Python-LICENSE.txt).',

@@ -1,4 +1,4 @@
-FFmpeg distributed with F1 Team Radio Studio v1.0.1
+FFmpeg distributed with F1 Team Radio Studio v1.0.2
 
 Version: 7.1-essentials_build-www.gyan.dev
 Source package: imageio-ffmpeg 0.6.0 Windows x64 wheel

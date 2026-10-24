@@ -246,6 +246,32 @@ def run_gui_smoke_test(report_path=None):
             raise RuntimeError("Studio preview did not render")
         report["results"][stage] = {"ok": True, "tk": str(root.tk.call("info", "patchlevel"))}
         report["ffmpeg_path"] = media.ffmpeg_exe()
+        stage = "combobox_mousewheel"
+        combo = app.driver_combo
+        before_driver = combo.get()
+        before_view = app.settings_canvas.yview()
+        root.tk.call("ttk::combobox::Post", str(combo))
+        try:
+            root.update()
+            popdown = str(root.tk.call("ttk::combobox::PopdownWindow", str(combo)))
+            listbox = popdown + ".f.l"
+            x = int(root.tk.call("winfo", "rootx", listbox)) + 12
+            y = int(root.tk.call("winfo", "rooty", listbox)) + 12
+            before_list = root.tk.call(listbox, "yview")
+            for _ in range(3):
+                root.tk.call("event", "generate", listbox, "<MouseWheel>",
+                             "-delta", -120, "-rootx", x, "-rooty", y, "-x", 12, "-y", 12)
+                root.update()
+            if callback_errors:
+                raise RuntimeError(f"Combobox wheel callback failed: {callback_errors[0]}")
+            if combo.get() != before_driver or app.settings_canvas.yview() != before_view:
+                raise RuntimeError("Combobox popup wheel changed a setting or scrolled the main panel")
+            if float(root.tk.call(listbox, "yview")[0]) <= float(before_list[0]):
+                raise RuntimeError("Combobox popup did not scroll")
+        finally:
+            root.tk.call("ttk::combobox::Unpost", str(combo))
+            root.update()
+        report["results"][stage] = {"ok": True, "native_list_scrolled": True, "settings_unchanged": True}
         stage = "dialogue_editor"
         editor = app.open_dialogue_editor()
         root.update()
