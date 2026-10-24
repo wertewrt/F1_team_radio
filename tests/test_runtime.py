@@ -127,7 +127,7 @@ class SelfTestTests(unittest.TestCase):
             report = json.loads(path.read_text(encoding="utf-8"))
             self.assertTrue(report["ok"])
             self.assertFalse(report["frozen"])
-            self.assertEqual(report["version"], "1.0.0")
+            self.assertEqual(report["version"], "1.0.1")
             self.assertTrue(Path(report["ffmpeg_path"]).is_file())
             self.assertTrue(all(item["ok"] for item in report["results"].values()))
             self.assertGreater(report["results"]["verify_mp4"]["frames"], 1)

@@ -4,11 +4,11 @@
 
 号码使用 numerals/contours.json 中经过直边、平行线与折角校正的矢量多边形，在目标分辨率直接渲染。数字6以原图里的短顶帽、长斜线和八角下腹为结构参考，所有车手共用同一套0–9轮廓；9在源图中没有出现，以6旋转180°作为一致风格扩展。
 
-姓名与 RADIO 使用 fonts/RadioRounded-Bold.ttf 和 fonts/RadioRounded-Radio.ttf 的独立圆润矢量轮廓。它们与硬边号码不同，不使用低分辨率文字贴图放大。源图中的整段文字和灰度字母只作为字形/字宽/位置的测量与审核材料，保存在 lettering 中。
+姓名与 RADIO 均使用用户提供的 fonts/Formula1-Bold_web_0.ttf，在目标分辨率渲染 TrueType 矢量轮廓，并沿用原有文字位置、尺寸与颜色。源图中的整段文字和灰度字母只作为字宽、位置的测量与审核材料，保存在 lettering 中。原 RadioRounded 字体保留为历史重建素材。号码仍使用统一矢量数字。
 
-这套字形是依据参考图重建的清晰字形，并非取得了官方原版专有字体。源图像素模糊、压缩和偏色不能唯一决定原始字体的所有精确曲率，重建时优先恢复直线、明确折角以及平滑圆润曲线。ALBON 以同一圆润字库排版，号码23来自统一矢量数字。中文与扩展字符没有参考图字形，使用本机微软雅黑或 DejaVu 回退。DejaVu 许可见 fonts/LICENSE_DEJAVU.txt。
+下方 TR 对话框使用用户提供的 fonts/Formula1-Regular_web_0.ttf 常规字体，换行宽度按该字体实际测量。两份 Formula 1 字体随项目资源加载，无需在系统中安装；预览和导出使用相同字体。
 
-下方对话框使用 fonts/DejaVuSans.ttf 常规矢量字体，区别于上方粗体姓名与硬边号码。沿用同目录 DejaVu 许可；中文按系统字体回退。
+中文沿用本机微软雅黑等系统字体回退，其他标题扩展字符沿用 DejaVu 回退。DejaVu 许可见 fonts/LICENSE_DEJAVU.txt。用户提供的 Formula 1 字体不适用 DejaVu 许可，本项目未授予其额外许可。
 
 ## 图片素材
 

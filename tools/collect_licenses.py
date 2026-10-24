@@ -41,7 +41,7 @@ for name in ('COPYING.GPLv3','LICENSE.md','COPYING.LGPLv3'):
 import imageio_ffmpeg
 build_info=subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(), '-version'], capture_output=True, text=True, check=True, creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
 (ffmpeg/'BUILD-CONFIGURATION.txt').write_text(build_info.stdout + build_info.stderr, encoding='utf-8')
-lines=['F1 Team Radio Studio v1.0.0 — Third-party notices',
+lines=['F1 Team Radio Studio v1.0.1 — Third-party notices',
        '================================================',
        'These notices cover bundled third-party components, not a new license grant for project code.',
        '',f'Python {sys.version.split()[0]} — Python Software Foundation License (see Python-LICENSE.txt).',
@@ -63,7 +63,9 @@ lines += ['', 'Pillow includes FreeType and other native libraries; their comple
           'Binary builder: https://www.gyan.dev/ffmpeg/builds/',
           'Binary mirror: https://github.com/GyanD/codexffmpeg/releases/tag/7.1',
           'Bundled binary distributor: https://github.com/imageio/imageio-ffmpeg/tree/v0.6.0',
-          '', 'DejaVu fonts — Bitstream Vera/DejaVu terms: LICENSES/DejaVu-LICENSE.txt.',
+          '', 'Formula 1 Bold / Regular fonts — supplied by the user as Formula1-Bold_web_0.ttf and Formula1-Regular_web_0.ttf.',
+          'These fonts are not covered by the DejaVu license; this project grants no additional rights to them.',
+          'DejaVu fonts — Bitstream Vera/DejaVu terms: LICENSES/DejaVu-LICENSE.txt.',
           'Microsoft YaHei is loaded from Windows when available and is not redistributed.',
           'Team names/logos belong to their respective rights holders; asset provenance is documented in LICENSES/ASSET_NOTES.md.',
           '', 'Permission texts are also embedded in the executable and included in the release licenses ZIP.',

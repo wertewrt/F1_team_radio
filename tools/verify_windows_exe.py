@@ -24,6 +24,6 @@ for mode,name in [('--self-test','self-test-report.json'),('--gui-smoke-test','g
         raise SystemExit(f'{mode} failed ({run.returncode}): '+run.stderr.decode(errors='replace'))
     if not report.is_file():raise SystemExit(f'Missing report: {report}')
     info=json.loads(report.read_text(encoding='utf-8'))
-    if not info.get('ok') or not info.get('frozen') or info.get('version')!='1.0.0':
+    if not info.get('ok') or not info.get('frozen') or info.get('version')!='1.0.1':
         raise SystemExit(f'Invalid packaged test result: {report}')
     print(f'{mode}: passed ({len(info["results"])} stages, frozen=True)',flush=True)

@@ -107,7 +107,8 @@ def run_self_test(report_path=None):
         stage = "resources"
         required = ["background/reference_panel.png", "lettering/lettering.json",
                     "numerals/contours.json", "fonts/RadioRounded-Bold.ttf",
-                    "fonts/RadioRounded-Radio.ttf", "fonts/DejaVuSans-Bold.ttf"]
+                    "fonts/RadioRounded-Radio.ttf", "fonts/DejaVuSans-Bold.ttf",
+                    "fonts/Formula1-Bold_web_0.ttf", "fonts/Formula1-Regular_web_0.ttf"]
         required += [f"logos/{team}_{variant}.png" for team in presets.TEAMS
                      for variant in ("color", "white")]
         files = [{"path": str(presets.ASSETS / name),

@@ -123,7 +123,8 @@ def number_mask(text,height):
 
 
 def _font_path(text,radio=False):
-    filename='RadioRounded-Radio.ttf' if radio else 'RadioRounded-Bold.ttf'
+    # Both the driver name and RADIO use the user-supplied Formula 1 Bold.
+    filename='Formula1-Bold_web_0.ttf'
     path=ASSETS/'fonts'/filename
     if any(ord(c)>0x3000 for c in text) and Path('C:/Windows/Fonts/msyhbd.ttc').is_file():
         path=Path('C:/Windows/Fonts/msyhbd.ttc')

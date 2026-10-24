@@ -15,10 +15,10 @@ $ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 $root = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
 $distDir = Join-Path $root "dist"
-$name = "F1-Team-Radio-Studio-v1.0.0-windows-x64"
+$name = "F1-Team-Radio-Studio-v1.0.1-windows-x64"
 $exe = Join-Path $distDir "$name.exe"
 $report = Join-Path $distDir "self-test-report.json"
-$licenseZip = Join-Path $distDir "F1-Team-Radio-Studio-v1.0.0-licenses.zip"
+$licenseZip = Join-Path $distDir "F1-Team-Radio-Studio-v1.0.1-licenses.zip"
 
 Push-Location -LiteralPath $root
 try {
@@ -28,7 +28,7 @@ import platform, struct, sys
 from teamradio import __version__
 assert sys.platform == 'win32' and struct.calcsize('P') == 8 and platform.machine().upper() in ('AMD64', 'X86_64'), 'Windows x64 Python is required'
 assert sys.version_info[:2] == (3, 13), 'Python 3.13 is required'
-assert __version__ == '1.0.0', 'Update release names and version resources before changing the application version'
+assert __version__ == '1.0.1', 'Update release names and version resources before changing the application version'
 print(sys.executable)
 '@
     $pythonPath = & $Python -c $preflight

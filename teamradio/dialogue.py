@@ -149,7 +149,8 @@ def _font_path(cjk=False, override=None):
         choices.extend([windows_fonts / 'msyh.ttc', windows_fonts / 'msyh.ttf',
                         Path('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'),
                         Path('/System/Library/Fonts/PingFang.ttc')])
-    choices.extend([assets / 'DejaVuSans.ttf', windows_fonts / 'arial.ttf',
+    choices.extend([assets / 'Formula1-Regular_web_0.ttf',
+                    assets / 'DejaVuSans.ttf', windows_fonts / 'arial.ttf',
                     Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')])
     for path in choices:
         if path.is_file():

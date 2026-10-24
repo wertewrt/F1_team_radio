@@ -7,7 +7,7 @@ import sys
 import imageio_ffmpeg
 
 ROOT = Path(SPECPATH).resolve().parent
-NAME = "F1-Team-Radio-Studio-v1.0.0-windows-x64"
+NAME = "F1-Team-Radio-Studio-v1.0.1-windows-x64"
 if sys.platform != "win32" or struct.calcsize("P") != 8:
     raise RuntimeError("Build with 64-bit Windows Python.")
 
